@@ -16,5 +16,10 @@ namespace ProyectoDerake.Formularios
         {
             InitializeComponent();
         }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

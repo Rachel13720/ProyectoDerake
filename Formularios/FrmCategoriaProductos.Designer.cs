@@ -30,13 +30,12 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.LboxCategoria = new System.Windows.Forms.ListBox();
             this.LblTipo = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.CboxTipoCategoria = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,16 +51,6 @@ namespace ProyectoDerake.Formularios
             this.dataGridView1.Size = new System.Drawing.Size(692, 421);
             this.dataGridView1.TabIndex = 0;
             // 
-            // LboxCategoria
-            // 
-            this.LboxCategoria.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LboxCategoria.FormattingEnabled = true;
-            this.LboxCategoria.ItemHeight = 16;
-            this.LboxCategoria.Location = new System.Drawing.Point(22, 489);
-            this.LboxCategoria.Name = "LboxCategoria";
-            this.LboxCategoria.Size = new System.Drawing.Size(393, 84);
-            this.LboxCategoria.TabIndex = 1;
-            // 
             // LblTipo
             // 
             this.LblTipo.AutoSize = true;
@@ -74,49 +63,58 @@ namespace ProyectoDerake.Formularios
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.SeaGreen;
             this.button1.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(747, 79);
+            this.button1.ForeColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(747, 101);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 35);
             this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Agregar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(747, 139);
+            this.button2.BackColor = System.Drawing.Color.Orange;
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(747, 167);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 35);
             this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Text = "Modificar";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(747, 194);
+            this.button3.BackColor = System.Drawing.Color.Brown;
+            this.button3.ForeColor = System.Drawing.SystemColors.Control;
+            this.button3.Location = new System.Drawing.Point(747, 231);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(139, 35);
             this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Text = "Eliminar";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(747, 246);
+            this.button4.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button4.ForeColor = System.Drawing.SystemColors.Control;
+            this.button4.Location = new System.Drawing.Point(747, 295);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(139, 35);
             this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Text = "Salir";
+            this.button4.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // CboxTipoCategoria
             // 
-            this.button5.Location = new System.Drawing.Point(747, 304);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(139, 35);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.CboxTipoCategoria.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboxTipoCategoria.FormattingEnabled = true;
+            this.CboxTipoCategoria.Location = new System.Drawing.Point(22, 489);
+            this.CboxTipoCategoria.Name = "CboxTipoCategoria";
+            this.CboxTipoCategoria.Size = new System.Drawing.Size(335, 24);
+            this.CboxTipoCategoria.TabIndex = 7;
             // 
             // FrmCategoriaProductos
             // 
@@ -124,13 +122,12 @@ namespace ProyectoDerake.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(910, 598);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.CboxTipoCategoria);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.LblTipo);
-            this.Controls.Add(this.LboxCategoria);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmCategoriaProductos";
@@ -144,12 +141,11 @@ namespace ProyectoDerake.Formularios
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ListBox LboxCategoria;
         private System.Windows.Forms.Label LblTipo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox CboxTipoCategoria;
     }
 }

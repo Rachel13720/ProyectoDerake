@@ -104,5 +104,7 @@ namespace ProyectoDerake.Formularios
                 Locales.ObjetosGlobales.MiFormCastegoriaProductos.Show();
             }
         }
+
+        
     }
 }

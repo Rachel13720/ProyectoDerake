@@ -16,7 +16,7 @@ namespace ProyectoDerake.Lógica
         public int NumeroFactura { get; set; }
 
         public string Comentario { get; set; }
-
+        
         //Composicion
         public List<VentaDetalle> ListaDetalle { get; set; }
 

@@ -14,7 +14,7 @@ namespace ProyectoDerake.Lógica
         //NOTA: utilizar estas funciones para encriptar la cadena de conexion
 
         string LlavePersonalizada = "Derake2018/*kajhsdkjh573715753";
-
+        
         public string DesEncriptarPassword(string Pass)
         {
             String R = string.Empty;

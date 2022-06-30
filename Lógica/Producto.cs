@@ -19,7 +19,7 @@ namespace ProyectoDerake.Lógica
         public decimal Precio { get; set; }
 
         public string Comentario { get; set; }
-
+        
         //Composición
         ProductoCategoria MiCategoria { get; set; }
 

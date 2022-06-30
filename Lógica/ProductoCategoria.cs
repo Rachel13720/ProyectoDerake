@@ -12,7 +12,7 @@ namespace ProyectoDerake.Lógica
         public int IDProductoCategoria { get; set; }
 
         public string MiCategoria { get; set; }
-
+        
         //Metodos
     }
 }

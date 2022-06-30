@@ -26,6 +26,6 @@ namespace ProyectoDerake.Locales
         public static Formularios.FrmRolUsuarios MiFormRolUsuarios = new Formularios.FrmRolUsuarios();
 
         public static Formularios.FrmCategoriaProductos MiFormCastegoriaProductos = new Formularios.FrmCategoriaProductos();
-
+        
     }
 }

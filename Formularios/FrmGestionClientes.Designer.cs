@@ -69,6 +69,7 @@ namespace ProyectoDerake.Formularios
             this.BtnAgregar.TabIndex = 1;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = false;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnModificar
             // 
@@ -204,7 +205,7 @@ namespace ProyectoDerake.Formularios
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmGestionClientes";
             this.Text = "Gestion de Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

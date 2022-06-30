@@ -22,7 +22,7 @@ namespace ProyectoDerake.Lógica
         //Constructor
         public Empleado()
         {
-
+            
         }
 
         //Metodos
