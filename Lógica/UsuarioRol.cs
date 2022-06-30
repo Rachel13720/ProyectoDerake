@@ -12,7 +12,7 @@ namespace ProyectoDerake.Lógica
         //Atributos
         public int IDUsuarioRol { get; set; }
 
-        public string MiRol { get; set; }
+        public string Rol { get; set; }
 
     }
 }

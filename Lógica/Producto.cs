@@ -14,7 +14,7 @@ namespace ProyectoDerake.Lógica
 
         public string Nombre { get; set; }
 
-        public decimal Cantidad { get; set; }
+        public int Cantidad { get; set; }
 
         public decimal Precio { get; set; }
 

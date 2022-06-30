@@ -8,7 +8,6 @@ namespace ProyectoDerake.Lógica
 {
     public class Cliente
     {
-
         //Atributos
         public int IDCliente { get; set; }
 
@@ -20,6 +19,13 @@ namespace ProyectoDerake.Lógica
 
         public string Teléfono { get; set; }
 
+        //Constructor
+        public Cliente()
+        {
+
+        }
+
+        //Metodos
 
     }
 }

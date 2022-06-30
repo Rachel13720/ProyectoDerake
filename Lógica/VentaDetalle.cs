@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace ProyectoDerake.Lógica
 {
-    class VentaDetalle
+    public class VentaDetalle
     {
+
+        //Atributos
+        public decimal CantidadVendida { get; set; }
+        public decimal PrecioVenta { get; set; }
+        public Producto MiProducto { get; set; }
+
+        //Constructor
+
+        public VentaDetalle()
+        {
+            MiProducto = new Producto();
+        }
     }
 }

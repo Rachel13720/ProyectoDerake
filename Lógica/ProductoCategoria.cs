@@ -13,5 +13,6 @@ namespace ProyectoDerake.Lógica
 
         public string MiCategoria { get; set; }
 
+        //Metodos
     }
 }
