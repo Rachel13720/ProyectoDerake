@@ -77,6 +77,12 @@
     <Compile Include="Formularios\FrmGestionProductos.Designer.cs">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmInformacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmInformacion.Designer.cs">
+      <DependentUpon>FrmInformacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionProductos.resx">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmInformacion.resx">
+      <DependentUpon>FrmInformacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

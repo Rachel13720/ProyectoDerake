@@ -117,10 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ColIDUsuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ColNombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Datos de contacto
+Gerente general: Arturo Obando Loría
+Teléfono: 6038-6353
+
+Ubicación: 
+La empresa se encuentra ubicada en San Pedro, San Ramón de Alajuela, 50 metros después del Súper Estrella Dorada, contiguo a Panadería Chávez.
+
+Misión:
+“Ofrecer una amplia variedad de muebles con diseños originales y personalizados 
+para la decoración de su hogar, realizados con la mejor calidad de productos para 
+su comodidad y a precios accesibles que la mayoría de familias pueden 
+adquirirlos.”
+
+Visión:
+“Crear productos únicos que brindan comodidad a las familias y para que su día a 
+día sea mejor, tanto para los clientes como para las personas que trabajan con 
+nosotros.”
+
+Reseña Histórica:
+La empresa DERAKE inició en el año 1989, bajo el nombre de Mueblería Odarlu, con la pasión de realizar diseños originales de gran variedad de muebles y crear esta empresa con el fin de expandirse en el país brindando su trabajo de calidad, además de la idea de que las familias elijan sus productos y observen la calidad sintiéndose satisfechos. La empresa se ubica actualmente y desde su origen en San Pedro, San Ramón; con un pequeño galerón y empeñando productos para poder conseguir lo suministros necesarios para crear los muebles. En la primera generación de la empresa ODARLU inicia con los pilares de una familia, surge de las iniciales de Odilie, Arturo y Lucrecia que eran quienes se encargaban principalmente de la empresa y su administración, seguidamente pasó a DERAKE como la segunda generación con los respectivos nombres de Derek, Rachel y Kevin, con una visión de la empresa diferente, más futurista y renovada. Durante 17 años la empresa estuvo creciendo, adquiriendo clientes y creando más diseños para su venta, conforme pasaba el tiempo los productos fueron mejorando en cuanto a sus materias primas, estos se han modernizado en diseños tanto en sus telas como en otros materiales. En sus inicios una de las mueblerías a las que se le distribuía muebles fue Mueblería Sandoval ubicada en Cartago, durante los siguientes años se le siguió distribuyendo la línea de muebles a empresas como Importadora Monge, el Gollo, Artelec, el Verdugo, y todo esto durante 15 años además de otras empresas; la última empresa con la que trabajó fue Mexpress hace tres años y actualmente trabaja con clientes particulares y algunas empresas conocidas como Muebles Sarchí ubicada en Ciudad Quesada y Almacén La Colonial ubicado en Orosi, Cartago.
+</value>
+  </data>
 </root>

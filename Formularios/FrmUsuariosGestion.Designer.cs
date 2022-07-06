@@ -40,6 +40,8 @@ namespace ProyectoDerake.Formularios
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnDesactivar = new System.Windows.Forms.Button();
             this.BtnSalir = new System.Windows.Forms.Button();
+            this.ColIDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +51,9 @@ namespace ProyectoDerake.Formularios
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColIDUsuario,
+            this.ColNombre});
             this.dataGridView1.Location = new System.Drawing.Point(12, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
@@ -102,6 +107,7 @@ namespace ProyectoDerake.Formularios
             this.BtnAgregar.TabIndex = 5;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = false;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // LblContrasennia
             // 
@@ -155,6 +161,23 @@ namespace ProyectoDerake.Formularios
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = false;
             // 
+            // ColIDUsuario
+            // 
+            this.ColIDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColIDUsuario.DataPropertyName = "IDUsuario";
+            this.ColIDUsuario.HeaderText = "Código";
+            this.ColIDUsuario.Name = "ColIDUsuario";
+            this.ColIDUsuario.ReadOnly = true;
+            this.ColIDUsuario.Width = 80;
+            // 
+            // ColNombre
+            // 
+            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNombre.DataPropertyName = "Nombre";
+            this.ColNombre.HeaderText = "Nombre";
+            this.ColNombre.Name = "ColNombre";
+            this.ColNombre.ReadOnly = true;
+            // 
             // FrmUsuariosGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -195,5 +218,7 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnDesactivar;
         private System.Windows.Forms.Button BtnSalir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColIDUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombre;
     }
 }

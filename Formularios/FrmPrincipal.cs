@@ -105,6 +105,18 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-        
+        private void salirDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void informaciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!Locales.ObjetosGlobales.MiFormInfo.Visible)
+            {
+                Locales.ObjetosGlobales.MiFormInfo = new FrmInformacion();
+                Locales.ObjetosGlobales.MiFormInfo.Show();
+            }
+        }
     }
 }

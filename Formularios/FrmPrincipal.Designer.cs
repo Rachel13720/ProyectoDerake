@@ -32,11 +32,9 @@ namespace ProyectoDerake.Formularios
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.LblTitulo = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.mantenimientosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.procesosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,13 +42,16 @@ namespace ProyectoDerake.Formularios
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.rolesDeUsuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoríaDeProductosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.procesosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesDeVentasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeClientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeEmpleadosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeProductosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.LblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LblTitulo.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +75,12 @@ namespace ProyectoDerake.Formularios
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(55, 17);
             this.toolStripStatusLabel1.Text = "Usuario";
             // 
+            // LblUsuario
+            // 
+            this.LblUsuario.Name = "LblUsuario";
+            this.LblUsuario.Size = new System.Drawing.Size(18, 17);
+            this.LblUsuario.Text = "U";
+            // 
             // menuStrip2
             // 
             this.menuStrip2.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -84,7 +91,9 @@ namespace ProyectoDerake.Formularios
             this.mantenimientosToolStripMenuItem1,
             this.procesosToolStripMenuItem1,
             this.reportesToolStripMenuItem1,
-            this.acercaDeToolStripMenuItem});
+            this.acercaDeToolStripMenuItem,
+            this.salirDelSistemaToolStripMenuItem});
+            this.menuStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.menuStrip2.Location = new System.Drawing.Point(632, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(146, 450);
@@ -103,36 +112,8 @@ namespace ProyectoDerake.Formularios
             this.categoríaDeProductosToolStripMenuItem1});
             this.mantenimientosToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mantenimientosToolStripMenuItem1.Name = "mantenimientosToolStripMenuItem1";
-            this.mantenimientosToolStripMenuItem1.Size = new System.Drawing.Size(133, 23);
+            this.mantenimientosToolStripMenuItem1.Size = new System.Drawing.Size(140, 23);
             this.mantenimientosToolStripMenuItem1.Text = "Mantenimientos";
-            // 
-            // procesosToolStripMenuItem1
-            // 
-            this.procesosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestiónDeVentasToolStripMenuItem});
-            this.procesosToolStripMenuItem1.Name = "procesosToolStripMenuItem1";
-            this.procesosToolStripMenuItem1.Size = new System.Drawing.Size(133, 23);
-            this.procesosToolStripMenuItem1.Text = "Procesos";
-            // 
-            // reportesToolStripMenuItem1
-            // 
-            this.reportesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reportesDeVentasToolStripMenuItem1,
-            this.listaDeClientesToolStripMenuItem1,
-            this.listaDeEmpleadosToolStripMenuItem1,
-            this.listaDeProductosToolStripMenuItem1});
-            this.reportesToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
-            this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(133, 23);
-            this.reportesToolStripMenuItem1.Text = "Reportes";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.informaciónToolStripMenuItem1});
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(133, 23);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // usuariosToolStripMenuItem1
             // 
@@ -181,12 +162,32 @@ namespace ProyectoDerake.Formularios
             this.categoríaDeProductosToolStripMenuItem1.Text = "Categoría de productos";
             this.categoríaDeProductosToolStripMenuItem1.Click += new System.EventHandler(this.categoríaDeProductosToolStripMenuItem1_Click);
             // 
+            // procesosToolStripMenuItem1
+            // 
+            this.procesosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestiónDeVentasToolStripMenuItem});
+            this.procesosToolStripMenuItem1.Name = "procesosToolStripMenuItem1";
+            this.procesosToolStripMenuItem1.Size = new System.Drawing.Size(87, 23);
+            this.procesosToolStripMenuItem1.Text = "Procesos";
+            // 
             // gestiónDeVentasToolStripMenuItem
             // 
             this.gestiónDeVentasToolStripMenuItem.Name = "gestiónDeVentasToolStripMenuItem";
             this.gestiónDeVentasToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.gestiónDeVentasToolStripMenuItem.Text = "Gestión de Ventas";
             this.gestiónDeVentasToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeVentasToolStripMenuItem_Click);
+            // 
+            // reportesToolStripMenuItem1
+            // 
+            this.reportesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportesDeVentasToolStripMenuItem1,
+            this.listaDeClientesToolStripMenuItem1,
+            this.listaDeEmpleadosToolStripMenuItem1,
+            this.listaDeProductosToolStripMenuItem1});
+            this.reportesToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
+            this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(88, 23);
+            this.reportesToolStripMenuItem1.Text = "Reportes";
             // 
             // reportesDeVentasToolStripMenuItem1
             // 
@@ -212,17 +213,27 @@ namespace ProyectoDerake.Formularios
             this.listaDeProductosToolStripMenuItem1.Size = new System.Drawing.Size(221, 24);
             this.listaDeProductosToolStripMenuItem1.Text = "Lista de Productos";
             // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informaciónToolStripMenuItem1});
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(94, 23);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            // 
             // informaciónToolStripMenuItem1
             // 
             this.informaciónToolStripMenuItem1.Name = "informaciónToolStripMenuItem1";
-            this.informaciónToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.informaciónToolStripMenuItem1.Size = new System.Drawing.Size(166, 24);
             this.informaciónToolStripMenuItem1.Text = "Información";
+            this.informaciónToolStripMenuItem1.Click += new System.EventHandler(this.informaciónToolStripMenuItem1_Click);
             // 
-            // LblUsuario
+            // salirDelSistemaToolStripMenuItem
             // 
-            this.LblUsuario.Name = "LblUsuario";
-            this.LblUsuario.Size = new System.Drawing.Size(18, 17);
-            this.LblUsuario.Text = "U";
+            this.salirDelSistemaToolStripMenuItem.Name = "salirDelSistemaToolStripMenuItem";
+            this.salirDelSistemaToolStripMenuItem.Size = new System.Drawing.Size(138, 23);
+            this.salirDelSistemaToolStripMenuItem.Text = "Salir del sistema";
+            this.salirDelSistemaToolStripMenuItem.Click += new System.EventHandler(this.salirDelSistemaToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -233,10 +244,11 @@ namespace ProyectoDerake.Formularios
             this.ClientSize = new System.Drawing.Size(778, 450);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.menuStrip2);
-            this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Control DERAKE 2018 S.A";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.LblTitulo.ResumeLayout(false);
             this.LblTitulo.PerformLayout();
@@ -270,5 +282,6 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.ToolStripMenuItem listaDeProductosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem informaciónToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem salirDelSistemaToolStripMenuItem;
     }
 }

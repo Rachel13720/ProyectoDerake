@@ -21,5 +21,11 @@ namespace ProyectoDerake.Formularios
         {
 
         }
+
+        private void BtnCalcular_Click(object sender, EventArgs e)
+        {
+            Locales.ObjetosGlobales.MiFormCalcularSalario.Show();
+            this.Hide();
+        }
     }
 }
