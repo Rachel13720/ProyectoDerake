@@ -9,12 +9,12 @@ namespace ProyectoDerake.Lógica
 {
     public class Crypto
     {
-        //esta clase contiene los metodos necesarios para encriptar
-        //no solo contrasenas sino cualquier dato importante
-        //NOTA: utilizar estas funciones para encriptar la cadena de conexion
+        //CREAR NUEVA LLAVE EN GOOGLE, CONSULTAR
 
-        string LlavePersonalizada = "Derake2018/*kajhsdkjh573715753";
-        
+        //llave personalizada para encriptar
+        string LlavePersonalizada = "Progra5/*kajhsdkjh672716762";
+
+        //Desencripta contraseña
         public string DesEncriptarPassword(string Pass)
         {
             String R = string.Empty;
@@ -39,6 +39,7 @@ namespace ProyectoDerake.Lógica
 
         }
 
+        //encripta contraseña
         public string EncriptarPassword(string Pass)
         {
             String R = string.Empty;
@@ -63,6 +64,7 @@ namespace ProyectoDerake.Lógica
 
         }
 
+        //Encripta en un sentido
         public string EncriptarEnUnSentido(string Entrada)
         {
             string PorEncriptar = EncriptarPassword(Entrada);
@@ -83,7 +85,7 @@ namespace ProyectoDerake.Lógica
             //el for recorre cada byte del Hash y lo agrega a una cadena (stringbuilder)
             for (int i = 0; i < BytesConHash.Length; i++)
                 Resultado.Append(BytesConHash[i].ToString("x2").ToLower());
-            // el x2 pone los caracteres hexadecimales con cierto formato.
+            // el x2 lo que hace es poner los caracteres hexadecimales con cierto formato.
 
             return Resultado.ToString();
 

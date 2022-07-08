@@ -30,21 +30,21 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInformacion));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtInfo = new System.Windows.Forms.TextBox();
             this.BtnRegresar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TxtInfo
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(617, 560);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.TxtInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.TxtInfo.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtInfo.Location = new System.Drawing.Point(12, 12);
+            this.TxtInfo.Multiline = true;
+            this.TxtInfo.Name = "TxtInfo";
+            this.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtInfo.Size = new System.Drawing.Size(617, 560);
+            this.TxtInfo.TabIndex = 0;
+            this.TxtInfo.Text = resources.GetString("TxtInfo.Text");
             // 
             // BtnRegresar
             // 
@@ -67,9 +67,10 @@ namespace ProyectoDerake.Formularios
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(636, 618);
             this.Controls.Add(this.BtnRegresar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtInfo);
             this.Name = "FrmInformacion";
             this.Text = "Informacion de la empresa";
+            this.Load += new System.EventHandler(this.FrmInformacion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,7 +78,7 @@ namespace ProyectoDerake.Formularios
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtInfo;
         private System.Windows.Forms.Button BtnRegresar;
     }
 }

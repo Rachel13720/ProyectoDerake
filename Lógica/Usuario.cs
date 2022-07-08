@@ -18,6 +18,10 @@ namespace ProyectoDerake.Lógica
 
         public string Contrasennia { get; set; }
 
+        public string Cedula { get; set; }
+
+        public string Email { get; set; }
+
         //Composición
         public UsuarioRol Rol { get; set; }
 
@@ -32,30 +36,28 @@ namespace ProyectoDerake.Lógica
         {
             bool R = false;
 
-            //codigo permite agregar usuario
-            //en la base datos
-
             try
             {
                 Conexion MiCnn = new Conexion();
 
                 Crypto MiEncriptador = new Crypto();
 
-                //Lista de parametros que lleva al SP
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Cedula", this.Cedula));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Nombre", this.Nombre));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Email", this.Email));
 
                 string MiPasswordEncriptado = MiEncriptador.EncriptarEnUnSentido(this.Contrasennia);
 
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Pass", MiPasswordEncriptado));
-
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdRol", this.Rol.IDUsuarioRol));
-                
+
                 int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioAgregar");
 
                 if (retorno > 0)
                 {
                     R = true;
                 }
+
 
             }
             catch (Exception)
@@ -71,17 +73,13 @@ namespace ProyectoDerake.Lógica
         {
             bool R = false;
 
-            //codigo permite editar usuario
-            //en la base datos
-
             try
             {
                 Conexion MiCnn = new Conexion();
 
-                //Lista de parametros que llegaran al SP
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Id", this.IDUsuario));
-
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Nombre", this.Nombre));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Email", this.Email));
 
                 Crypto MiEncriptador = new Crypto();
                 string PasswordEncriptado = "";
@@ -96,7 +94,6 @@ namespace ProyectoDerake.Lógica
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdRol", this.Rol.IDUsuarioRol));
 
                 int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioEditar");
-
 
                 if (retorno > 0)
                 {
@@ -146,32 +143,23 @@ namespace ProyectoDerake.Lógica
         {
             Usuario R = new Usuario();
 
-            //esta funcion retorna un objeto de tipo usuario con la data correspondiente
-            //para el ID suministrado a traves del parametro.
-
             Conexion MyCnn = new Conexion();
 
-            //se debe agregar un para,etro que pueda llegar al SP con el valor del ID del Usuario
             MyCnn.ListadoDeParametros.Add(new SqlParameter("@IdUsuario", pIDUsuario));
 
             DataTable DatosUsuario = new DataTable();
             DatosUsuario = MyCnn.DMLSelect("SPUsuarioConsultar");
 
-            //se evalua que el DT tenga datos y se asignan al objeto de retorno R
             if (DatosUsuario.Rows.Count > 0)
             {
-                //si se evalua correctamente quiere decir que si existe un usuario con el ID
-                //proporcionado, se procede a extraer los datos e ingresarlos en los atributos del 
-                //objeto que sera retornado
 
                 DataRow MiFila = DatosUsuario.Rows[0];
 
                 R.IDUsuario = Convert.ToInt32(MiFila["IDUsuario"]);
-
+                R.Cedula = Convert.ToString(MiFila["Cedula"]);
                 R.Nombre = Convert.ToString(MiFila["Nombre"]);
-
+                R.Email = Convert.ToString(MiFila["Email"]);
                 R.Contrasennia = Convert.ToString(MiFila["Contrasennia"]);
-
                 R.Rol.IDUsuarioRol = Convert.ToInt32(MiFila["IDUsuarioRol"]);
                 R.Rol.Rol = Convert.ToString(MiFila["Rol"]);
 
@@ -206,6 +194,63 @@ namespace ProyectoDerake.Lógica
 
             return R;
 
+        }
+
+
+        //Consulta los datos del usuario por cedula, en la BD
+        public bool ConsultarPorCedula()
+        {
+            bool R = false;
+
+            try
+            {
+                Conexion MiConexion = new Conexion();
+
+                MiConexion.ListadoDeParametros.Add(new SqlParameter("@Cedula", this.Cedula));
+
+                DataTable retorno = MiConexion.DMLSelect("SPUsuarioConsultarPorCedula");
+
+                if (retorno.Rows.Count > 0)
+                {
+                    R = true;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return R;
+        }
+
+        //Consulta los datos del usuario por email, en la BD
+        public bool ConsultarPorEmail()
+        {
+            bool R = false;
+
+            try
+            {
+                Conexion ObjConexion = new Conexion();
+
+                ObjConexion.ListadoDeParametros.Add(new SqlParameter("@Email", this.Email));
+
+                DataTable result = ObjConexion.DMLSelect("SPUsuarioConsultarPorEmail");
+
+                if (result.Rows.Count > 0)
+                {
+                    R = true;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return R;
         }
 
 
@@ -244,6 +289,44 @@ namespace ProyectoDerake.Lógica
                 DataRow MiFila = Respuesta.Rows[0];
 
                 R = Convert.ToInt32(MiFila["IDUsuario"]);
+            }
+
+            return R;
+        }
+
+        //Edita la contraseña
+        public bool EditarPassword()
+        {
+            bool R = false;
+
+            try
+            {
+                Conexion MiCnn = new Conexion();
+
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Email", this.Email));
+
+                Crypto MiEncriptador = new Crypto();
+                string PasswordEncriptado = "";
+
+                if (!string.IsNullOrEmpty(this.Contrasennia))
+                {
+                    PasswordEncriptado = MiEncriptador.EncriptarEnUnSentido(this.Contrasennia);
+                }
+
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Pass", PasswordEncriptado));
+
+                int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioEditarPassword");
+
+                if (retorno > 0)
+                {
+                    R = true;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
             return R;

@@ -44,6 +44,10 @@ namespace ProyectoDerake.Formularios
             this.LblCantidad = new System.Windows.Forms.Label();
             this.LblPrecio = new System.Windows.Forms.Label();
             this.LblCategoria = new System.Windows.Forms.Label();
+            this.IDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +57,11 @@ namespace ProyectoDerake.Formularios
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDProducto,
+            this.Nombre,
+            this.Categoria,
+            this.Precio});
             this.dataGridView1.Location = new System.Drawing.Point(14, 15);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
@@ -190,6 +199,44 @@ namespace ProyectoDerake.Formularios
             this.LblCategoria.TabIndex = 14;
             this.LblCategoria.Text = "Categoria";
             // 
+            // IDProducto
+            // 
+            this.IDProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.IDProducto.DataPropertyName = "IDProducto";
+            this.IDProducto.FillWeight = 85F;
+            this.IDProducto.HeaderText = "Código";
+            this.IDProducto.Name = "IDProducto";
+            this.IDProducto.ReadOnly = true;
+            this.IDProducto.Width = 85;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.FillWeight = 52.37745F;
+            this.Nombre.HeaderText = "Descipción";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Categoria.DataPropertyName = "Categoria";
+            this.Categoria.FillWeight = 73.32841F;
+            this.Categoria.HeaderText = "Categoría";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.FillWeight = 75F;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 80;
+            // 
             // FrmGestionProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -238,5 +285,9 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Label LblCantidad;
         private System.Windows.Forms.Label LblPrecio;
         private System.Windows.Forms.Label LblCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }

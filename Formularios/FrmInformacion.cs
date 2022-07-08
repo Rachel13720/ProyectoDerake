@@ -22,5 +22,10 @@ namespace ProyectoDerake.Formularios
             Locales.ObjetosGlobales.MiFormPrincipal.Show();
             this.Hide();
         }
+
+        private void FrmInformacion_Load(object sender, EventArgs e)
+        {
+            TxtInfo.DeselectAll();
+        }
     }
 }

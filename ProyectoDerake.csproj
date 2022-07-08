@@ -113,6 +113,7 @@
     <Compile Include="Formularios\FrmVentasGestion.Designer.cs">
       <DependentUpon>FrmVentasGestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Herramientas.cs" />
     <Compile Include="Locales\ObjetosGlobales.cs" />
     <Compile Include="Lógica\Cliente.cs" />
     <Compile Include="Lógica\Conexion.cs" />

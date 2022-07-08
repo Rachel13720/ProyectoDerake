@@ -36,6 +36,8 @@ namespace ProyectoDerake.Formularios
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.CboxTipoCategoria = new System.Windows.Forms.ComboBox();
+            this.IDCategoriaProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +47,9 @@ namespace ProyectoDerake.Formularios
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDCategoriaProducto,
+            this.TipoCategoria});
             this.dataGridView1.Location = new System.Drawing.Point(12, 23);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -116,6 +121,22 @@ namespace ProyectoDerake.Formularios
             this.CboxTipoCategoria.Size = new System.Drawing.Size(335, 24);
             this.CboxTipoCategoria.TabIndex = 7;
             // 
+            // IDCategoriaProducto
+            // 
+            this.IDCategoriaProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.IDCategoriaProducto.DataPropertyName = "IDCategoriaProducto";
+            this.IDCategoriaProducto.HeaderText = "Código";
+            this.IDCategoriaProducto.Name = "IDCategoriaProducto";
+            this.IDCategoriaProducto.ReadOnly = true;
+            // 
+            // TipoCategoria
+            // 
+            this.TipoCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TipoCategoria.DataPropertyName = "TipoCategoria";
+            this.TipoCategoria.HeaderText = "Tipo de categoría";
+            this.TipoCategoria.Name = "TipoCategoria";
+            this.TipoCategoria.ReadOnly = true;
+            // 
             // FrmCategoriaProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -147,5 +168,7 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox CboxTipoCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCategoriaProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoCategoria;
     }
 }
