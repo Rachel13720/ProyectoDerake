@@ -19,12 +19,6 @@ namespace ProyectoDerake.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            //Lógica.Usuario MiUsuario = new Lógica.Usuario();
-            //Locales.ObjetosGlobales.MiUsuarioGlobal = MiUsuario.Consultar(1);
-
-            //Locales.ObjetosGlobales.MiFormPrincipal.Show();
-            //this.Hide();
-
             //valida el usuario y su contraseña
             if (!string.IsNullOrEmpty(TxtUsuario.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
@@ -51,6 +45,7 @@ namespace ProyectoDerake.Formularios
                     TxtContrasennia.Focus();
                     TxtContrasennia.SelectAll();
                 }
+
             }
         }
 

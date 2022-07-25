@@ -23,12 +23,11 @@ namespace ProyectoDerake.Locales
 
         public static Formularios.FrmGestionProductos MiFormGestionProductos = new Formularios.FrmGestionProductos();
 
-        public static Formularios.FrmRolUsuarios MiFormRolUsuarios = new Formularios.FrmRolUsuarios();
+        public static Formularios.FrmGestionVentaDetalle MiFormGestionDetalle = new Formularios.FrmGestionVentaDetalle();
 
-        public static Formularios.FrmCategoriaProductos MiFormCastegoriaProductos = new Formularios.FrmCategoriaProductos();
+        public static Formularios.FrmCambioCantidad MiFormCambio = new Formularios.FrmCambioCantidad();
 
         public static Formularios.FrmInformacion MiFormInfo = new Formularios.FrmInformacion();
 
-        public static Formularios.FrmCalcularSalario MiFormCalcularSalario = new Formularios.FrmCalcularSalario();
     }
 }

@@ -40,8 +40,6 @@ namespace ProyectoDerake.Formularios
             this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.rolesDeUsuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoríaDeProductosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,9 +105,7 @@ namespace ProyectoDerake.Formularios
             this.productosToolStripMenuItem1,
             this.clientesToolStripMenuItem1,
             this.empleadosToolStripMenuItem1,
-            this.toolStripSeparator5,
-            this.rolesDeUsuariosToolStripMenuItem1,
-            this.categoríaDeProductosToolStripMenuItem1});
+            this.toolStripSeparator5});
             this.mantenimientosToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mantenimientosToolStripMenuItem1.Name = "mantenimientosToolStripMenuItem1";
             this.mantenimientosToolStripMenuItem1.Size = new System.Drawing.Size(140, 23);
@@ -118,49 +114,35 @@ namespace ProyectoDerake.Formularios
             // usuariosToolStripMenuItem1
             // 
             this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
-            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(252, 24);
+            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.usuariosToolStripMenuItem1.Text = "Usuarios";
             this.usuariosToolStripMenuItem1.Click += new System.EventHandler(this.usuariosToolStripMenuItem1_Click);
             // 
             // productosToolStripMenuItem1
             // 
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(252, 24);
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.productosToolStripMenuItem1.Text = "Productos";
             this.productosToolStripMenuItem1.Click += new System.EventHandler(this.productosToolStripMenuItem1_Click);
             // 
             // clientesToolStripMenuItem1
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(252, 24);
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.clientesToolStripMenuItem1.Text = "Clientes";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
             // empleadosToolStripMenuItem1
             // 
             this.empleadosToolStripMenuItem1.Name = "empleadosToolStripMenuItem1";
-            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(252, 24);
+            this.empleadosToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.empleadosToolStripMenuItem1.Text = "Empleados";
             this.empleadosToolStripMenuItem1.Click += new System.EventHandler(this.empleadosToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(249, 6);
-            // 
-            // rolesDeUsuariosToolStripMenuItem1
-            // 
-            this.rolesDeUsuariosToolStripMenuItem1.Name = "rolesDeUsuariosToolStripMenuItem1";
-            this.rolesDeUsuariosToolStripMenuItem1.Size = new System.Drawing.Size(252, 24);
-            this.rolesDeUsuariosToolStripMenuItem1.Text = "Roles de usuarios";
-            this.rolesDeUsuariosToolStripMenuItem1.Click += new System.EventHandler(this.rolesDeUsuariosToolStripMenuItem1_Click);
-            // 
-            // categoríaDeProductosToolStripMenuItem1
-            // 
-            this.categoríaDeProductosToolStripMenuItem1.Name = "categoríaDeProductosToolStripMenuItem1";
-            this.categoríaDeProductosToolStripMenuItem1.Size = new System.Drawing.Size(252, 24);
-            this.categoríaDeProductosToolStripMenuItem1.Text = "Categoría de productos";
-            this.categoríaDeProductosToolStripMenuItem1.Click += new System.EventHandler(this.categoríaDeProductosToolStripMenuItem1_Click);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // procesosToolStripMenuItem1
             // 
@@ -244,6 +226,7 @@ namespace ProyectoDerake.Formularios
             this.ClientSize = new System.Drawing.Size(778, 450);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.menuStrip2);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -271,8 +254,6 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem rolesDeUsuariosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem categoríaDeProductosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem procesosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gestiónDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem1;

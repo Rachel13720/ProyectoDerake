@@ -16,7 +16,7 @@ namespace ProyectoDerake.Formularios
     {
         //variables locales
 
-        private Usuario MiUsuarioLocal { get; set; }
+        private Usuario MiUsuario { get; set; }
 
         public DataTable ListaUsuariosNormal { get; set; }
 
@@ -25,7 +25,7 @@ namespace ProyectoDerake.Formularios
         public FrmUsuariosGestion()
         {
             InitializeComponent();
-            MiUsuarioLocal = new Usuario();
+            MiUsuario = new Usuario();
         }
 
 
@@ -40,7 +40,9 @@ namespace ProyectoDerake.Formularios
             LimpiarFormulario();
 
             ActivarBotonAgregar();
+
         }
+
 
         //Llena la lista con los datos del usuario
 
@@ -238,24 +240,24 @@ namespace ProyectoDerake.Formularios
         }
 
         //valida la contraseña
-        //private bool ValidarContrasennia()
-        //{
-        //    bool r = false;
+        private bool ValidarContrasennia()
+        {
+            bool r = false;
 
-        //    if (Herramientas.ValidarPass(TxtPassword1.Text.Trim()))
-        //    {
+            if (Herramientas.ValidarPass(TxtPassword1.Text.Trim()))
+            {
 
-        //        r = true;
+                r = true;
 
-        //    }
-        //    else
-        //    {
+            }
+            else
+            {
 
-        //        MessageBox.Show("La contraseña es válida", ":)", MessageBoxButtons.OK);
+                MessageBox.Show("La contraseña es válida", ":)", MessageBoxButtons.OK);
 
-        //    }
-        //    return r;
-        //}
+            }
+            return r;
+        }
 
 
         //Activa el boton agregar
@@ -294,19 +296,25 @@ namespace ProyectoDerake.Formularios
 
                 int IdUsuario = Convert.ToInt32(MiFila.Cells["ColIDUsuario"].Value);
 
-                MiUsuarioLocal = new Usuario();
+                if (IdUsuario == 1)
+                {
+                    MiUsuario = new Usuario();
 
-                MiUsuarioLocal = MiUsuarioLocal.Consultar(IdUsuario);
+                    MiUsuario = MiUsuario.Consultar(IdUsuario);
 
-                TxtID.Text = MiUsuarioLocal.IDUsuario.ToString();
-                TxtCedula.Text = MiUsuarioLocal.Cedula;
-                TxtNombre.Text = MiUsuarioLocal.Nombre;
-                CbTipoRol.SelectedValue = MiUsuarioLocal.Rol.IDUsuarioRol;
+                    TxtID.Text = MiUsuario.IDUsuario.ToString();
+                    TxtCedula.Text = MiUsuario.Cedula;
+                    TxtNombre.Text = MiUsuario.Nombre;
+                    CbTipoRol.SelectedValue = MiUsuario.Rol.IDUsuarioRol;
 
-                TxtEmail.Text = MiUsuarioLocal.Email;
+                    TxtEmail.Text = MiUsuario.Email;
 
-                ActivarEditarYEliminar();
+                    ActivarEditarYEliminar();
+
+                }
+
             }
+
         
         }
 
@@ -398,7 +406,6 @@ namespace ProyectoDerake.Formularios
         {
             e.Handled = Herramientas.CaracteresTexto(e, false, true);
         }
-
 
     }
 }

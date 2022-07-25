@@ -21,6 +21,8 @@ namespace ProyectoDerake
 
         //Regex que permite ciertos datos
         const string PassRegex = "^(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{4,10}$";
+        //2 numeros, 3 letras, rango de 4 a 5 caracteres
+
 
         //valida el email
         public static bool ValidarEmail(string email)

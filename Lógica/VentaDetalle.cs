@@ -10,8 +10,8 @@ namespace ProyectoDerake.Lógica
     {
 
         //Atributos
-        public decimal CantidadVendida { get; set; }
-        public decimal PrecioVenta { get; set; }
+        public int CantidadVendida { get; set; }
+        public int PrecioVenta { get; set; }
         public Producto MiProducto { get; set; }
 
         //Constructor

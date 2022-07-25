@@ -33,9 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,17 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\FrmCalcularSalario.cs">
+    <Compile Include="Formularios\FrmCambioCantidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FrmCalcularSalario.Designer.cs">
-      <DependentUpon>FrmCalcularSalario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\FrmCategoriaProductos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FrmCategoriaProductos.Designer.cs">
-      <DependentUpon>FrmCategoriaProductos.cs</DependentUpon>
+    <Compile Include="Formularios\FrmCambioCantidad.Designer.cs">
+      <DependentUpon>FrmCambioCantidad.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmGestionClientes.cs">
       <SubType>Form</SubType>
@@ -77,6 +77,12 @@
     <Compile Include="Formularios\FrmGestionProductos.Designer.cs">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmGestionVentaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmGestionVentaDetalle.Designer.cs">
+      <DependentUpon>FrmGestionVentaDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmInformacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,12 +101,6 @@
     <Compile Include="Formularios\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmRolUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FrmRolUsuarios.Designer.cs">
-      <DependentUpon>FrmRolUsuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\FrmUsuariosGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,11 +113,18 @@
     <Compile Include="Formularios\FrmVentasGestion.Designer.cs">
       <DependentUpon>FrmVentasGestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmVisualizadorReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmVisualizadorReportes.Designer.cs">
+      <DependentUpon>FrmVisualizadorReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Herramientas.cs" />
     <Compile Include="Locales\ObjetosGlobales.cs" />
     <Compile Include="Lógica\Cliente.cs" />
     <Compile Include="Lógica\Conexion.cs" />
     <Compile Include="Lógica\Crypto.cs" />
+    <Compile Include="Lógica\Crystal.cs" />
     <Compile Include="Lógica\Empleado.cs" />
     <Compile Include="Lógica\Producto.cs" />
     <Compile Include="Lógica\ProductoCategoria.cs" />
@@ -127,11 +134,14 @@
     <Compile Include="Lógica\VentaDetalle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\FrmCalcularSalario.resx">
-      <DependentUpon>FrmCalcularSalario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmCategoriaProductos.resx">
-      <DependentUpon>FrmCategoriaProductos.cs</DependentUpon>
+    <Compile Include="Reportes\ReporteVenta.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteVenta.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Formularios\FrmCambioCantidad.resx">
+      <DependentUpon>FrmCambioCantidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionClientes.resx">
       <DependentUpon>FrmGestionClientes.cs</DependentUpon>
@@ -142,6 +152,9 @@
     <EmbeddedResource Include="Formularios\FrmGestionProductos.resx">
       <DependentUpon>FrmGestionProductos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmGestionVentaDetalle.resx">
+      <DependentUpon>FrmGestionVentaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmInformacion.resx">
       <DependentUpon>FrmInformacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,14 +164,14 @@
     <EmbeddedResource Include="Formularios\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmRolUsuarios.resx">
-      <DependentUpon>FrmRolUsuarios.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmUsuariosGestion.resx">
       <DependentUpon>FrmUsuariosGestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmVentasGestion.resx">
       <DependentUpon>FrmVentasGestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmVisualizadorReportes.resx">
+      <DependentUpon>FrmVisualizadorReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -169,6 +182,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reportes\ReporteVenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteVenta.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -181,6 +198,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

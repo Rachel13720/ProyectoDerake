@@ -30,7 +30,11 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionEmpleados));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgvListaEmpleados = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasTrabajadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -38,27 +42,65 @@ namespace ProyectoDerake.Formularios
             this.BtnSalir = new System.Windows.Forms.Button();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtApellido = new System.Windows.Forms.TextBox();
-            this.TxtSalario = new System.Windows.Forms.TextBox();
+            this.TxtHoras = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LblNombre = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
-            this.LblSalario = new System.Windows.Forms.Label();
+            this.LblHoras = new System.Windows.Forms.Label();
             this.BtnCalcular = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DgvListaEmpleados
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(716, 372);
-            this.dataGridView1.TabIndex = 0;
+            this.DgvListaEmpleados.AllowUserToAddRows = false;
+            this.DgvListaEmpleados.AllowUserToDeleteRows = false;
+            this.DgvListaEmpleados.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.DgvListaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Apellido,
+            this.HorasTrabajadas,
+            this.Salario});
+            this.DgvListaEmpleados.Location = new System.Drawing.Point(12, 12);
+            this.DgvListaEmpleados.Name = "DgvListaEmpleados";
+            this.DgvListaEmpleados.ReadOnly = true;
+            this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListaEmpleados.Size = new System.Drawing.Size(716, 372);
+            this.DgvListaEmpleados.TabIndex = 0;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 200;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 200;
+            // 
+            // HorasTrabajadas
+            // 
+            this.HorasTrabajadas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HorasTrabajadas.DataPropertyName = "HorasTrabajadas";
+            this.HorasTrabajadas.HeaderText = "Horas Trabajadas";
+            this.HorasTrabajadas.Name = "HorasTrabajadas";
+            this.HorasTrabajadas.ReadOnly = true;
+            this.HorasTrabajadas.Width = 90;
+            // 
+            // Salario
+            // 
+            this.Salario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Salario.HeaderText = "Salario";
+            this.Salario.Name = "Salario";
+            this.Salario.ReadOnly = true;
             // 
             // BtnAgregar
             // 
@@ -84,6 +126,7 @@ namespace ProyectoDerake.Formularios
             this.BtnModificar.TabIndex = 2;
             this.BtnModificar.Text = "Modificar";
             this.BtnModificar.UseVisualStyleBackColor = false;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // BtnEliminar
             // 
@@ -96,6 +139,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEliminar.TabIndex = 3;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnLimpiar
             // 
@@ -108,6 +152,7 @@ namespace ProyectoDerake.Formularios
             this.BtnLimpiar.TabIndex = 4;
             this.BtnLimpiar.Text = "Limpiar";
             this.BtnLimpiar.UseVisualStyleBackColor = false;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // BtnSalir
             // 
@@ -120,6 +165,7 @@ namespace ProyectoDerake.Formularios
             this.BtnSalir.TabIndex = 5;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = false;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // TxtNombre
             // 
@@ -128,6 +174,7 @@ namespace ProyectoDerake.Formularios
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(203, 23);
             this.TxtNombre.TabIndex = 6;
+            this.TxtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombre_KeyPress);
             // 
             // TxtApellido
             // 
@@ -136,14 +183,15 @@ namespace ProyectoDerake.Formularios
             this.TxtApellido.Name = "TxtApellido";
             this.TxtApellido.Size = new System.Drawing.Size(203, 23);
             this.TxtApellido.TabIndex = 7;
+            this.TxtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApellido_KeyPress);
             // 
-            // TxtSalario
+            // TxtHoras
             // 
-            this.TxtSalario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F);
-            this.TxtSalario.Location = new System.Drawing.Point(271, 443);
-            this.TxtSalario.Name = "TxtSalario";
-            this.TxtSalario.Size = new System.Drawing.Size(203, 23);
-            this.TxtSalario.TabIndex = 9;
+            this.TxtHoras.Font = new System.Drawing.Font("Microsoft JhengHei", 9F);
+            this.TxtHoras.Location = new System.Drawing.Point(271, 443);
+            this.TxtHoras.Name = "TxtHoras";
+            this.TxtHoras.Size = new System.Drawing.Size(203, 23);
+            this.TxtHoras.TabIndex = 13;
             // 
             // pictureBox1
             // 
@@ -174,15 +222,15 @@ namespace ProyectoDerake.Formularios
             this.LblApellido.TabIndex = 12;
             this.LblApellido.Text = "Apellido";
             // 
-            // LblSalario
+            // LblHoras
             // 
-            this.LblSalario.AutoSize = true;
-            this.LblSalario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F);
-            this.LblSalario.Location = new System.Drawing.Point(268, 424);
-            this.LblSalario.Name = "LblSalario";
-            this.LblSalario.Size = new System.Drawing.Size(47, 16);
-            this.LblSalario.TabIndex = 14;
-            this.LblSalario.Text = "Salario";
+            this.LblHoras.AutoSize = true;
+            this.LblHoras.Font = new System.Drawing.Font("Microsoft JhengHei", 9F);
+            this.LblHoras.Location = new System.Drawing.Point(268, 424);
+            this.LblHoras.Name = "LblHoras";
+            this.LblHoras.Size = new System.Drawing.Size(107, 16);
+            this.LblHoras.TabIndex = 14;
+            this.LblHoras.Text = "Horas Trabajadas";
             // 
             // BtnCalcular
             // 
@@ -193,7 +241,7 @@ namespace ProyectoDerake.Formularios
             this.BtnCalcular.Name = "BtnCalcular";
             this.BtnCalcular.Size = new System.Drawing.Size(99, 47);
             this.BtnCalcular.TabIndex = 15;
-            this.BtnCalcular.Text = "Calcular";
+            this.BtnCalcular.Text = "Calcular Salario";
             this.BtnCalcular.UseVisualStyleBackColor = false;
             this.BtnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
             // 
@@ -204,11 +252,11 @@ namespace ProyectoDerake.Formularios
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(928, 569);
             this.Controls.Add(this.BtnCalcular);
-            this.Controls.Add(this.LblSalario);
+            this.Controls.Add(this.LblHoras);
             this.Controls.Add(this.LblApellido);
             this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.TxtSalario);
+            this.Controls.Add(this.TxtHoras);
             this.Controls.Add(this.TxtApellido);
             this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.BtnSalir);
@@ -216,10 +264,10 @@ namespace ProyectoDerake.Formularios
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnAgregar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DgvListaEmpleados);
             this.Name = "FrmGestionEmpleados";
             this.Text = "Gestion de Empleados";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,7 +276,7 @@ namespace ProyectoDerake.Formularios
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DgvListaEmpleados;
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.Button BtnEliminar;
@@ -236,11 +284,15 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Button BtnSalir;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox TxtApellido;
-        private System.Windows.Forms.TextBox TxtSalario;
+        private System.Windows.Forms.TextBox TxtHoras;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.Label LblApellido;
-        private System.Windows.Forms.Label LblSalario;
+        private System.Windows.Forms.Label LblHoras;
         private System.Windows.Forms.Button BtnCalcular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HorasTrabajadas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Salario;
     }
 }

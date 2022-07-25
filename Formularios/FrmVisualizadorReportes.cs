@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ProyectoDerake.Formularios
 {
-    public partial class FrmCategoriaProductos : Form
+    public partial class FrmVisualizadorReportes : Form
     {
-        public FrmCategoriaProductos()
+        public FrmVisualizadorReportes()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

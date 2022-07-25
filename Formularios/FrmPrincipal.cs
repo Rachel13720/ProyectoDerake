@@ -35,7 +35,8 @@ namespace ProyectoDerake.Formularios
                 case 2:
                     //ocultamos las opciones de menu que no le corresponden al usuario 
                     //normal
-                    mantenimientosToolStripMenuItem1.Visible = false;
+                    mantenimientosToolStripMenuItem1.Visible = true;
+                    usuariosToolStripMenuItem1.Visible = false;
                     procesosToolStripMenuItem1.Visible = false;
 
                     break;
@@ -86,25 +87,6 @@ namespace ProyectoDerake.Formularios
                 Locales.ObjetosGlobales.MiFormGestionEmpleados.Show();
             }
         }
-
-        private void rolesDeUsuariosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (!Locales.ObjetosGlobales.MiFormRolUsuarios.Visible)
-            {
-                Locales.ObjetosGlobales.MiFormRolUsuarios = new FrmRolUsuarios();
-                Locales.ObjetosGlobales.MiFormRolUsuarios.Show();
-            }
-        }
-
-        private void categoríaDeProductosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (!Locales.ObjetosGlobales.MiFormCastegoriaProductos.Visible)
-            {
-                Locales.ObjetosGlobales.MiFormCastegoriaProductos = new FrmCategoriaProductos();
-                Locales.ObjetosGlobales.MiFormCastegoriaProductos.Show();
-            }
-        }
-
         private void salirDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -118,5 +100,6 @@ namespace ProyectoDerake.Formularios
                 Locales.ObjetosGlobales.MiFormInfo.Show();
             }
         }
+
     }
 }
