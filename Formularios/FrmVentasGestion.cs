@@ -59,7 +59,12 @@ namespace ProyectoDerake.Formularios
                 }
 
             }
+            //else if (CCantidadVendida.//Cambio en la fila) 
+            //{
+                  //aumentar monto de la linea actual
+            //    R += Totalizar();
 
+            //}
 
             return R;
 
@@ -111,8 +116,9 @@ namespace ProyectoDerake.Formularios
 
             bool R = false;
 
-            if (DtpFecha.Value.Date <= DateTime.Now.Date
-                && CboxCliente.SelectedIndex > -1 &&
+            if (DtpFecha.Value.Date <= DateTime.Now.Date && 
+                CboxCliente.SelectedIndex > -1 && 
+                CboxEmpleado.SelectedIndex > -1 &&
                 !string.IsNullOrEmpty(TxtNumeroFactura.Text.Trim()) &&
                 DtListaProductos.Rows.Count > 0)
             {
@@ -134,6 +140,7 @@ namespace ProyectoDerake.Formularios
 
                     MiVenta.Fecha = DtpFecha.Value.Date;
                     MiVenta.MiCliente.IDCliente = Convert.ToInt32(CboxCliente.SelectedIndex);
+                    MiVenta.MiEmpleado.IDEmpleado = Convert.ToInt32(CboxEmpleado.SelectedIndex);
 
                     MiVenta.MiUsuario.IDUsuario = Locales.ObjetosGlobales.MiUsuarioGlobal.IDUsuario;
 
@@ -147,14 +154,11 @@ namespace ProyectoDerake.Formularios
                     {
                         MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
 
-                        //ReportDocument MiReporteVenta = new ReportDocument();
+                        ReportDocument MiReporteVenta = new ReportDocument();
 
                         Limpiar();
 
                     }
-
-
-
 
                 }
 
@@ -192,13 +196,15 @@ namespace ProyectoDerake.Formularios
 
         private void BtnModificarItem_Click(object sender, EventArgs e)
         {
-            Form FormCambio = new Formularios.FrmCambioCantidad();
+            Form FormCambio = new FrmCambioCantidad();
 
             DialogResult Resp = FormCambio.ShowDialog();
 
             if (Resp == DialogResult.OK)
             {
                 DgvListaVentas.DataSource = DtListaProductos;
+
+                TxtTotal.Text = string.Format("{0:C2}", Totalizar());
             }
         }
 
@@ -255,18 +261,18 @@ namespace ProyectoDerake.Formularios
 
         private void CargarDatosEmpleado()
         {
-            Cliente ObjCliente = new Cliente();
+            Empleado ObjEmpleado = new Empleado();
 
             DataTable Datos = new DataTable();
 
-            Datos = ObjCliente.ListarTodos();
+            Datos = ObjEmpleado.ListarTodos();
 
-            CboxCliente.ValueMember = "IDCliente";
-            CboxCliente.DisplayMember = "Nombre";
+            CboxEmpleado.ValueMember = "IDEmpleado";
+            CboxEmpleado.DisplayMember = "Nombre";
 
-            CboxCliente.DataSource = Datos;
+            CboxEmpleado.DataSource = Datos;
 
-            CboxCliente.SelectedIndex = -1;
+            CboxEmpleado.SelectedIndex = -1;
 
         }
 
@@ -285,7 +291,6 @@ namespace ProyectoDerake.Formularios
             }
             DtListaProductos.AcceptChanges();
             DgvListaVentas.DataSource = DtListaProductos;
-
 
             TxtTotal.Text = string.Format("{0:C2}", Totalizar());
 

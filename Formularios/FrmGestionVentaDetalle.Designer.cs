@@ -31,13 +31,13 @@ namespace ProyectoDerake.Formularios
         {
             this.DgvListaItems = new System.Windows.Forms.DataGridView();
             this.PnlDatos = new System.Windows.Forms.Panel();
+            this.CboxSuma = new System.Windows.Forms.CheckBox();
+            this.LblCant = new System.Windows.Forms.Label();
+            this.NudCantidad = new System.Windows.Forms.NumericUpDown();
             this.BtnAceptar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.NudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.LblCant = new System.Windows.Forms.Label();
-            this.CboxSuma = new System.Windows.Forms.CheckBox();
             this.CIDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,13 +52,14 @@ namespace ProyectoDerake.Formularios
             this.DgvListaItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CIDProducto,
-            this.CNombres,
+            this.CNombre,
             this.CCantidad,
             this.CPrecio,
             this.CComentario});
             this.DgvListaItems.Location = new System.Drawing.Point(31, 36);
             this.DgvListaItems.Name = "DgvListaItems";
-            this.DgvListaItems.Size = new System.Drawing.Size(600, 322);
+            this.DgvListaItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListaItems.Size = new System.Drawing.Size(743, 322);
             this.DgvListaItems.TabIndex = 0;
             // 
             // PnlDatos
@@ -71,6 +72,35 @@ namespace ProyectoDerake.Formularios
             this.PnlDatos.Name = "PnlDatos";
             this.PnlDatos.Size = new System.Drawing.Size(600, 155);
             this.PnlDatos.TabIndex = 1;
+            // 
+            // CboxSuma
+            // 
+            this.CboxSuma.AutoSize = true;
+            this.CboxSuma.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.CboxSuma.Location = new System.Drawing.Point(184, 119);
+            this.CboxSuma.Name = "CboxSuma";
+            this.CboxSuma.Size = new System.Drawing.Size(267, 21);
+            this.CboxSuma.TabIndex = 5;
+            this.CboxSuma.Text = "Sumar cantidad del producto en la lista";
+            this.CboxSuma.UseVisualStyleBackColor = true;
+            // 
+            // LblCant
+            // 
+            this.LblCant.AutoSize = true;
+            this.LblCant.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.LblCant.Location = new System.Drawing.Point(230, 44);
+            this.LblCant.Name = "LblCant";
+            this.LblCant.Size = new System.Drawing.Size(119, 17);
+            this.LblCant.TabIndex = 4;
+            this.LblCant.Text = "Cantidad a vender";
+            // 
+            // NudCantidad
+            // 
+            this.NudCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.NudCantidad.Location = new System.Drawing.Point(211, 73);
+            this.NudCantidad.Name = "NudCantidad";
+            this.NudCantidad.Size = new System.Drawing.Size(168, 25);
+            this.NudCantidad.TabIndex = 3;
             // 
             // BtnAceptar
             // 
@@ -98,64 +128,40 @@ namespace ProyectoDerake.Formularios
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // NudCantidad
-            // 
-            this.NudCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.NudCantidad.Location = new System.Drawing.Point(211, 73);
-            this.NudCantidad.Name = "NudCantidad";
-            this.NudCantidad.Size = new System.Drawing.Size(168, 25);
-            this.NudCantidad.TabIndex = 3;
-            // 
-            // LblCant
-            // 
-            this.LblCant.AutoSize = true;
-            this.LblCant.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.LblCant.Location = new System.Drawing.Point(230, 44);
-            this.LblCant.Name = "LblCant";
-            this.LblCant.Size = new System.Drawing.Size(119, 17);
-            this.LblCant.TabIndex = 4;
-            this.LblCant.Text = "Cantidad a vender";
-            // 
-            // CboxSuma
-            // 
-            this.CboxSuma.AutoSize = true;
-            this.CboxSuma.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.CboxSuma.Location = new System.Drawing.Point(184, 119);
-            this.CboxSuma.Name = "CboxSuma";
-            this.CboxSuma.Size = new System.Drawing.Size(267, 21);
-            this.CboxSuma.TabIndex = 5;
-            this.CboxSuma.Text = "Sumar cantidad del producto en la lista";
-            this.CboxSuma.UseVisualStyleBackColor = true;
-            // 
             // CIDProducto
             // 
             this.CIDProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CIDProducto.DataPropertyName = "IDProducto";
             this.CIDProducto.HeaderText = "Código";
             this.CIDProducto.Name = "CIDProducto";
             this.CIDProducto.Width = 80;
             // 
-            // CNombres
+            // CNombre
             // 
-            this.CNombres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CNombres.HeaderText = "Descripción";
-            this.CNombres.Name = "CNombres";
-            this.CNombres.Width = 150;
+            this.CNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CNombre.DataPropertyName = "Nombre";
+            this.CNombre.HeaderText = "Descripción";
+            this.CNombre.Name = "CNombre";
+            this.CNombre.Width = 150;
             // 
             // CCantidad
             // 
             this.CCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CCantidad.DataPropertyName = "Cantidad";
             this.CCantidad.HeaderText = "Cantidad";
             this.CCantidad.Name = "CCantidad";
             // 
             // CPrecio
             // 
             this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CPrecio.DataPropertyName = "Precio";
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
             // 
             // CComentario
             // 
             this.CComentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CComentario.DataPropertyName = "Comentario";
             this.CComentario.HeaderText = "Comentario";
             this.CComentario.Name = "CComentario";
             // 
@@ -186,13 +192,13 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Panel PnlDatos;
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CIDProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CNombres;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CComentario;
         private System.Windows.Forms.CheckBox CboxSuma;
         private System.Windows.Forms.Label LblCant;
         private System.Windows.Forms.NumericUpDown NudCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIDProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CComentario;
     }
 }

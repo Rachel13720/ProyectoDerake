@@ -36,6 +36,9 @@ namespace ProyectoDerake.Formularios
             this.CCantidadVendida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CboxEmpleado = new System.Windows.Forms.ComboBox();
+            this.CboxCliente = new System.Windows.Forms.ComboBox();
+            this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.TxtComentario = new System.Windows.Forms.TextBox();
             this.TxtNumeroFactura = new System.Windows.Forms.TextBox();
             this.LblEmpleado = new System.Windows.Forms.Label();
@@ -52,9 +55,6 @@ namespace ProyectoDerake.Formularios
             this.LblTotal = new System.Windows.Forms.Label();
             this.TxtTotal = new System.Windows.Forms.TextBox();
             this.BtnCrearVenta = new System.Windows.Forms.Button();
-            this.DtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.CboxCliente = new System.Windows.Forms.ComboBox();
-            this.CboxEmpleado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,6 +75,7 @@ namespace ProyectoDerake.Formularios
             this.DgvListaVentas.Location = new System.Drawing.Point(3, 47);
             this.DgvListaVentas.Name = "DgvListaVentas";
             this.DgvListaVentas.ReadOnly = true;
+            this.DgvListaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaVentas.Size = new System.Drawing.Size(705, 304);
             this.DgvListaVentas.TabIndex = 0;
             // 
@@ -127,6 +128,29 @@ namespace ProyectoDerake.Formularios
             this.groupBox1.Size = new System.Drawing.Size(711, 205);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // CboxEmpleado
+            // 
+            this.CboxEmpleado.FormattingEnabled = true;
+            this.CboxEmpleado.Location = new System.Drawing.Point(217, 118);
+            this.CboxEmpleado.Name = "CboxEmpleado";
+            this.CboxEmpleado.Size = new System.Drawing.Size(175, 24);
+            this.CboxEmpleado.TabIndex = 13;
+            // 
+            // CboxCliente
+            // 
+            this.CboxCliente.FormattingEnabled = true;
+            this.CboxCliente.Location = new System.Drawing.Point(18, 118);
+            this.CboxCliente.Name = "CboxCliente";
+            this.CboxCliente.Size = new System.Drawing.Size(175, 24);
+            this.CboxCliente.TabIndex = 12;
+            // 
+            // DtpFecha
+            // 
+            this.DtpFecha.Location = new System.Drawing.Point(18, 54);
+            this.DtpFecha.Name = "DtpFecha";
+            this.DtpFecha.Size = new System.Drawing.Size(175, 23);
+            this.DtpFecha.TabIndex = 11;
             // 
             // TxtComentario
             // 
@@ -293,29 +317,6 @@ namespace ProyectoDerake.Formularios
             this.BtnCrearVenta.Text = "Crear Venta";
             this.BtnCrearVenta.UseVisualStyleBackColor = false;
             this.BtnCrearVenta.Click += new System.EventHandler(this.BtnCrearVenta_Click);
-            // 
-            // DtpFecha
-            // 
-            this.DtpFecha.Location = new System.Drawing.Point(18, 54);
-            this.DtpFecha.Name = "DtpFecha";
-            this.DtpFecha.Size = new System.Drawing.Size(175, 23);
-            this.DtpFecha.TabIndex = 11;
-            // 
-            // CboxCliente
-            // 
-            this.CboxCliente.FormattingEnabled = true;
-            this.CboxCliente.Location = new System.Drawing.Point(18, 118);
-            this.CboxCliente.Name = "CboxCliente";
-            this.CboxCliente.Size = new System.Drawing.Size(175, 24);
-            this.CboxCliente.TabIndex = 12;
-            // 
-            // CboxEmpleado
-            // 
-            this.CboxEmpleado.FormattingEnabled = true;
-            this.CboxEmpleado.Location = new System.Drawing.Point(217, 118);
-            this.CboxEmpleado.Name = "CboxEmpleado";
-            this.CboxEmpleado.Size = new System.Drawing.Size(175, 24);
-            this.CboxEmpleado.TabIndex = 13;
             // 
             // FrmVentasGestion
             // 

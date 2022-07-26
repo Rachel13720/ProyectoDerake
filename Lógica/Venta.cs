@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -52,6 +53,7 @@ namespace ProyectoDerake.Lógica
             MiCnn.ListadoDeParametros.Add(new SqlParameter("@Comentario", this.Comentario));
             MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdUsuario", this.MiUsuario.IDUsuario));
             MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdCliente", this.MiCliente.IDCliente));
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdEmpleado", this.MiEmpleado.IDEmpleado));
 
             Object Retorno = MiCnn.DMLConRetornoEscalar("SPVentaAgregarEncabezado");
 
@@ -191,6 +193,8 @@ namespace ProyectoDerake.Lógica
             return R;
 
         }
+
+
 
     }
 }
