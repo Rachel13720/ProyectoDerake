@@ -208,7 +208,6 @@ namespace ProyectoDerake.Lógica
 
                 DataRow MiFila = DatosEmpleado.Rows[0];
 
-                R.IDEmpleado = Convert.ToInt32(MiFila["IDEmpleado"]);
                 R.Nombre = Convert.ToString(MiFila["Nombre"]);
                 R.Apellido = Convert.ToString(MiFila["Apellido"]);
                 R.HorasTrabajadas = Convert.ToInt32(MiFila["HorasTrabajadas"]);

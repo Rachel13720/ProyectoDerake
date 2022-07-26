@@ -84,6 +84,7 @@ namespace ProyectoDerake.Formularios
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.Size = new System.Drawing.Size(251, 25);
             this.TxtUsuario.TabIndex = 2;
+            this.TxtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUsuario_KeyPress);
             // 
             // LblUsuario
             // 

@@ -49,6 +49,8 @@ namespace ProyectoDerake.Formularios
         {
             CargaDatosComboTipoCategoria();
 
+            LlenarListaProductos();
+
             LimpiarFormulario();
 
             ActivarBotonAgregar();
@@ -67,18 +69,15 @@ namespace ProyectoDerake.Formularios
 
                     Producto MiProducto = new Producto();
 
-                    DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
-
-                    MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
-                    MiProducto.Nombre = TxtCodigo.Text.Trim();
+                    MiProducto.Nombre = TxtNombre.Text.Trim();
                     MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim()); 
                     MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
                     MiProducto.Comentario = TxtComentario.Text.Trim();
                     MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
 
-                    bool CategoriaExiste = MiProducto.ConsultarPorCategoria();
+                    bool NombreExiste = MiProducto.ConsultarPorNombre();
 
-                    if (!CategoriaExiste)
+                    if (!NombreExiste)
                     {
                         //se agrega el producto 
                         if (MiProducto.Agregar())
@@ -95,7 +94,7 @@ namespace ProyectoDerake.Formularios
                     else
                     {
                         //valida que los datos ya existen
-                        if (CategoriaExiste)
+                        if (NombreExiste)
                         {
                             MessageBox.Show("El nombre ya esta en uso", ":(", MessageBoxButtons.OK);
                             TxtNombre.Focus();
@@ -138,6 +137,7 @@ namespace ProyectoDerake.Formularios
             TxtCantidad.Clear();
             TxtPrecio.Clear();
             TxtComentario.Clear();
+            CboxTipoCategoria.SelectedIndex = -1;
 
         }
 
@@ -184,8 +184,8 @@ namespace ProyectoDerake.Formularios
                 MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
 
                 MiProducto.Nombre = TxtNombre.Text.Trim();
-                MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim());
-                MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
+                MiProducto.Cantidad = Convert.ToInt32(MiFila.Cells["Cantidad"].Value);
+                MiProducto.Precio = Convert.ToInt32(MiFila.Cells["Precio"].Value);
                 MiProducto.Comentario = TxtComentario.Text.Trim();
                 MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
 
@@ -205,8 +205,6 @@ namespace ProyectoDerake.Formularios
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (ValidarDatosRequeridos())
-            {
                 Producto MiProducto = new Producto();
 
                 DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
@@ -225,7 +223,6 @@ namespace ProyectoDerake.Formularios
                         LlenarListaProductos();
                     }
                 }
-            }
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
@@ -238,6 +235,53 @@ namespace ProyectoDerake.Formularios
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void DgvListaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgvListaProductos.SelectedRows.Count == 1)
+            {
+
+                DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
+
+
+                TxtCodigo.Text = Convert.ToString(MiFila.Cells["IDProducto"].Value);
+                TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
+                TxtComentario.Text = Convert.ToString(MiFila.Cells["Comentario"].Value);
+                TxtCantidad.Text = Convert.ToString(MiFila.Cells["Cantidad"].Value);
+                TxtPrecio.Text = Convert.ToString(MiFila.Cells["Precio"].Value);
+
+                foreach (DataRowView data in CboxTipoCategoria.Items)
+                {
+                    if (data.Row[1].ToString().Equals(MiFila.Cells["Categoria"].Value))
+                    {
+                        CboxTipoCategoria.SelectedValue = data.Row[0];
+                    }
+                }
+
+                ActivarModificarYEliminar();
+            }
+
+        }
+
+        private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresNumeros(e);
+        }
+
+        private void TxtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresNumeros(e);
+        }
+
+        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresTexto(e, true);
+        }
+
+        private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresTexto(e, true);
         }
     }
 }

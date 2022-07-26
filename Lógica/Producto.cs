@@ -43,8 +43,9 @@ namespace ProyectoDerake.Lógica
                 Conexion MiCnn = new Conexion();
 
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Nombre", this.Nombre));
-                MiCnn.ListadoDeParametros.Add(new SqlParameter("@CantidadStock", this.Cantidad));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Cantidad", this.Cantidad));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Precio", this.Precio));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Comentario", this.Comentario));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdCategoria", this.MiCategoria.IDProductoCategoria));
 
                 int retorno = MiCnn.DMLUpdateDeleteInsert("SPProductoAgregar");
@@ -77,8 +78,9 @@ namespace ProyectoDerake.Lógica
 
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdProducto", this.IDProducto));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Nombre", this.Nombre));
-                MiCnn.ListadoDeParametros.Add(new SqlParameter("@CantidadStock", this.Cantidad));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Cantidad", this.Cantidad));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Precio", this.Precio));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Comentario", this.Comentario));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@IdCategoria", this.MiCategoria.IDProductoCategoria));
 
                 int retorno = MiCnn.DMLUpdateDeleteInsert("SPProductoEditar");
@@ -143,9 +145,11 @@ namespace ProyectoDerake.Lógica
 
                 R.IDProducto = Convert.ToInt32(MiFila["IDProducto"]);
                 R.Nombre = Convert.ToString(MiFila["Nombre"]);
-                R.Cantidad = Convert.ToInt32(MiFila["CantidadStock"]);
+                R.Cantidad = Convert.ToInt32(MiFila["Cantidad"]);
                 R.Precio = Convert.ToInt32(MiFila["Precio"]);
-                R.MiCategoria.IDProductoCategoria = Convert.ToInt32(MiFila["IDProductoCategoria"]);
+                R.Comentario = Convert.ToString(MiFila["Comentario"]);
+                R.MiCategoria.IDProductoCategoria = Convert.ToInt32(MiFila["IdCategoria"]);
+                
             }
             return R;
         }
@@ -179,16 +183,16 @@ namespace ProyectoDerake.Lógica
         }
 
         //Consula los datos del producto por la categoria, en la BD
-        public bool ConsultarPorCategoria()
+        public bool ConsultarPorNombre()
         {
             bool R = false;
             try
             {
                 Conexion MiConexion = new Conexion();
 
-                MiConexion.ListadoDeParametros.Add(new SqlParameter("@CATEGORIAPRODUCTO", this.MiCategoria.IDProductoCategoria));
+                MiConexion.ListadoDeParametros.Add(new SqlParameter("@Nombre", this.Nombre));
 
-                DataTable retorno = MiConexion.DMLSelect("SPProductoConsultarPorCategoria");
+                DataTable retorno = MiConexion.DMLSelect("SPProductoConsultarPorNombre");
 
                 if (retorno.Rows.Count > 0)
                 {
@@ -216,7 +220,7 @@ namespace ProyectoDerake.Lógica
             return R;
         }
 
-        //Lista en detalle los datos del producto enn la BD
+        //Lista en detalle los datos del producto en la BD
         public DataTable ListarEnDetalle()
         {
             DataTable R = new DataTable();

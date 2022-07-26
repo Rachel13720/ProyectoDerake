@@ -30,10 +30,6 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
-            this.ColIDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.CbTipoRol = new System.Windows.Forms.ComboBox();
             this.LblNombre = new System.Windows.Forms.Label();
@@ -51,6 +47,11 @@ namespace ProyectoDerake.Formularios
             this.TxtCedula = new System.Windows.Forms.TextBox();
             this.LblEmail = new System.Windows.Forms.Label();
             this.LblCedula = new System.Windows.Forms.Label();
+            this.ColIDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,8 @@ namespace ProyectoDerake.Formularios
             this.ColIDUsuario,
             this.ColNombre,
             this.Cedula,
-            this.Email});
+            this.Email,
+            this.Rol});
             this.DgvListaUsuarios.Location = new System.Drawing.Point(12, 13);
             this.DgvListaUsuarios.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgvListaUsuarios.Name = "DgvListaUsuarios";
@@ -73,40 +75,6 @@ namespace ProyectoDerake.Formularios
             this.DgvListaUsuarios.Size = new System.Drawing.Size(672, 453);
             this.DgvListaUsuarios.TabIndex = 0;
             this.DgvListaUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellClick);
-            // 
-            // ColIDUsuario
-            // 
-            this.ColIDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColIDUsuario.DataPropertyName = "IDUsuario";
-            this.ColIDUsuario.HeaderText = "Código";
-            this.ColIDUsuario.Name = "ColIDUsuario";
-            this.ColIDUsuario.ReadOnly = true;
-            this.ColIDUsuario.Width = 80;
-            // 
-            // ColNombre
-            // 
-            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNombre.DataPropertyName = "Nombre";
-            this.ColNombre.HeaderText = "Nombre";
-            this.ColNombre.Name = "ColNombre";
-            this.ColNombre.ReadOnly = true;
-            // 
-            // Cedula
-            // 
-            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Cedula.DataPropertyName = "Cedula";
-            this.Cedula.HeaderText = "Cédula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            this.Cedula.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
             // 
             // TxtNombre
             // 
@@ -178,7 +146,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEditar.BackColor = System.Drawing.Color.Orange;
             this.BtnEditar.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnEditar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnEditar.Location = new System.Drawing.Point(729, 144);
+            this.BtnEditar.Location = new System.Drawing.Point(729, 136);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(139, 35);
             this.BtnEditar.TabIndex = 8;
@@ -191,7 +159,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEliminar.BackColor = System.Drawing.Color.Brown;
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnEliminar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnEliminar.Location = new System.Drawing.Point(729, 201);
+            this.BtnEliminar.Location = new System.Drawing.Point(729, 198);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(139, 35);
             this.BtnEliminar.TabIndex = 9;
@@ -204,7 +172,7 @@ namespace ProyectoDerake.Formularios
             this.BtnSalir.BackColor = System.Drawing.Color.DodgerBlue;
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnSalir.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnSalir.Location = new System.Drawing.Point(729, 310);
+            this.BtnSalir.Location = new System.Drawing.Point(729, 315);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(139, 35);
             this.BtnSalir.TabIndex = 11;
@@ -276,6 +244,47 @@ namespace ProyectoDerake.Formularios
             this.LblCedula.TabIndex = 18;
             this.LblCedula.Text = "Cédula";
             // 
+            // ColIDUsuario
+            // 
+            this.ColIDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColIDUsuario.DataPropertyName = "IDUsuario";
+            this.ColIDUsuario.HeaderText = "Código";
+            this.ColIDUsuario.Name = "ColIDUsuario";
+            this.ColIDUsuario.ReadOnly = true;
+            this.ColIDUsuario.Width = 80;
+            // 
+            // ColNombre
+            // 
+            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNombre.DataPropertyName = "Nombre";
+            this.ColNombre.HeaderText = "Nombre";
+            this.ColNombre.Name = "ColNombre";
+            this.ColNombre.ReadOnly = true;
+            // 
+            // Cedula
+            // 
+            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Cedula.DataPropertyName = "Cedula";
+            this.Cedula.HeaderText = "Cédula";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            this.Cedula.Width = 125;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Correo electrónico";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Rol
+            // 
+            this.Rol.DataPropertyName = "Rol";
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            this.Rol.ReadOnly = true;
+            // 
             // FrmUsuariosGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -336,5 +345,6 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
     }
 }

@@ -21,22 +21,27 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
-            {
-                if (Convert.ToInt32(Locales.ObjetosGlobales.MiFormGestionVentas.DgvListaVentas.SelectedRows[0].Cells["CIDProducto"].Value) ==
-                    Convert.ToInt32(row["IDProducto"].ToString()))
-                {
-                    row["CantidadVendida"] = NudCantidad.Value;
 
-                    this.DialogResult = DialogResult.OK;
-                }
 
-            }
+
+            //foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
+            //{
+            //    if (Convert.ToInt32(Locales.ObjetosGlobales.MiFormGestionVentas.DgvListaVentas.SelectedRows[0].Cells["CIDProducto"].Value) ==
+            //        Convert.ToInt32(row["IDProducto"].ToString()))
+            //    {
+            //        row["CantidadVendida"] = NudCantidad.Value;
+
+            //        this.DialogResult = DialogResult.OK;
+            //    }
+
+            //}
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
     }
 }

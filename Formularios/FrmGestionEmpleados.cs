@@ -40,11 +40,8 @@ namespace ProyectoDerake.Formularios
 
                     MiEmpleado.Nombre = TxtNombre.Text.Trim();
                     MiEmpleado.Apellido = TxtApellido.Text.Trim();
-
-                    DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
-
-                    MiEmpleado.HorasTrabajadas = Convert.ToInt32(MiFila.Cells["HorasTrabajadas"].Value);
-                    MiEmpleado.Salario = Convert.ToInt32(MiFila.Cells["Salario"].Value);
+                    MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
+                    MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
 
                     bool NombreExiste = MiEmpleado.ConsultarPorNombre();
 
@@ -125,6 +122,8 @@ namespace ProyectoDerake.Formularios
             TxtNombre.Clear();
             TxtApellido.Clear();
             TxtHoras.Clear();
+            TxtPago.Clear();
+            TxtSalario.Clear();
 
         }
 
@@ -134,6 +133,7 @@ namespace ProyectoDerake.Formularios
             BtnAgregar.Enabled = true;
             BtnModificar.Enabled = false;
             BtnEliminar.Enabled = false;
+            TxtSalario.Enabled = false;
 
         }
 
@@ -143,12 +143,8 @@ namespace ProyectoDerake.Formularios
             BtnAgregar.Enabled = false;
             BtnModificar.Enabled = true;
             BtnEliminar.Enabled = true;
+            TxtSalario.Enabled = false;
 
-        }
-
-        private void BtnCalcular_Click(object sender, EventArgs e)
-        {
-            this.Hide();
         }
 
 
@@ -175,8 +171,8 @@ namespace ProyectoDerake.Formularios
 
                 MiEmpleado.Nombre = TxtNombre.Text.Trim();
                 MiEmpleado.Apellido = TxtApellido.Text.Trim();
-                MiEmpleado.HorasTrabajadas = Convert.ToInt32(MiFila.Cells["HorasTrabajadas"].Value);
-                MiEmpleado.Salario = Convert.ToInt32(MiFila.Cells["Salario"].Value);
+                MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
+                MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
 
 
                 //consulta al cliente por su ID
@@ -226,6 +222,91 @@ namespace ProyectoDerake.Formularios
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmGestionEmpleados_Load(object sender, EventArgs e)
+        {
+            LlenarListaEmpleados();
+
+            LimpiarFormulario();
+
+            ActivarBtnAgregar();
+        }
+
+        private void DgvListaEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //valida si se ha seleccionado una fila en el datagridview
+            if (DgvListaEmpleados.SelectedRows.Count == 1)
+            {
+                LimpiarFormulario();
+
+                DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
+
+                int IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
+
+                MiEmpleadoLocal = new Empleado();
+
+                MiEmpleadoLocal = MiEmpleadoLocal.Consultar(IDEmpleado);
+
+                TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
+                TxtApellido.Text = Convert.ToString(MiFila.Cells["Apellido"].Value);
+                TxtHoras.Text = Convert.ToString(MiFila.Cells["HorasTrabajadas"].Value);
+                TxtSalario.Text = Convert.ToString(MiFila.Cells["Salario"].Value);
+
+                ActivarBtnModificarYEliminar();
+            }
+        }
+
+
+        private void Calcular() {
+
+            double ht, ph, sal;
+
+            try
+            {
+                ht = Convert.ToDouble(TxtHoras.Text.Trim());
+                ph = Convert.ToDouble(TxtPago.Text.Trim());
+
+                sal = ht * ph;
+
+                TxtSalario.Text = sal.ToString();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+
+
+        private void TxtHoras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresNumeros(e);
+
+        }
+
+         private void TxtPago_KeyPress(object sender, KeyPressEventArgs e)
+         {
+            e.Handled = Herramientas.CaracteresNumeros(e);
+
+         }
+
+        private void TxtPago_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TxtHoras.Text) && !string.IsNullOrWhiteSpace(TxtPago.Text))
+            {
+                Calcular();
+            }
+        }
+
+        private void TxtHoras_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TxtHoras.Text) && !string.IsNullOrWhiteSpace(TxtPago.Text))
+            {
+                Calcular();
+            }
         }
     }
 }

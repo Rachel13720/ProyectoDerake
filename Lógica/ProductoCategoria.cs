@@ -14,6 +14,8 @@ namespace ProyectoDerake.Lógica
 
         public string MiCategoria { get; set; }
 
+        public string TipoCategoria { get; set; }
+
         //Metodos
         public DataTable Listar()
         {

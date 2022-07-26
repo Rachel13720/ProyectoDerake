@@ -268,6 +268,8 @@ namespace ProyectoDerake.Formularios
             BtnEliminar.Enabled = false;
             TxtID.Enabled = false;
             TxtCedula.Enabled = true;
+            TxtPassword1.Enabled = true;
+            CbTipoRol.Enabled = true;
         }
 
         //Activa solo los botones editar y eliminar
@@ -278,6 +280,8 @@ namespace ProyectoDerake.Formularios
             BtnEliminar.Enabled = true;
             TxtID.Enabled = false;
             TxtCedula.Enabled = false;
+            TxtPassword1.Enabled = false;
+            CbTipoRol.Enabled = false;
         }
 
 
@@ -287,35 +291,29 @@ namespace ProyectoDerake.Formularios
         }
 
         private void DgvListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
-        {//valida que la fila esta seleecionada
+        {
+            //valida que la fila esta seleccionada
             if (DgvListaUsuarios.SelectedRows.Count == 1)
             {
-                LimpiarFormulario();
 
                 DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
 
-                int IdUsuario = Convert.ToInt32(MiFila.Cells["ColIDUsuario"].Value);
+                TxtID.Text = Convert.ToString(MiFila.Cells["ColIDUsuario"].Value);
+                TxtNombre.Text = Convert.ToString(MiFila.Cells["ColNombre"].Value);
+                TxtCedula.Text = Convert.ToString(MiFila.Cells["Cedula"].Value);
+                TxtEmail.Text = Convert.ToString(MiFila.Cells["Email"].Value);
 
-                if (IdUsuario == 1)
+                foreach (DataRowView data in CbTipoRol.Items)
                 {
-                    MiUsuario = new Usuario();
-
-                    MiUsuario = MiUsuario.Consultar(IdUsuario);
-
-                    TxtID.Text = MiUsuario.IDUsuario.ToString();
-                    TxtCedula.Text = MiUsuario.Cedula;
-                    TxtNombre.Text = MiUsuario.Nombre;
-                    CbTipoRol.SelectedValue = MiUsuario.Rol.IDUsuarioRol;
-
-                    TxtEmail.Text = MiUsuario.Email;
-
-                    ActivarEditarYEliminar();
-
+                    if (data.Row[1].ToString().Equals(MiFila.Cells["Rol"].Value))
+                    {
+                        CbTipoRol.SelectedValue = data.Row[0];
+                    }
                 }
 
+                ActivarEditarYEliminar();
             }
 
-        
         }
 
     //boton que edita los datos

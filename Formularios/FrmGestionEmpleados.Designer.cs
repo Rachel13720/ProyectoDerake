@@ -31,10 +31,6 @@ namespace ProyectoDerake.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionEmpleados));
             this.DgvListaEmpleados = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HorasTrabajadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -47,7 +43,15 @@ namespace ProyectoDerake.Formularios
             this.LblNombre = new System.Windows.Forms.Label();
             this.LblApellido = new System.Windows.Forms.Label();
             this.LblHoras = new System.Windows.Forms.Label();
-            this.BtnCalcular = new System.Windows.Forms.Button();
+            this.TxtPago = new System.Windows.Forms.TextBox();
+            this.LblMonto = new System.Windows.Forms.Label();
+            this.TxtSalario = new System.Windows.Forms.TextBox();
+            this.LblSalario = new System.Windows.Forms.Label();
+            this.IDEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorasTrabajadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,48 +63,18 @@ namespace ProyectoDerake.Formularios
             this.DgvListaEmpleados.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.DgvListaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDEmpleado,
             this.Nombre,
             this.Apellido,
             this.HorasTrabajadas,
             this.Salario});
-            this.DgvListaEmpleados.Location = new System.Drawing.Point(12, 12);
+            this.DgvListaEmpleados.Location = new System.Drawing.Point(18, 12);
             this.DgvListaEmpleados.Name = "DgvListaEmpleados";
             this.DgvListaEmpleados.ReadOnly = true;
             this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaEmpleados.Size = new System.Drawing.Size(716, 372);
             this.DgvListaEmpleados.TabIndex = 0;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 200;
-            // 
-            // Apellido
-            // 
-            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            this.Apellido.Width = 200;
-            // 
-            // HorasTrabajadas
-            // 
-            this.HorasTrabajadas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HorasTrabajadas.DataPropertyName = "HorasTrabajadas";
-            this.HorasTrabajadas.HeaderText = "Horas Trabajadas";
-            this.HorasTrabajadas.Name = "HorasTrabajadas";
-            this.HorasTrabajadas.ReadOnly = true;
-            this.HorasTrabajadas.Width = 90;
-            // 
-            // Salario
-            // 
-            this.Salario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Salario.HeaderText = "Salario";
-            this.Salario.Name = "Salario";
-            this.Salario.ReadOnly = true;
+            this.DgvListaEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaEmpleados_CellClick);
             // 
             // BtnAgregar
             // 
@@ -192,6 +166,8 @@ namespace ProyectoDerake.Formularios
             this.TxtHoras.Name = "TxtHoras";
             this.TxtHoras.Size = new System.Drawing.Size(203, 23);
             this.TxtHoras.TabIndex = 13;
+            this.TxtHoras.TextChanged += new System.EventHandler(this.TxtHoras_TextChanged);
+            this.TxtHoras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtHoras_KeyPress);
             // 
             // pictureBox1
             // 
@@ -232,18 +208,84 @@ namespace ProyectoDerake.Formularios
             this.LblHoras.TabIndex = 14;
             this.LblHoras.Text = "Horas Trabajadas";
             // 
-            // BtnCalcular
+            // TxtPago
             // 
-            this.BtnCalcular.BackColor = System.Drawing.Color.SteelBlue;
-            this.BtnCalcular.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.BtnCalcular.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnCalcular.Location = new System.Drawing.Point(594, 482);
-            this.BtnCalcular.Name = "BtnCalcular";
-            this.BtnCalcular.Size = new System.Drawing.Size(99, 47);
-            this.BtnCalcular.TabIndex = 15;
-            this.BtnCalcular.Text = "Calcular Salario";
-            this.BtnCalcular.UseVisualStyleBackColor = false;
-            this.BtnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
+            this.TxtPago.Location = new System.Drawing.Point(271, 509);
+            this.TxtPago.Name = "TxtPago";
+            this.TxtPago.Size = new System.Drawing.Size(203, 20);
+            this.TxtPago.TabIndex = 16;
+            this.TxtPago.TextChanged += new System.EventHandler(this.TxtPago_TextChanged);
+            this.TxtPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPago_KeyPress);
+            // 
+            // LblMonto
+            // 
+            this.LblMonto.AutoSize = true;
+            this.LblMonto.Location = new System.Drawing.Point(268, 493);
+            this.LblMonto.Name = "LblMonto";
+            this.LblMonto.Size = new System.Drawing.Size(79, 13);
+            this.LblMonto.TabIndex = 17;
+            this.LblMonto.Text = "Pago por horas";
+            // 
+            // TxtSalario
+            // 
+            this.TxtSalario.Location = new System.Drawing.Point(531, 509);
+            this.TxtSalario.Name = "TxtSalario";
+            this.TxtSalario.Size = new System.Drawing.Size(203, 20);
+            this.TxtSalario.TabIndex = 18;
+            // 
+            // LblSalario
+            // 
+            this.LblSalario.AutoSize = true;
+            this.LblSalario.Location = new System.Drawing.Point(535, 493);
+            this.LblSalario.Name = "LblSalario";
+            this.LblSalario.Size = new System.Drawing.Size(39, 13);
+            this.LblSalario.TabIndex = 19;
+            this.LblSalario.Text = "Salario";
+            // 
+            // IDEmpleado
+            // 
+            this.IDEmpleado.DataPropertyName = "IDEmpleado";
+            this.IDEmpleado.HeaderText = "Código";
+            this.IDEmpleado.Name = "IDEmpleado";
+            this.IDEmpleado.ReadOnly = true;
+            this.IDEmpleado.Width = 60;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.FillWeight = 41.66667F;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.FillWeight = 158.3333F;
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 150;
+            // 
+            // HorasTrabajadas
+            // 
+            this.HorasTrabajadas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HorasTrabajadas.DataPropertyName = "HorasTrabajadas";
+            this.HorasTrabajadas.HeaderText = "Horas Trabajadas";
+            this.HorasTrabajadas.Name = "HorasTrabajadas";
+            this.HorasTrabajadas.ReadOnly = true;
+            this.HorasTrabajadas.Width = 80;
+            // 
+            // Salario
+            // 
+            this.Salario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Salario.DataPropertyName = "Salario";
+            this.Salario.HeaderText = "Salario";
+            this.Salario.Name = "Salario";
+            this.Salario.ReadOnly = true;
+            this.Salario.Width = 80;
             // 
             // FrmGestionEmpleados
             // 
@@ -251,7 +293,10 @@ namespace ProyectoDerake.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(928, 569);
-            this.Controls.Add(this.BtnCalcular);
+            this.Controls.Add(this.LblSalario);
+            this.Controls.Add(this.TxtSalario);
+            this.Controls.Add(this.LblMonto);
+            this.Controls.Add(this.TxtPago);
             this.Controls.Add(this.LblHoras);
             this.Controls.Add(this.LblApellido);
             this.Controls.Add(this.LblNombre);
@@ -267,6 +312,7 @@ namespace ProyectoDerake.Formularios
             this.Controls.Add(this.DgvListaEmpleados);
             this.Name = "FrmGestionEmpleados";
             this.Text = "Gestion de Empleados";
+            this.Load += new System.EventHandler(this.FrmGestionEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -289,7 +335,11 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.Label LblApellido;
         private System.Windows.Forms.Label LblHoras;
-        private System.Windows.Forms.Button BtnCalcular;
+        private System.Windows.Forms.TextBox TxtPago;
+        private System.Windows.Forms.Label LblMonto;
+        private System.Windows.Forms.TextBox TxtSalario;
+        private System.Windows.Forms.Label LblSalario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDEmpleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasTrabajadas;

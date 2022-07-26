@@ -48,11 +48,11 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblCambCant.AutoSize = true;
             this.LblCambCant.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.LblCambCant.Location = new System.Drawing.Point(150, 67);
+            this.LblCambCant.Location = new System.Drawing.Point(85, 69);
             this.LblCambCant.Name = "LblCambCant";
-            this.LblCambCant.Size = new System.Drawing.Size(64, 17);
+            this.LblCambCant.Size = new System.Drawing.Size(186, 17);
             this.LblCambCant.TabIndex = 1;
-            this.LblCambCant.Text = "Cantidad";
+            this.LblCambCant.Text = "Cantidad de horas trabajadas";
             // 
             // BtnAceptar
             // 
@@ -91,7 +91,7 @@ namespace ProyectoDerake.Formularios
             this.Controls.Add(this.LblCambCant);
             this.Controls.Add(this.NudCantidad);
             this.Name = "FrmCambioCantidad";
-            this.Text = "Cambio de cantidad";
+            this.Text = "Calcular Salario";
             ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
