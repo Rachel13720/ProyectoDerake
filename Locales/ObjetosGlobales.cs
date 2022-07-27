@@ -29,5 +29,6 @@ namespace ProyectoDerake.Locales
 
         public static Formularios.FrmInformacion MiFormInfo = new Formularios.FrmInformacion();
 
+
     }
 }

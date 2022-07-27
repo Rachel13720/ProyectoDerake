@@ -19,7 +19,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-
+            try { 
             foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
             {
                 if (Convert.ToInt32(Locales.ObjetosGlobales.MiFormGestionVentas.DgvListaVentas.SelectedRows[0].Cells["CIDProducto"].Value) ==
@@ -30,6 +30,11 @@ namespace ProyectoDerake.Formularios
                     this.DialogResult = DialogResult.OK;
                 }
 
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 

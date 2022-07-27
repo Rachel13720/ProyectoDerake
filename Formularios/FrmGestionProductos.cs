@@ -43,6 +43,7 @@ namespace ProyectoDerake.Formularios
             CboxTipoCategoria.DataSource = datos;
 
             CboxTipoCategoria.SelectedIndex = -1;
+            
         }
 
         private void FrmGestionProductos_Load(object sender, EventArgs e)
@@ -58,6 +59,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos del producto
             if (ValidarDatosRequeridos())
             {
@@ -106,14 +108,20 @@ namespace ProyectoDerake.Formularios
 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 
         //valida los datos
         private bool ValidarDatosRequeridos()
         {
+             
             bool R = false;
-
+            try { 
             if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtComentario.Text.Trim()) &&
@@ -124,8 +132,12 @@ namespace ProyectoDerake.Formularios
                 R = true;
 
             }
-
-            return R;
+                return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 
@@ -173,6 +185,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos existentes y los modifica
             if (ValidarDatosRequeridos())
             {
@@ -201,17 +214,23 @@ namespace ProyectoDerake.Formularios
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            
                 Producto MiProducto = new Producto();
 
                 DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
 
                 MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
 
-
+            try { 
                 if (MiProducto.ConsultarPorID())
                 {
                     //desactiva los datos 
@@ -223,6 +242,11 @@ namespace ProyectoDerake.Formularios
                         LlenarListaProductos();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
@@ -239,6 +263,7 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try { 
             if (DgvListaProductos.SelectedRows.Count == 1)
             {
 
@@ -260,6 +285,11 @@ namespace ProyectoDerake.Formularios
                 }
 
                 ActivarModificarYEliminar();
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
 
         }

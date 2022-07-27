@@ -27,6 +27,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos del cliente
             if (ValidarDatosRequeridos())
             {
@@ -76,27 +77,39 @@ namespace ProyectoDerake.Formularios
 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         //valida los datos del empleado
         private bool ValidarDatosRequeridos()
         {
+            
             bool R = false;
-
+            try { 
             if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
             {
                 R = true;
             }
 
-            return R;
+                return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         //llena la lista con los datos del empleado
         private void LlenarListaEmpleados()
         {
+             
             Empleado MiEmpleado = new Empleado();
-
+            try { 
             //valida los datos de la busqueda
             if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                  !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
@@ -115,6 +128,11 @@ namespace ProyectoDerake.Formularios
 
             //X
             DgvListaEmpleados.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         //limpia los datos del empleado en el formulario
         private void LimpiarFormulario()
@@ -160,6 +178,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos del cliente
             if (ValidarDatosRequeridos())
             {
@@ -188,17 +207,23 @@ namespace ProyectoDerake.Formularios
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            
             Empleado MiEmpleado = new Empleado();
 
             DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
 
             MiEmpleado.IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
-
+            try { 
             if (MiEmpleado.ConsultarPorID())
             {
                 //desactiva los datos
@@ -209,6 +234,11 @@ namespace ProyectoDerake.Formularios
                     ActivarBtnAgregar();
                     LlenarListaEmpleados();
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -235,6 +265,7 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try { 
             //valida si se ha seleccionado una fila en el datagridview
             if (DgvListaEmpleados.SelectedRows.Count == 1)
             {
@@ -255,11 +286,16 @@ namespace ProyectoDerake.Formularios
 
                 ActivarBtnModificarYEliminar();
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 
         private void Calcular() {
-
+            
             double ht, ph, sal;
 
             try
@@ -276,7 +312,7 @@ namespace ProyectoDerake.Formularios
                 MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
+            
         }
 
 

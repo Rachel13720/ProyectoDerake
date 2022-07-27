@@ -29,6 +29,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos del cliente
             if (ValidarDatosRequeridos())
             {
@@ -78,6 +79,11 @@ namespace ProyectoDerake.Formularios
 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 
@@ -85,14 +91,19 @@ namespace ProyectoDerake.Formularios
         private bool ValidarDatosRequeridos()
         {
             bool R = false;
-
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+            try { 
+                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
-            {
+                {
                 R = true;
-            }
+                }
 
-            return R;
+                    return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void FrmGestionClientes_Load(object sender, EventArgs e)
@@ -108,8 +119,9 @@ namespace ProyectoDerake.Formularios
         //llena la lista con los datos del cliente
         private void LlenarListaClientes()
         {
+            
             Cliente MiCliente = new Cliente();
-
+            try { 
             //valida los datos de la busqueda
             if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                  !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
@@ -128,6 +140,11 @@ namespace ProyectoDerake.Formularios
 
             //X
             DgvListaClientes.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         //limpia los datos del cliente en el formulario
@@ -160,6 +177,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos del cliente
             if (ValidarDatosRequeridos())
             {
@@ -187,17 +205,24 @@ namespace ProyectoDerake.Formularios
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+             
             Cliente MiCliente = new Cliente();
 
             DataGridViewRow MiFila = DgvListaClientes.SelectedRows[0];
 
             MiCliente.IDCliente = Convert.ToInt32(MiFila.Cells["IDCliente"].Value);
 
+            try { 
             if (MiCliente.ConsultarPorID())
             {
                 //desactiva los datos
@@ -208,6 +233,11 @@ namespace ProyectoDerake.Formularios
                     ActivarBtnAgregar();
                     LlenarListaClientes();
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
@@ -225,6 +255,7 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try { 
             //valida si se ha seleccionado una fila en el datagridview
             if (DgvListaClientes.SelectedRows.Count == 1)
             {
@@ -244,6 +275,11 @@ namespace ProyectoDerake.Formularios
                 TxtDireccion.Text = MiClienteLocal.Direccion;
 
                 ActivarBtnModificarYEliminar();
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 

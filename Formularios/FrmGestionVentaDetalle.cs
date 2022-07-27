@@ -31,6 +31,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
+            try { 
             //Se evalua que haya una fila seleccionada en la lista y la cantidad sea mayor a cero
             if (DgvListaItems.SelectedRows.Count == 1 && NudCantidad.Value > 0)
             {
@@ -78,14 +79,20 @@ namespace ProyectoDerake.Formularios
             {
                 MessageBox.Show("Seleccione un producto", ":)", MessageBoxButtons.OK);
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
         //se valida la existencia del producto con su Id
         private bool ValidarExistenciaProducto()
         {
+            
             bool R = false;
-
+            try { 
             foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
             {
                 if (Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value) ==
@@ -97,6 +104,11 @@ namespace ProyectoDerake.Formularios
             }
 
             return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 

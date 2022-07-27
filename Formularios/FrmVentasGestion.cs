@@ -31,10 +31,11 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregarItem_Click(object sender, EventArgs e)
         {
+            
                 Form FormBuscarItem = new FrmGestionVentaDetalle();
 
                 DialogResult Resp = FormBuscarItem.ShowDialog();
-
+            try { 
                 if (Resp == DialogResult.OK)
                 {
                     DgvListaVentas.DataSource = DtListaProductos;
@@ -42,14 +43,19 @@ namespace ProyectoDerake.Formularios
                     TxtTotal.Text = string.Format("{0:C2}", Totalizar());
 
                 }
-            
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
 
         //metodo que totaliza la cantidad 
         private decimal Totalizar()
         {
             decimal R = 0;
-
+            try { 
             if (DtListaProductos.Rows.Count > 0)
             {
                 //valida que existan datos en la lista
@@ -62,11 +68,17 @@ namespace ProyectoDerake.Formularios
             }
 
             return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
         private void BtnCrearVenta_Click(object sender, EventArgs e)
         {
+            try { 
             //Valida los datos de la venta
             if (ValidarVenta())
             {
@@ -103,14 +115,20 @@ namespace ProyectoDerake.Formularios
                     Limpiar();
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
 
         //valida los datos, para realizar la venta
         private bool ValidarVenta()
         {
-
+            
             bool R = false;
-
+            try { 
             if (DtpFecha.Value.Date <= DateTime.Now.Date && 
                 CboxCliente.SelectedIndex > -1 && 
                 CboxEmpleado.SelectedIndex > -1 &&
@@ -159,10 +177,12 @@ namespace ProyectoDerake.Formularios
                 }
 
             }
-
-
-            return R;
-
+                return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
@@ -170,6 +190,7 @@ namespace ProyectoDerake.Formularios
         //Llena los datos de lista de detalles de la venta
         private void LlenarDetallesDeVenta()
         {
+            try { 
             //Valida las filas de la lista
             foreach (DataRow fila in DtListaProductos.Rows)
             {
@@ -184,24 +205,34 @@ namespace ProyectoDerake.Formularios
                 MiVenta.ListaDetalle.Add(detalle);
 
             }
-
-
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
 
         private void BtnModificarItem_Click(object sender, EventArgs e)
         {
+            
             Form FormCambio = new FrmCambioCantidad();
 
             DialogResult Resp = FormCambio.ShowDialog();
-
+            try { 
             if (Resp == DialogResult.OK)
             {
                 DgvListaVentas.DataSource = DtListaProductos;
 
                 TxtTotal.Text = string.Format("{0:C2}", Totalizar());
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
 
         private void FrmVentasGestion_Load(object sender, EventArgs e)
@@ -220,6 +251,7 @@ namespace ProyectoDerake.Formularios
 
         private void Limpiar()
         {
+             
             DtpFecha.Value = DateTime.Now.Date;
 
             TxtNumeroFactura.Clear();
@@ -235,8 +267,7 @@ namespace ProyectoDerake.Formularios
             DtListaProductos = MiVenta.AsignarEsquemaDetalle();
 
             DgvListaVentas.DataSource = DtListaProductos;
-
-
+           
         }
 
         private void CargarDatosCliente()
@@ -253,7 +284,7 @@ namespace ProyectoDerake.Formularios
             CboxCliente.DataSource = Datos;
 
             CboxCliente.SelectedIndex = -1;
-
+            
         }
 
         private void CargarDatosEmpleado()
@@ -270,11 +301,12 @@ namespace ProyectoDerake.Formularios
             CboxEmpleado.DataSource = Datos;
 
             CboxEmpleado.SelectedIndex = -1;
-
+           
         }
 
         private void BtnEliminarItem_Click(object sender, EventArgs e)
         {
+            try { 
             for (int i = 0; i < DtListaProductos.Rows.Count; i++)
             {
                 DataRow row = DtListaProductos.Rows[i];
@@ -290,7 +322,11 @@ namespace ProyectoDerake.Formularios
             DgvListaVentas.DataSource = DtListaProductos;
 
             TxtTotal.Text = string.Format("{0:C2}", Totalizar());
-
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

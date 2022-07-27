@@ -19,6 +19,7 @@ namespace ProyectoDerake.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida el usuario y su contraseña
             if (!string.IsNullOrEmpty(TxtUsuario.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
@@ -46,6 +47,11 @@ namespace ProyectoDerake.Formularios
                     TxtContrasennia.SelectAll();
                 }
 
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 

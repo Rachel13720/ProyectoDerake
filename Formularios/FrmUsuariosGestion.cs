@@ -48,9 +48,10 @@ namespace ProyectoDerake.Formularios
 
         private void LlenarListaUsuarios()
         {
+            
             //se llama la clase usuario para manipular los datos
             Usuario MiUsuario = new Usuario();
-
+            try { 
             //valida los datos de la busqueda
             if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                  CbTipoRol.SelectedIndex > -1)
@@ -69,12 +70,18 @@ namespace ProyectoDerake.Formularios
 
             //X
             DgvListaUsuarios.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
 
         //Carga los datos del Combobox
         private void CargaDatosComboTipoRol()
         {
+            
             UsuarioRol MiUsuarioRol = new UsuarioRol();
 
             DataTable datos = new DataTable();
@@ -88,6 +95,7 @@ namespace ProyectoDerake.Formularios
             CbTipoRol.DataSource = datos;
 
             CbTipoRol.SelectedIndex = -1;
+            
         }
 
 
@@ -110,8 +118,9 @@ namespace ProyectoDerake.Formularios
         //valida los datos
         private bool ValidarDatosRequeridos()
         {
+             
             bool R = false;
-
+            try { 
             if (!string.IsNullOrEmpty(TxtCedula.Text.Trim()) && 
                 !string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtEmail.Text.Trim()) &&
@@ -151,12 +160,17 @@ namespace ProyectoDerake.Formularios
             }
 
             return R;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         //boton que agrega
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-
+            try { 
             //valida los datos y que todos los campos esten llenos
             if (ValidarDatosRequeridos())
             {
@@ -216,47 +230,11 @@ namespace ProyectoDerake.Formularios
                 }
 
             }
-        }
-
-
-        //valida el email
-        private bool ValidarEmail()
-        {
-            bool r = false;
-
-            if (Herramientas.ValidarEmail(TxtEmail.Text.Trim()))
-            {
-
-                r = true;
-
             }
-            else
+            catch (Exception ex)
             {
-
-                MessageBox.Show("El email no es válido", ":(", MessageBoxButtons.OK);
-
+                throw;
             }
-            return r;
-        }
-
-        //valida la contraseña
-        private bool ValidarContrasennia()
-        {
-            bool r = false;
-
-            if (Herramientas.ValidarPass(TxtPassword1.Text.Trim()))
-            {
-
-                r = true;
-
-            }
-            else
-            {
-
-                MessageBox.Show("La contraseña es válida", ":)", MessageBoxButtons.OK);
-
-            }
-            return r;
         }
 
 
@@ -292,6 +270,7 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try { 
             //valida que la fila esta seleccionada
             if (DgvListaUsuarios.SelectedRows.Count == 1)
             {
@@ -313,12 +292,18 @@ namespace ProyectoDerake.Formularios
 
                 ActivarEditarYEliminar();
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
         }
 
     //boton que edita los datos
     private void BtnEditar_Click(object sender, EventArgs e)
         {
+            try { 
             //valida los datos
             if (ValidarDatosRequeridos())
             {
@@ -352,15 +337,21 @@ namespace ProyectoDerake.Formularios
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         //boton que elimina los datos
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+             
             Usuario Miusuario = new Usuario();
 
             Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
-
+            try { 
             if (Miusuario.ConsultarPorID())
             {
                 //desactiva los datos
@@ -370,6 +361,11 @@ namespace ProyectoDerake.Formularios
                         LimpiarFormulario();
                         ActivarBotonAgregar();
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
 
