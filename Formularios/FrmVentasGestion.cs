@@ -31,17 +31,18 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregarItem_Click(object sender, EventArgs e)
         {
-            Form FormBuscarItem = new FrmGestionVentaDetalle();
+                Form FormBuscarItem = new FrmGestionVentaDetalle();
 
-            DialogResult Resp = FormBuscarItem.ShowDialog();
+                DialogResult Resp = FormBuscarItem.ShowDialog();
 
-            if (Resp == DialogResult.OK)
-            {
-                DgvListaVentas.DataSource = DtListaProductos;
+                if (Resp == DialogResult.OK)
+                {
+                    DgvListaVentas.DataSource = DtListaProductos;
 
-                TxtTotal.Text = string.Format("{0:C2}", Totalizar());
+                    TxtTotal.Text = string.Format("{0:C2}", Totalizar());
 
-            }
+                }
+            
         }
 
         //metodo que totaliza la cantidad 
@@ -59,12 +60,6 @@ namespace ProyectoDerake.Formularios
                 }
 
             }
-            //else if (CCantidadVendida.//Cambio en la fila) 
-            //{
-                  //aumentar monto de la linea actual
-            //    R += Totalizar();
-
-            //}
 
             return R;
 
@@ -85,6 +80,7 @@ namespace ProyectoDerake.Formularios
 
                 LlenarDetallesDeVenta();
 
+
                 //Agrega la venta y permite que se imprima el reporte
                 if (MiVenta.Agregar())
                 {
@@ -103,7 +99,6 @@ namespace ProyectoDerake.Formularios
 
                     //Se visualiza el reporte
                     MiFormReport.CrvVisualizador.Zoom(1);
-
 
                     Limpiar();
                 }
@@ -133,6 +128,7 @@ namespace ProyectoDerake.Formularios
 
                     return false;
                 }
+
 
                 //Hace demas validaciones
                 if (ValidarVenta())
@@ -230,6 +226,7 @@ namespace ProyectoDerake.Formularios
             CboxCliente.SelectedIndex = -1;
             CboxEmpleado.SelectedIndex = -1;
             TxtComentario.Clear();
+            TxtTotal.Clear();
 
             //cargar el esquema que debe tener el datatable
             //este esquema no tiene datos, solamente asigna la estructua adecuada al datatable

@@ -24,6 +24,7 @@ namespace ProyectoDerake
         //2 numeros, 3 letras, rango de 4 a 5 caracteres
 
 
+
         //valida el email
         public static bool ValidarEmail(string email)
         {
@@ -35,6 +36,22 @@ namespace ProyectoDerake
             { return false; }
 
         }
+
+
+        const string FacturaRegex = "^(?=.*[0-9].*[0-9])(?=.*[A-Z])$";
+        //valida la factura
+        public static bool ValidarFactura(string factura)
+        {
+            if (factura != null)
+            {
+                return Regex.IsMatch(factura, FacturaRegex);
+            }
+            else
+            { return false; }
+
+        }
+
+
 
         //valida la contraseña
         public static bool ValidarPass(string pass)

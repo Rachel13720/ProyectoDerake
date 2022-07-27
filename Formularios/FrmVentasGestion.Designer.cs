@@ -162,6 +162,7 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtNumeroFactura
             // 
+            this.TxtNumeroFactura.ForeColor = System.Drawing.SystemColors.ControlText;
             this.TxtNumeroFactura.Location = new System.Drawing.Point(217, 54);
             this.TxtNumeroFactura.Name = "TxtNumeroFactura";
             this.TxtNumeroFactura.Size = new System.Drawing.Size(175, 23);
