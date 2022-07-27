@@ -30,6 +30,11 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
+            this.ColIDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.CbTipoRol = new System.Windows.Forms.ComboBox();
             this.LblNombre = new System.Windows.Forms.Label();
@@ -47,11 +52,6 @@ namespace ProyectoDerake.Formularios
             this.TxtCedula = new System.Windows.Forms.TextBox();
             this.LblEmail = new System.Windows.Forms.Label();
             this.LblCedula = new System.Windows.Forms.Label();
-            this.ColIDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +76,47 @@ namespace ProyectoDerake.Formularios
             this.DgvListaUsuarios.TabIndex = 0;
             this.DgvListaUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellClick);
             // 
+            // ColIDUsuario
+            // 
+            this.ColIDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColIDUsuario.DataPropertyName = "IDUsuario";
+            this.ColIDUsuario.HeaderText = "Código";
+            this.ColIDUsuario.Name = "ColIDUsuario";
+            this.ColIDUsuario.ReadOnly = true;
+            this.ColIDUsuario.Width = 80;
+            // 
+            // ColNombre
+            // 
+            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNombre.DataPropertyName = "Nombre";
+            this.ColNombre.HeaderText = "Nombre";
+            this.ColNombre.Name = "ColNombre";
+            this.ColNombre.ReadOnly = true;
+            // 
+            // Cedula
+            // 
+            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Cedula.DataPropertyName = "Cedula";
+            this.Cedula.HeaderText = "Cédula";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            this.Cedula.Width = 125;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Correo electrónico";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Rol
+            // 
+            this.Rol.DataPropertyName = "Rol";
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            this.Rol.ReadOnly = true;
+            // 
             // TxtNombre
             // 
             this.TxtNombre.Location = new System.Drawing.Point(34, 514);
@@ -97,18 +138,20 @@ namespace ProyectoDerake.Formularios
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
+            this.LblNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblNombre.Location = new System.Drawing.Point(31, 494);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+            this.LblNombre.Size = new System.Drawing.Size(57, 16);
             this.LblNombre.TabIndex = 3;
             this.LblNombre.Text = "Nombre";
             // 
             // LblRolUsuario
             // 
             this.LblRolUsuario.AutoSize = true;
+            this.LblRolUsuario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblRolUsuario.Location = new System.Drawing.Point(302, 494);
             this.LblRolUsuario.Name = "LblRolUsuario";
-            this.LblRolUsuario.Size = new System.Drawing.Size(96, 16);
+            this.LblRolUsuario.Size = new System.Drawing.Size(100, 16);
             this.LblRolUsuario.TabIndex = 4;
             this.LblRolUsuario.Text = "Tipo de usuario";
             // 
@@ -128,9 +171,10 @@ namespace ProyectoDerake.Formularios
             // LblContrasennia
             // 
             this.LblContrasennia.AutoSize = true;
+            this.LblContrasennia.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblContrasennia.Location = new System.Drawing.Point(31, 557);
             this.LblContrasennia.Name = "LblContrasennia";
-            this.LblContrasennia.Size = new System.Drawing.Size(72, 16);
+            this.LblContrasennia.Size = new System.Drawing.Size(77, 16);
             this.LblContrasennia.TabIndex = 6;
             this.LblContrasennia.Text = "Contraseña";
             // 
@@ -183,9 +227,10 @@ namespace ProyectoDerake.Formularios
             // LblID
             // 
             this.LblID.AutoSize = true;
+            this.LblID.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblID.Location = new System.Drawing.Point(302, 557);
             this.LblID.Name = "LblID";
-            this.LblID.Size = new System.Drawing.Size(20, 16);
+            this.LblID.Size = new System.Drawing.Size(21, 16);
             this.LblID.TabIndex = 12;
             this.LblID.Text = "ID";
             // 
@@ -229,61 +274,22 @@ namespace ProyectoDerake.Formularios
             // LblEmail
             // 
             this.LblEmail.AutoSize = true;
+            this.LblEmail.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblEmail.Location = new System.Drawing.Point(479, 557);
             this.LblEmail.Name = "LblEmail";
-            this.LblEmail.Size = new System.Drawing.Size(113, 16);
+            this.LblEmail.Size = new System.Drawing.Size(118, 16);
             this.LblEmail.TabIndex = 17;
             this.LblEmail.Text = "Correo electrónico";
             // 
             // LblCedula
             // 
             this.LblCedula.AutoSize = true;
+            this.LblCedula.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblCedula.Location = new System.Drawing.Point(564, 495);
             this.LblCedula.Name = "LblCedula";
-            this.LblCedula.Size = new System.Drawing.Size(48, 16);
+            this.LblCedula.Size = new System.Drawing.Size(49, 16);
             this.LblCedula.TabIndex = 18;
             this.LblCedula.Text = "Cédula";
-            // 
-            // ColIDUsuario
-            // 
-            this.ColIDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColIDUsuario.DataPropertyName = "IDUsuario";
-            this.ColIDUsuario.HeaderText = "Código";
-            this.ColIDUsuario.Name = "ColIDUsuario";
-            this.ColIDUsuario.ReadOnly = true;
-            this.ColIDUsuario.Width = 80;
-            // 
-            // ColNombre
-            // 
-            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNombre.DataPropertyName = "Nombre";
-            this.ColNombre.HeaderText = "Nombre";
-            this.ColNombre.Name = "ColNombre";
-            this.ColNombre.ReadOnly = true;
-            // 
-            // Cedula
-            // 
-            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Cedula.DataPropertyName = "Cedula";
-            this.Cedula.HeaderText = "Cédula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            this.Cedula.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Rol
-            // 
-            this.Rol.DataPropertyName = "Rol";
-            this.Rol.HeaderText = "Rol";
-            this.Rol.Name = "Rol";
-            this.Rol.ReadOnly = true;
             // 
             // FrmUsuariosGestion
             // 

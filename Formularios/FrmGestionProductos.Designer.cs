@@ -188,46 +188,57 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtCodigo
             // 
+            this.TxtCodigo.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtCodigo.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtCodigo.Location = new System.Drawing.Point(24, 483);
             this.TxtCodigo.Name = "TxtCodigo";
-            this.TxtCodigo.Size = new System.Drawing.Size(90, 23);
+            this.TxtCodigo.Size = new System.Drawing.Size(90, 25);
             this.TxtCodigo.TabIndex = 5;
             // 
             // TxtCantidad
             // 
+            this.TxtCantidad.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtCantidad.Location = new System.Drawing.Point(24, 556);
             this.TxtCantidad.Name = "TxtCantidad";
-            this.TxtCantidad.Size = new System.Drawing.Size(140, 23);
+            this.TxtCantidad.Size = new System.Drawing.Size(140, 25);
             this.TxtCantidad.TabIndex = 6;
             this.TxtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCantidad_KeyPress);
             // 
             // TxtPrecio
             // 
+            this.TxtPrecio.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtPrecio.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtPrecio.Location = new System.Drawing.Point(199, 556);
             this.TxtPrecio.Name = "TxtPrecio";
-            this.TxtPrecio.Size = new System.Drawing.Size(142, 23);
+            this.TxtPrecio.Size = new System.Drawing.Size(142, 25);
             this.TxtPrecio.TabIndex = 7;
             this.TxtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPrecio_KeyPress);
             // 
             // TxtNombre
             // 
+            this.TxtNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtNombre.Location = new System.Drawing.Point(194, 483);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(305, 23);
+            this.TxtNombre.Size = new System.Drawing.Size(305, 25);
             this.TxtNombre.TabIndex = 8;
             this.TxtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombre_KeyPress);
             // 
             // CboxTipoCategoria
             // 
+            this.CboxTipoCategoria.BackColor = System.Drawing.SystemColors.Control;
+            this.CboxTipoCategoria.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.CboxTipoCategoria.FormattingEnabled = true;
-            this.CboxTipoCategoria.Location = new System.Drawing.Point(369, 556);
+            this.CboxTipoCategoria.Location = new System.Drawing.Point(375, 553);
             this.CboxTipoCategoria.Name = "CboxTipoCategoria";
-            this.CboxTipoCategoria.Size = new System.Drawing.Size(209, 24);
+            this.CboxTipoCategoria.Size = new System.Drawing.Size(209, 25);
             this.CboxTipoCategoria.TabIndex = 9;
             // 
             // LblCodigo
             // 
             this.LblCodigo.AutoSize = true;
+            this.LblCodigo.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblCodigo.Location = new System.Drawing.Point(21, 464);
             this.LblCodigo.Name = "LblCodigo";
             this.LblCodigo.Size = new System.Drawing.Size(51, 16);
@@ -237,41 +248,47 @@ namespace ProyectoDerake.Formularios
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
+            this.LblNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblNombre.Location = new System.Drawing.Point(191, 464);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+            this.LblNombre.Size = new System.Drawing.Size(57, 16);
             this.LblNombre.TabIndex = 11;
             this.LblNombre.Text = "Nombre";
             // 
             // LblCantidad
             // 
             this.LblCantidad.AutoSize = true;
+            this.LblCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblCantidad.Location = new System.Drawing.Point(21, 537);
             this.LblCantidad.Name = "LblCantidad";
-            this.LblCantidad.Size = new System.Drawing.Size(60, 16);
+            this.LblCantidad.Size = new System.Drawing.Size(62, 16);
             this.LblCantidad.TabIndex = 12;
             this.LblCantidad.Text = "Cantidad";
             // 
             // LblPrecio
             // 
             this.LblPrecio.AutoSize = true;
-            this.LblPrecio.Location = new System.Drawing.Point(204, 537);
+            this.LblPrecio.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
+            this.LblPrecio.Location = new System.Drawing.Point(196, 537);
             this.LblPrecio.Name = "LblPrecio";
-            this.LblPrecio.Size = new System.Drawing.Size(43, 16);
+            this.LblPrecio.Size = new System.Drawing.Size(45, 16);
             this.LblPrecio.TabIndex = 13;
             this.LblPrecio.Text = "Precio";
             // 
             // LblCategoria
             // 
             this.LblCategoria.AutoSize = true;
-            this.LblCategoria.Location = new System.Drawing.Point(381, 537);
+            this.LblCategoria.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
+            this.LblCategoria.Location = new System.Drawing.Point(372, 537);
             this.LblCategoria.Name = "LblCategoria";
-            this.LblCategoria.Size = new System.Drawing.Size(64, 16);
+            this.LblCategoria.Size = new System.Drawing.Size(66, 16);
             this.LblCategoria.TabIndex = 14;
             this.LblCategoria.Text = "Categoria";
             // 
             // TxtComentario
             // 
+            this.TxtComentario.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtComentario.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtComentario.Location = new System.Drawing.Point(624, 499);
             this.TxtComentario.Multiline = true;
             this.TxtComentario.Name = "TxtComentario";
@@ -282,9 +299,10 @@ namespace ProyectoDerake.Formularios
             // LblComentario
             // 
             this.LblComentario.AutoSize = true;
+            this.LblComentario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblComentario.Location = new System.Drawing.Point(621, 480);
             this.LblComentario.Name = "LblComentario";
-            this.LblComentario.Size = new System.Drawing.Size(75, 16);
+            this.LblComentario.Size = new System.Drawing.Size(78, 16);
             this.LblComentario.TabIndex = 16;
             this.LblComentario.Text = "Comentario";
             // 

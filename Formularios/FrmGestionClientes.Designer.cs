@@ -180,29 +180,38 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtTelefono
             // 
+            this.TxtTelefono.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtTelefono.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtTelefono.Location = new System.Drawing.Point(309, 446);
             this.TxtTelefono.Name = "TxtTelefono";
-            this.TxtTelefono.Size = new System.Drawing.Size(203, 23);
+            this.TxtTelefono.Size = new System.Drawing.Size(203, 25);
             this.TxtTelefono.TabIndex = 6;
+            this.TxtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefono_KeyPress);
             // 
             // TxtApellido
             // 
+            this.TxtApellido.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtApellido.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtApellido.Location = new System.Drawing.Point(21, 511);
             this.TxtApellido.Name = "TxtApellido";
-            this.TxtApellido.Size = new System.Drawing.Size(203, 23);
+            this.TxtApellido.Size = new System.Drawing.Size(203, 25);
             this.TxtApellido.TabIndex = 7;
             this.TxtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtApellido_KeyPress);
             // 
             // TxtNombre
             // 
+            this.TxtNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(21, 446);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(203, 23);
+            this.TxtNombre.Size = new System.Drawing.Size(203, 25);
             this.TxtNombre.TabIndex = 8;
             this.TxtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombre_KeyPress);
             // 
             // TxtDireccion
             // 
+            this.TxtDireccion.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDireccion.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtDireccion.Location = new System.Drawing.Point(586, 446);
             this.TxtDireccion.Multiline = true;
             this.TxtDireccion.Name = "TxtDireccion";
@@ -213,36 +222,40 @@ namespace ProyectoDerake.Formularios
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
+            this.LblNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblNombre.Location = new System.Drawing.Point(18, 427);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(56, 16);
+            this.LblNombre.Size = new System.Drawing.Size(57, 16);
             this.LblNombre.TabIndex = 10;
             this.LblNombre.Text = "Nombre";
             // 
             // LblApellido
             // 
             this.LblApellido.AutoSize = true;
+            this.LblApellido.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblApellido.Location = new System.Drawing.Point(18, 492);
             this.LblApellido.Name = "LblApellido";
-            this.LblApellido.Size = new System.Drawing.Size(56, 16);
+            this.LblApellido.Size = new System.Drawing.Size(57, 16);
             this.LblApellido.TabIndex = 11;
             this.LblApellido.Text = "Apellido";
             // 
             // LblTelefono
             // 
             this.LblTelefono.AutoSize = true;
+            this.LblTelefono.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblTelefono.Location = new System.Drawing.Point(311, 426);
             this.LblTelefono.Name = "LblTelefono";
-            this.LblTelefono.Size = new System.Drawing.Size(59, 16);
+            this.LblTelefono.Size = new System.Drawing.Size(60, 16);
             this.LblTelefono.TabIndex = 12;
             this.LblTelefono.Text = "Teléfono";
             // 
             // LblDireccion
             // 
             this.LblDireccion.AutoSize = true;
+            this.LblDireccion.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblDireccion.Location = new System.Drawing.Point(587, 427);
             this.LblDireccion.Name = "LblDireccion";
-            this.LblDireccion.Size = new System.Drawing.Size(61, 16);
+            this.LblDireccion.Size = new System.Drawing.Size(63, 16);
             this.LblDireccion.TabIndex = 13;
             this.LblDireccion.Text = "Dirección";
             // 

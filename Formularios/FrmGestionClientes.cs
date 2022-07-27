@@ -298,5 +298,9 @@ namespace ProyectoDerake.Formularios
             e.Handled = Herramientas.CaracteresTexto(e, true);
         }
 
+        private void TxtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresNumeros(e);
+        }
     }
 }

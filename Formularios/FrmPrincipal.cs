@@ -35,24 +35,16 @@ namespace ProyectoDerake.Formularios
                 case 2:
                     //ocultamos las opciones de menu que no le corresponden al usuario 
                     //normal
-                    MantenimientosToolStripMenuItem1.Visible = true;
-                    UsuariosToolStripMenuItem1.Visible = false;
-                    ProcesosToolStripMenuItem1.Visible = false;
+                    BtnAcercaDe.Visible = true;
+                    BtnUsuarios.Visible = false;
+                    BtnVentas.Visible = false;
 
                     break;
             }
         }
 
-        private void GestiónDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Locales.ObjetosGlobales.MiFormGestionVentas.Visible)
-            {
-                Locales.ObjetosGlobales.MiFormGestionVentas = new FrmVentasGestion();
-                Locales.ObjetosGlobales.MiFormGestionVentas.Show();
-            }
-        }
 
-        private void UsuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BtnUsuarios_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionUsuarios.Visible)
             {
@@ -61,7 +53,7 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-        private void ProductosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BtnProductos_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionProductos.Visible)
             {
@@ -70,7 +62,7 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-        private void ClientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BtnClientes_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionClientes.Visible)
             {
@@ -79,7 +71,7 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-        private void EmpleadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BtnEmpleados_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionEmpleados.Visible)
             {
@@ -87,12 +79,17 @@ namespace ProyectoDerake.Formularios
                 Locales.ObjetosGlobales.MiFormGestionEmpleados.Show();
             }
         }
-        private void SalirDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void BtnVentas_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (!Locales.ObjetosGlobales.MiFormGestionVentas.Visible)
+            {
+                Locales.ObjetosGlobales.MiFormGestionVentas = new FrmVentasGestion();
+                Locales.ObjetosGlobales.MiFormGestionVentas.Show();
+            }
         }
 
-        private void InformaciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BtnAcercaDe_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormInfo.Visible)
             {
@@ -101,5 +98,9 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
