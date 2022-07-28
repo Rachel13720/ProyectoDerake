@@ -32,7 +32,7 @@ namespace ProyectoDerake.Formularios
                     //por el momento no haremos nada ya que el admin tiene acceso 
                     //a todo
                     break;
-                case 2:
+                case int n when (n>2):
                     //ocultamos las opciones de menu que no le corresponden al usuario 
                     //normal
                     BtnAcercaDe.Visible = true;
@@ -102,5 +102,6 @@ namespace ProyectoDerake.Formularios
         {
             Application.Exit();
         }
+
     }
 }

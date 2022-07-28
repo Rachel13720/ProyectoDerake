@@ -21,7 +21,7 @@ namespace ProyectoDerake.Lógica
         public decimal Precio { get; set; }
 
         public string Comentario { get; set; }
-        
+
         //Composición
         public ProductoCategoria MiCategoria { get; set; }
 
@@ -149,7 +149,7 @@ namespace ProyectoDerake.Lógica
                 R.Precio = Convert.ToInt32(MiFila["Precio"]);
                 R.Comentario = Convert.ToString(MiFila["Comentario"]);
                 R.MiCategoria.IDProductoCategoria = Convert.ToInt32(MiFila["IdCategoria"]);
-                
+
             }
             return R;
         }

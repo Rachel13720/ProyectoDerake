@@ -43,7 +43,7 @@ namespace ProyectoDerake.Formularios
             CboxTipoCategoria.DataSource = datos;
 
             CboxTipoCategoria.SelectedIndex = -1;
-            
+
         }
 
         private void FrmGestionProductos_Load(object sender, EventArgs e)
@@ -59,59 +59,60 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos del producto
-            if (ValidarDatosRequeridos())
+            try
             {
-
-                DialogResult Respuesta = MessageBox.Show("¿Esta seguro de agregar el nuevo producto?", "Confirmacion requerida", MessageBoxButtons.YesNo);
-
-                if (Respuesta == DialogResult.Yes)
+                //valida los datos del producto
+                if (ValidarDatosRequeridos())
                 {
 
-                    Producto MiProducto = new Producto();
+                    DialogResult Respuesta = MessageBox.Show("¿Esta seguro de agregar el nuevo producto?", "Confirmacion requerida", MessageBoxButtons.YesNo);
 
-                    MiProducto.Nombre = TxtNombre.Text.Trim();
-                    MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim()); 
-                    MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
-                    MiProducto.Comentario = TxtComentario.Text.Trim();
-                    MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
-
-                    bool NombreExiste = MiProducto.ConsultarPorNombre();
-
-                    if (!NombreExiste)
+                    if (Respuesta == DialogResult.Yes)
                     {
-                        //se agrega el producto 
-                        if (MiProducto.Agregar())
-                        {
-                            MessageBox.Show("Producto agregado correctamente", ":)", MessageBoxButtons.OK);
 
-                            LimpiarFormulario();
-                            LlenarListaProductos();
-                            ActivarBotonAgregar();
+                        Producto MiProducto = new Producto();
+
+                        MiProducto.Nombre = TxtNombre.Text.Trim();
+                        MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim());
+                        MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
+                        MiProducto.Comentario = TxtComentario.Text.Trim();
+                        MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
+
+                        bool NombreExiste = MiProducto.ConsultarPorNombre();
+
+                        if (!NombreExiste)
+                        {
+                            //se agrega el producto 
+                            if (MiProducto.Agregar())
+                            {
+                                MessageBox.Show("Producto agregado correctamente", ":)", MessageBoxButtons.OK);
+
+                                LimpiarFormulario();
+                                LlenarListaProductos();
+                                ActivarBotonAgregar();
+
+                            }
+
+                        }
+                        else
+                        {
+                            //valida que los datos ya existen
+                            if (NombreExiste)
+                            {
+                                MessageBox.Show("El nombre ya esta en uso", ":(", MessageBoxButtons.OK);
+                                TxtNombre.Focus();
+                                TxtNombre.SelectAll();
+
+                            }
 
                         }
 
                     }
-                    else
-                    {
-                        //valida que los datos ya existen
-                        if (NombreExiste)
-                        {
-                            MessageBox.Show("El nombre ya esta en uso", ":(", MessageBoxButtons.OK);
-                            TxtNombre.Focus();
-                            TxtNombre.SelectAll();
-
-                        }
-
-                    }
-
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -119,25 +120,27 @@ namespace ProyectoDerake.Formularios
         //valida los datos
         private bool ValidarDatosRequeridos()
         {
-             
+
             bool R = false;
-            try { 
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtComentario.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtPrecio.Text.Trim()) &&
-                 CboxTipoCategoria.SelectedIndex > -1)
+            try
             {
+                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtComentario.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtPrecio.Text.Trim()) &&
+                     CboxTipoCategoria.SelectedIndex > -1)
+                {
 
-                R = true;
+                    R = true;
 
+                }
             }
-                return R;
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return R;
         }
 
 
@@ -185,52 +188,54 @@ namespace ProyectoDerake.Formularios
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos existentes y los modifica
-            if (ValidarDatosRequeridos())
+            try
             {
-                Producto MiProducto = new Producto();
-
-
-                DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
-
-                MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
-
-                MiProducto.Nombre = TxtNombre.Text.Trim();
-                MiProducto.Cantidad = Convert.ToInt32(MiFila.Cells["Cantidad"].Value);
-                MiProducto.Precio = Convert.ToInt32(MiFila.Cells["Precio"].Value);
-                MiProducto.Comentario = TxtComentario.Text.Trim();
-                MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
-
-                if (MiProducto.ConsultarPorID())
+                //valida los datos existentes y los modifica
+                if (ValidarDatosRequeridos())
                 {
-                    //se editan los datos
-                    if (MiProducto.Editar())
+                    Producto MiProducto = new Producto();
+
+
+                    DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
+
+                    MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
+
+                    MiProducto.Nombre = TxtNombre.Text.Trim();
+                    MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim());
+                    MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
+                    MiProducto.Comentario = TxtComentario.Text.Trim();
+                    MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
+
+                    if (MiProducto.ConsultarPorID())
                     {
-                        MessageBox.Show("Producto modificado correctamente", ":)", MessageBoxButtons.OK);
-                        LimpiarFormulario();
-                        ActivarBotonAgregar();
-                        LlenarListaProductos();
+                        //se editan los datos
+                        if (MiProducto.Editar())
+                        {
+                            MessageBox.Show("Producto modificado correctamente", ":)", MessageBoxButtons.OK);
+                            LimpiarFormulario();
+                            ActivarBotonAgregar();
+                            LlenarListaProductos();
+                        }
                     }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            
-                Producto MiProducto = new Producto();
 
-                DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
+            Producto MiProducto = new Producto();
 
-                MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
+            DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
 
-            try { 
+            MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
+
+            try
+            {
                 if (MiProducto.ConsultarPorID())
                 {
                     //desactiva los datos 
@@ -243,9 +248,9 @@ namespace ProyectoDerake.Formularios
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -263,33 +268,34 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try { 
-            if (DgvListaProductos.SelectedRows.Count == 1)
+            try
             {
-
-                DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
-
-
-                TxtCodigo.Text = Convert.ToString(MiFila.Cells["IDProducto"].Value);
-                TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
-                TxtComentario.Text = Convert.ToString(MiFila.Cells["Comentario"].Value);
-                TxtCantidad.Text = Convert.ToString(MiFila.Cells["Cantidad"].Value);
-                TxtPrecio.Text = Convert.ToString(MiFila.Cells["Precio"].Value);
-
-                foreach (DataRowView data in CboxTipoCategoria.Items)
+                if (DgvListaProductos.SelectedRows.Count == 1)
                 {
-                    if (data.Row[1].ToString().Equals(MiFila.Cells["Categoria"].Value))
-                    {
-                        CboxTipoCategoria.SelectedValue = data.Row[0];
-                    }
-                }
 
-                ActivarModificarYEliminar();
+                    DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
+
+
+                    TxtCodigo.Text = Convert.ToString(MiFila.Cells["IDProducto"].Value);
+                    TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
+                    TxtComentario.Text = Convert.ToString(MiFila.Cells["Comentario"].Value);
+                    TxtCantidad.Text = Convert.ToString(MiFila.Cells["Cantidad"].Value);
+                    TxtPrecio.Text = Convert.ToString(MiFila.Cells["Precio"].Value);
+
+                    foreach (DataRowView data in CboxTipoCategoria.Items)
+                    {
+                        if (data.Row[1].ToString().Equals(MiFila.Cells["Categoria"].Value))
+                        {
+                            CboxTipoCategoria.SelectedValue = data.Row[0];
+                        }
+                    }
+
+                    ActivarModificarYEliminar();
+                }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -306,12 +312,13 @@ namespace ProyectoDerake.Formularios
 
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
 
         private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
+
     }
 }

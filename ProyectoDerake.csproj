@@ -53,12 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\FrmCambioCantidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FrmCambioCantidad.Designer.cs">
-      <DependentUpon>FrmCambioCantidad.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\FrmGestionClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +134,6 @@
       <DependentUpon>ReporteVenta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Formularios\FrmCambioCantidad.resx">
-      <DependentUpon>FrmCambioCantidad.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmGestionClientes.resx">
       <DependentUpon>FrmGestionClientes.cs</DependentUpon>
     </EmbeddedResource>

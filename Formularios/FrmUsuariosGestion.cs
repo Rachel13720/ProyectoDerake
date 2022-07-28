@@ -48,28 +48,29 @@ namespace ProyectoDerake.Formularios
 
         private void LlenarListaUsuarios()
         {
-            
+
             //se llama la clase usuario para manipular los datos
             Usuario MiUsuario = new Usuario();
-            try { 
-            //valida los datos de la busqueda
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                 CbTipoRol.SelectedIndex > -1)
+            try
             {
-                //Si hay datos de busqueda
-                DgvListaUsuarios.DataSource = ListaUsuariosNormal;
+                //valida los datos de la busqueda
+                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+                     CbTipoRol.SelectedIndex > -1)
+                {
+                    //Si hay datos de busqueda
+                    DgvListaUsuarios.DataSource = ListaUsuariosNormal;
 
-            }
-            else
-            {
-                //listado normal
-                ListaUsuariosNormal = MiUsuario.ListarTodos();
-                DgvListaUsuarios.DataSource = ListaUsuariosNormal;
+                }
+                else
+                {
+                    //listado normal
+                    ListaUsuariosNormal = MiUsuario.ListarTodos();
+                    DgvListaUsuarios.DataSource = ListaUsuariosNormal;
 
-            }
+                }
 
-            //X
-            DgvListaUsuarios.ClearSelection();
+                //X
+                DgvListaUsuarios.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -81,7 +82,7 @@ namespace ProyectoDerake.Formularios
         //Carga los datos del Combobox
         private void CargaDatosComboTipoRol()
         {
-            
+
             UsuarioRol MiUsuarioRol = new UsuarioRol();
 
             DataTable datos = new DataTable();
@@ -95,7 +96,7 @@ namespace ProyectoDerake.Formularios
             CbTipoRol.DataSource = datos;
 
             CbTipoRol.SelectedIndex = -1;
-            
+
         }
 
 
@@ -118,48 +119,49 @@ namespace ProyectoDerake.Formularios
         //valida los datos
         private bool ValidarDatosRequeridos()
         {
-             
-            bool R = false;
-            try { 
-            if (!string.IsNullOrEmpty(TxtCedula.Text.Trim()) && 
-                !string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtEmail.Text.Trim()) &&
-                 CbTipoRol.SelectedIndex > -1)
-            {
-                if (BtnEditar.Enabled)
-                {
-                    R = true;
-                }
-                else
-                {
-                    if (!string.IsNullOrEmpty(TxtPassword1.Text.Trim()))
-                    {
-                        R = true;
-                    }
-                }
 
-                //Se utiliza la herramienta para validar el email
-                if (Herramientas.ValidarEmail(TxtEmail.Text.Trim()))
+            bool R = false;
+            try
+            {
+                if (!string.IsNullOrEmpty(TxtCedula.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtEmail.Text.Trim()) &&
+                     CbTipoRol.SelectedIndex > -1)
                 {
-                    //Se utiliza la herramienta para validar la contraseña
-                    if (Herramientas.ValidarPass(TxtPassword1.Text.Trim()))
+                    if (BtnEditar.Enabled)
                     {
                         R = true;
                     }
                     else
                     {
-                        MessageBox.Show("Contraseña inválida", "Aviso del Sistema", MessageBoxButtons.OK);
+                        if (!string.IsNullOrEmpty(TxtPassword1.Text.Trim()))
+                        {
+                            R = true;
+                        }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Email invalido", "Aviso del Sistema", MessageBoxButtons.OK);
+
+                    //Se utiliza la herramienta para validar el email
+                    if (Herramientas.ValidarEmail(TxtEmail.Text.Trim()))
+                    {
+                        //Se utiliza la herramienta para validar la contraseña
+                        if (Herramientas.ValidarPass(TxtPassword1.Text.Trim()))
+                        {
+                            R = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Contraseña inválida", "Aviso del Sistema", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email invalido", "Aviso del Sistema", MessageBoxButtons.OK);
+                    }
+
+                    return R;
                 }
 
                 return R;
-            }
-
-            return R;
             }
             catch (Exception ex)
             {
@@ -170,66 +172,67 @@ namespace ProyectoDerake.Formularios
         //boton que agrega
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos y que todos los campos esten llenos
-            if (ValidarDatosRequeridos())
+            try
             {
-                DialogResult RespuestaUsuario = MessageBox.Show("¿Esta seguro de agregar el nuevo usuario?", "Confirmacion requerida", MessageBoxButtons.YesNo);
-
-                if (RespuestaUsuario == DialogResult.Yes)
+                //valida los datos y que todos los campos esten llenos
+                if (ValidarDatosRequeridos())
                 {
+                    DialogResult RespuestaUsuario = MessageBox.Show("¿Esta seguro de agregar el nuevo usuario?", "Confirmacion requerida", MessageBoxButtons.YesNo);
 
-                    Usuario Miusuario = new Usuario();
-
-                    Miusuario.Cedula = TxtCedula.Text.Trim();
-                    Miusuario.Nombre = TxtNombre.Text.Trim();
-
-                    Miusuario.Email = TxtEmail.Text.Trim();
-
-                    Miusuario.Contrasennia = TxtPassword1.Text.Trim();
-                    Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
-
-                    bool CedulaExiste = Miusuario.ConsultarPorCedula();
-
-                    bool EmailExiste = Miusuario.ConsultarPorEmail();
-
-                    if (!CedulaExiste && !EmailExiste)
+                    if (RespuestaUsuario == DialogResult.Yes)
                     {
-                        //se agrega el usuario
-                        if (Miusuario.Agregar())
-                        {
-                            MessageBox.Show("Usuario agregado correctamente", ":)", MessageBoxButtons.OK);
 
-                            LimpiarFormulario();
-                            LlenarListaUsuarios();
-                            ActivarBotonAgregar();
+                        Usuario Miusuario = new Usuario();
+
+                        Miusuario.Cedula = TxtCedula.Text.Trim();
+                        Miusuario.Nombre = TxtNombre.Text.Trim();
+
+                        Miusuario.Email = TxtEmail.Text.Trim();
+
+                        Miusuario.Contrasennia = TxtPassword1.Text.Trim();
+                        Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
+
+                        bool CedulaExiste = Miusuario.ConsultarPorCedula();
+
+                        bool EmailExiste = Miusuario.ConsultarPorEmail();
+
+                        if (!CedulaExiste && !EmailExiste)
+                        {
+                            //se agrega el usuario
+                            if (Miusuario.Agregar())
+                            {
+                                MessageBox.Show("Usuario agregado correctamente", ":)", MessageBoxButtons.OK);
+
+                                LimpiarFormulario();
+                                LlenarListaUsuarios();
+                                ActivarBotonAgregar();
+
+                            }
+
 
                         }
-
-
-                    }
-                    else //valida que los datos ya existen
-                    {
-                        if (CedulaExiste)
+                        else //valida que los datos ya existen
                         {
-                            MessageBox.Show("La Cedula ya esta siendo usada", ":(", MessageBoxButtons.OK);
-                            TxtCedula.Focus();
-                            TxtCedula.SelectAll();
+                            if (CedulaExiste)
+                            {
+                                MessageBox.Show("La Cedula ya esta siendo usada", ":(", MessageBoxButtons.OK);
+                                TxtCedula.Focus();
+                                TxtCedula.SelectAll();
 
-                        }
-                        else if (EmailExiste)
-                        {
-                            MessageBox.Show("El Email ya esta siendo usada", ":(", MessageBoxButtons.OK);
-                            TxtEmail.Focus();
-                            TxtEmail.SelectAll();
+                            }
+                            else if (EmailExiste)
+                            {
+                                MessageBox.Show("El Email ya esta siendo usada", ":(", MessageBoxButtons.OK);
+                                TxtEmail.Focus();
+                                TxtEmail.SelectAll();
+
+                            }
 
                         }
 
                     }
 
                 }
-
-            }
             }
             catch (Exception ex)
             {
@@ -265,33 +268,34 @@ namespace ProyectoDerake.Formularios
 
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
 
         private void DgvListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try { 
-            //valida que la fila esta seleccionada
-            if (DgvListaUsuarios.SelectedRows.Count == 1)
+            try
             {
-
-                DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
-
-                TxtID.Text = Convert.ToString(MiFila.Cells["ColIDUsuario"].Value);
-                TxtNombre.Text = Convert.ToString(MiFila.Cells["ColNombre"].Value);
-                TxtCedula.Text = Convert.ToString(MiFila.Cells["Cedula"].Value);
-                TxtEmail.Text = Convert.ToString(MiFila.Cells["Email"].Value);
-
-                foreach (DataRowView data in CbTipoRol.Items)
+                //valida que la fila esta seleccionada
+                if (DgvListaUsuarios.SelectedRows.Count == 1)
                 {
-                    if (data.Row[1].ToString().Equals(MiFila.Cells["Rol"].Value))
-                    {
-                        CbTipoRol.SelectedValue = data.Row[0];
-                    }
-                }
 
-                ActivarEditarYEliminar();
-            }
+                    DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
+
+                    TxtID.Text = Convert.ToString(MiFila.Cells["ColIDUsuario"].Value);
+                    TxtNombre.Text = Convert.ToString(MiFila.Cells["ColNombre"].Value);
+                    TxtCedula.Text = Convert.ToString(MiFila.Cells["Cedula"].Value);
+                    TxtEmail.Text = Convert.ToString(MiFila.Cells["Email"].Value);
+
+                    foreach (DataRowView data in CbTipoRol.Items)
+                    {
+                        if (data.Row[1].ToString().Equals(MiFila.Cells["Rol"].Value))
+                        {
+                            CbTipoRol.SelectedValue = data.Row[0];
+                        }
+                    }
+
+                    ActivarEditarYEliminar();
+                }
             }
             catch (Exception ex)
             {
@@ -300,72 +304,76 @@ namespace ProyectoDerake.Formularios
 
         }
 
-    //boton que edita los datos
-    private void BtnEditar_Click(object sender, EventArgs e)
+        //boton que edita los datos
+        private void BtnEditar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos
-            if (ValidarDatosRequeridos())
+            try
             {
-                Usuario Miusuario = new Usuario();
-
-                Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
-
-                Miusuario.Cedula = TxtCedula.Text.Trim();
-                Miusuario.Nombre = TxtNombre.Text.Trim();
-                Miusuario.Email = TxtEmail.Text.Trim();
-
-                Miusuario.Contrasennia = "";
-
-                //valida el cambio de la contraseña 
-                if (FlagCambiarContrasennia)
+                //valida los datos
+                if (ValidarDatosRequeridos())
                 {
-                    Miusuario.Contrasennia = TxtPassword1.Text.Trim();
-                }
+                    Usuario Miusuario = new Usuario();
 
-                Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
+                    Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
 
-                if (Miusuario.ConsultarPorID())
-                {
-                    //Edita los datos
-                    if (Miusuario.Editar())
+                    Miusuario.Cedula = TxtCedula.Text.Trim();
+                    Miusuario.Nombre = TxtNombre.Text.Trim();
+                    Miusuario.Email = TxtEmail.Text.Trim();
+
+                    Miusuario.Contrasennia = "";
+
+                    //valida el cambio de la contraseña 
+                    if (FlagCambiarContrasennia)
                     {
-                        MessageBox.Show("Usuario modificado correctamente", ":)", MessageBoxButtons.OK);
-                        LimpiarFormulario();
-                        LlenarListaUsuarios();
-                        ActivarBotonAgregar();
+                        Miusuario.Contrasennia = TxtPassword1.Text.Trim();
+                    }
+
+                    Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
+
+                    if (Miusuario.ConsultarPorID())
+                    {
+                        //Edita los datos
+                        if (Miusuario.Editar())
+                        {
+                            MessageBox.Show("Usuario modificado correctamente", ":)", MessageBoxButtons.OK);
+                            LimpiarFormulario();
+                            LlenarListaUsuarios();
+                            ActivarBotonAgregar();
+                        }
                     }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         //boton que elimina los datos
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-             
-            Usuario Miusuario = new Usuario();
 
-            Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
-            try { 
-            if (Miusuario.ConsultarPorID())
+            try
             {
-                //desactiva los datos
-                if (Miusuario.Desactivar())
+
+                Usuario Miusuario = new Usuario();
+
+                Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
+
+                if (Miusuario.ConsultarPorID())
                 {
+                    //desactiva los datos
+                    if (Miusuario.Desactivar())
+                    {
                         MessageBox.Show("Usuario eliminado correctamente", ":)", MessageBoxButtons.OK);
                         LimpiarFormulario();
                         ActivarBotonAgregar();
+                    }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

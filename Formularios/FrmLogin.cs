@@ -19,43 +19,44 @@ namespace ProyectoDerake.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida el usuario y su contraseña
-            if (!string.IsNullOrEmpty(TxtUsuario.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
+            try
             {
-                string u = TxtUsuario.Text.Trim();
-                string p = TxtContrasennia.Text.Trim();
-
-                Lógica.Usuario MiUsuario = new Lógica.Usuario();
-
-                int IdUsuarioValidado = MiUsuario.ValidarLogin(u, p);
-
-                //si los datos del usuario son correctos ingresa al formulario principal
-                if (IdUsuarioValidado > 0)
+                //valida el usuario y su contraseña
+                if (!string.IsNullOrEmpty(TxtUsuario.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
                 {
-                    Locales.ObjetosGlobales.MiUsuarioGlobal = MiUsuario.Consultar(IdUsuarioValidado);
+                    string u = TxtUsuario.Text.Trim();
+                    string p = TxtContrasennia.Text.Trim();
 
-                    Locales.ObjetosGlobales.MiFormPrincipal.Show();
-                    this.Hide();
+                    Lógica.Usuario MiUsuario = new Lógica.Usuario();
+
+                    int IdUsuarioValidado = MiUsuario.ValidarLogin(u, p);
+
+                    //si los datos del usuario son correctos ingresa al formulario principal
+                    if (IdUsuarioValidado > 0)
+                    {
+                        Locales.ObjetosGlobales.MiUsuarioGlobal = MiUsuario.Consultar(IdUsuarioValidado);
+
+                        Locales.ObjetosGlobales.MiFormPrincipal.Show();
+                        this.Hide();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario o contraseña son incorrectos", ":(", MessageBoxButtons.OK);
+                        TxtContrasennia.Focus();
+                        TxtContrasennia.SelectAll();
+                    }
 
                 }
-                else
-                {
-                    MessageBox.Show("Usuario o contraseña son incorrectos", ":(", MessageBoxButtons.OK);
-                    TxtContrasennia.Focus();
-                    TxtContrasennia.SelectAll();
-                }
-
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-    private void BtnVer_MouseUp(object sender, MouseEventArgs e)
+        private void BtnVer_MouseUp(object sender, MouseEventArgs e)
         {
             TxtContrasennia.UseSystemPasswordChar = true;
         }
@@ -75,6 +76,14 @@ namespace ProyectoDerake.Formularios
             e.Handled = Herramientas.CaracteresTexto(e, true);
         }
 
+        private void TxtContrasennia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TxtContrasennia.UseSystemPasswordChar = true;
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
-    
 }

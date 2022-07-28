@@ -129,21 +129,6 @@
   <metadata name="CPrecioVenta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="CIDProducto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CNombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CCantidadVendida.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CPrecioVenta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TstpVentas.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="TstpVentas.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -160,20 +145,6 @@
         a8bnKnSSVpzFKL76th4iHbvj6yH88O3L0LHriM0A1ClTupASRKYC6nQPuqJ0VaEIsTkDDXAfUSdIQvfo
         wDxEeMrp0lb9b46jEfpDLxqwhacIX+1tqE8nbkC7qQWJUgP9uRb6VuiLpw0QTrDbyqG11xexC4mil5te
         fOv4jH84h3D0JtUW1d5X39+oROKUoQ/PEfcp1ROsmT2DZp2vGLMHj5SvigBPNFUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="BtnModificarItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        pgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHOSURBVEhLrZY/
-        KIVRGMbvzR1YWBTpck0Wg00iZWRjYCMlZZBFGZQyGJVNBoMB6TIZWM1SMvtbBjIwMZA+z3M8h/Od+6dz
-        5K3f7Zz3fd7nvfe73z3fzSRJYkA0gW3wAJgI5R2cg3Hr5WLN68Ed4OZD61CegB02X2nAkgTHoMUXVQOR
-        BcPgE7yB2lRdokPARb9bjAFxJI+eVF7FExXb3WIMiA15DKbyKqYGILrAZABjoE49UQNi7qRZ9UQNGALL
-        ASyARvWED/gLiKhPMA22AlgHBfWsAi56rbnJq+gPuNc+hBn18CQYBVlrbvIq+gMoHgigG6QMfb5f/uE7
-        IAi+sYZUTgX/E/D6ljt3rsGUayB9HuwBHnyvYBPkTE0Cf4Dd+/C8WbTG0tL8EnBzAfgmuB4xdc8w6hIh
-        XHOyAvq03jEaCaMHIFxznsLPWtvchNFJHDUA4ZrvgxzgHcVLyNwtMMe2bQgegGgGvnkNKCpHc/PjM3o1
-        xQxYk/YAWHPeQczdgLaUXk3BDxyEvUsKgOa72jPfWqJXU9AjE9Ep3SNgz5n2V6DE3PSYl+oP/eKP+Pt4
-        5sKF/yjyVuPzu6j8t+UUmPMGwYf7C+Dzdw502P7yJJkvbqLKdbj+pmoAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="BtnEliminarItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

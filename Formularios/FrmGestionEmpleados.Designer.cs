@@ -50,7 +50,11 @@ namespace ProyectoDerake.Formularios
             this.LblMonto = new System.Windows.Forms.Label();
             this.TxtSalario = new System.Windows.Forms.TextBox();
             this.LblSalario = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Lbl3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvListaEmpleados
@@ -65,11 +69,11 @@ namespace ProyectoDerake.Formularios
             this.Apellido,
             this.HorasTrabajadas,
             this.Salario});
-            this.DgvListaEmpleados.Location = new System.Drawing.Point(18, 12);
+            this.DgvListaEmpleados.Location = new System.Drawing.Point(15, 349);
             this.DgvListaEmpleados.Name = "DgvListaEmpleados";
             this.DgvListaEmpleados.ReadOnly = true;
             this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaEmpleados.Size = new System.Drawing.Size(716, 372);
+            this.DgvListaEmpleados.Size = new System.Drawing.Size(737, 372);
             this.DgvListaEmpleados.TabIndex = 0;
             this.DgvListaEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaEmpleados_CellClick);
             // 
@@ -123,7 +127,7 @@ namespace ProyectoDerake.Formularios
             this.BtnAgregar.BackColor = System.Drawing.Color.SeaGreen;
             this.BtnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnAgregar.Location = new System.Drawing.Point(769, 60);
+            this.BtnAgregar.Location = new System.Drawing.Point(25, 311);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(139, 35);
             this.BtnAgregar.TabIndex = 1;
@@ -136,7 +140,7 @@ namespace ProyectoDerake.Formularios
             this.BtnModificar.BackColor = System.Drawing.Color.Orange;
             this.BtnModificar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnModificar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnModificar.Location = new System.Drawing.Point(769, 116);
+            this.BtnModificar.Location = new System.Drawing.Point(170, 311);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(139, 35);
             this.BtnModificar.TabIndex = 2;
@@ -149,7 +153,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEliminar.BackColor = System.Drawing.Color.Brown;
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnEliminar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnEliminar.Location = new System.Drawing.Point(769, 173);
+            this.BtnEliminar.Location = new System.Drawing.Point(315, 311);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(139, 35);
             this.BtnEliminar.TabIndex = 3;
@@ -162,7 +166,7 @@ namespace ProyectoDerake.Formularios
             this.BtnLimpiar.BackColor = System.Drawing.Color.SaddleBrown;
             this.BtnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnLimpiar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnLimpiar.Location = new System.Drawing.Point(769, 227);
+            this.BtnLimpiar.Location = new System.Drawing.Point(460, 311);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(139, 35);
             this.BtnLimpiar.TabIndex = 4;
@@ -175,7 +179,7 @@ namespace ProyectoDerake.Formularios
             this.BtnSalir.BackColor = System.Drawing.Color.DodgerBlue;
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
             this.BtnSalir.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnSalir.Location = new System.Drawing.Point(769, 282);
+            this.BtnSalir.Location = new System.Drawing.Point(605, 311);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(139, 35);
             this.BtnSalir.TabIndex = 5;
@@ -187,7 +191,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.TxtNombre.BackColor = System.Drawing.SystemColors.Control;
             this.TxtNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            this.TxtNombre.Location = new System.Drawing.Point(12, 443);
+            this.TxtNombre.Location = new System.Drawing.Point(7, 71);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(203, 25);
             this.TxtNombre.TabIndex = 6;
@@ -197,7 +201,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.TxtApellido.BackColor = System.Drawing.SystemColors.Control;
             this.TxtApellido.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            this.TxtApellido.Location = new System.Drawing.Point(12, 506);
+            this.TxtApellido.Location = new System.Drawing.Point(7, 134);
             this.TxtApellido.Name = "TxtApellido";
             this.TxtApellido.Size = new System.Drawing.Size(203, 25);
             this.TxtApellido.TabIndex = 7;
@@ -207,7 +211,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.TxtHoras.BackColor = System.Drawing.SystemColors.Control;
             this.TxtHoras.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            this.TxtHoras.Location = new System.Drawing.Point(271, 443);
+            this.TxtHoras.Location = new System.Drawing.Point(266, 71);
             this.TxtHoras.Name = "TxtHoras";
             this.TxtHoras.Size = new System.Drawing.Size(203, 25);
             this.TxtHoras.TabIndex = 13;
@@ -218,7 +222,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblNombre.AutoSize = true;
             this.LblNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNombre.Location = new System.Drawing.Point(12, 427);
+            this.LblNombre.Location = new System.Drawing.Point(7, 55);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(57, 16);
             this.LblNombre.TabIndex = 11;
@@ -228,7 +232,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblApellido.AutoSize = true;
             this.LblApellido.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblApellido.Location = new System.Drawing.Point(12, 490);
+            this.LblApellido.Location = new System.Drawing.Point(7, 118);
             this.LblApellido.Name = "LblApellido";
             this.LblApellido.Size = new System.Drawing.Size(57, 16);
             this.LblApellido.TabIndex = 12;
@@ -238,7 +242,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblHoras.AutoSize = true;
             this.LblHoras.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblHoras.Location = new System.Drawing.Point(268, 424);
+            this.LblHoras.Location = new System.Drawing.Point(263, 52);
             this.LblHoras.Name = "LblHoras";
             this.LblHoras.Size = new System.Drawing.Size(111, 16);
             this.LblHoras.TabIndex = 14;
@@ -248,7 +252,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.TxtPago.BackColor = System.Drawing.SystemColors.Control;
             this.TxtPago.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            this.TxtPago.Location = new System.Drawing.Point(271, 509);
+            this.TxtPago.Location = new System.Drawing.Point(266, 137);
             this.TxtPago.Name = "TxtPago";
             this.TxtPago.Size = new System.Drawing.Size(203, 25);
             this.TxtPago.TabIndex = 16;
@@ -259,7 +263,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblMonto.AutoSize = true;
             this.LblMonto.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblMonto.Location = new System.Drawing.Point(268, 493);
+            this.LblMonto.Location = new System.Drawing.Point(263, 121);
             this.LblMonto.Name = "LblMonto";
             this.LblMonto.Size = new System.Drawing.Size(100, 16);
             this.LblMonto.TabIndex = 17;
@@ -269,7 +273,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.TxtSalario.BackColor = System.Drawing.SystemColors.Control;
             this.TxtSalario.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
-            this.TxtSalario.Location = new System.Drawing.Point(531, 509);
+            this.TxtSalario.Location = new System.Drawing.Point(526, 137);
             this.TxtSalario.Name = "TxtSalario";
             this.TxtSalario.Size = new System.Drawing.Size(203, 25);
             this.TxtSalario.TabIndex = 18;
@@ -278,38 +282,62 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblSalario.AutoSize = true;
             this.LblSalario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblSalario.Location = new System.Drawing.Point(528, 493);
+            this.LblSalario.Location = new System.Drawing.Point(523, 121);
             this.LblSalario.Name = "LblSalario";
             this.LblSalario.Size = new System.Drawing.Size(48, 16);
             this.LblSalario.TabIndex = 19;
             this.LblSalario.Text = "Salario";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.TxtHoras);
+            this.groupBox1.Controls.Add(this.LblSalario);
+            this.groupBox1.Controls.Add(this.TxtNombre);
+            this.groupBox1.Controls.Add(this.TxtSalario);
+            this.groupBox1.Controls.Add(this.TxtApellido);
+            this.groupBox1.Controls.Add(this.LblMonto);
+            this.groupBox1.Controls.Add(this.LblNombre);
+            this.groupBox1.Controls.Add(this.TxtPago);
+            this.groupBox1.Controls.Add(this.LblApellido);
+            this.groupBox1.Controls.Add(this.LblHoras);
+            this.groupBox1.Location = new System.Drawing.Point(15, 80);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(737, 214);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            // 
+            // Lbl3
+            // 
+            this.Lbl3.AutoSize = true;
+            this.Lbl3.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl3.Location = new System.Drawing.Point(208, 40);
+            this.Lbl3.Name = "Lbl3";
+            this.Lbl3.Size = new System.Drawing.Size(391, 24);
+            this.Lbl3.TabIndex = 21;
+            this.Lbl3.Text = "CONTROL DE REGISTRO DE EMPLEADOS";
             // 
             // FrmGestionEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(928, 569);
-            this.Controls.Add(this.LblSalario);
-            this.Controls.Add(this.TxtSalario);
-            this.Controls.Add(this.LblMonto);
-            this.Controls.Add(this.TxtPago);
-            this.Controls.Add(this.LblHoras);
-            this.Controls.Add(this.LblApellido);
-            this.Controls.Add(this.LblNombre);
-            this.Controls.Add(this.TxtHoras);
-            this.Controls.Add(this.TxtApellido);
-            this.Controls.Add(this.TxtNombre);
+            this.ClientSize = new System.Drawing.Size(773, 739);
+            this.Controls.Add(this.Lbl3);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.DgvListaEmpleados);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmGestionEmpleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Empleados";
             this.Load += new System.EventHandler(this.FrmGestionEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,5 +366,8 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn HorasTrabajadas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salario;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label Lbl3;
     }
 }

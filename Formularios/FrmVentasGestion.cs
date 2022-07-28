@@ -31,11 +31,12 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregarItem_Click(object sender, EventArgs e)
         {
-            
-                Form FormBuscarItem = new FrmGestionVentaDetalle();
 
-                DialogResult Resp = FormBuscarItem.ShowDialog();
-            try { 
+            Form FormBuscarItem = new FrmGestionVentaDetalle();
+
+            DialogResult Resp = FormBuscarItem.ShowDialog();
+            try
+            {
                 if (Resp == DialogResult.OK)
                 {
                     DgvListaVentas.DataSource = DtListaProductos;
@@ -44,9 +45,9 @@ namespace ProyectoDerake.Formularios
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -55,70 +56,72 @@ namespace ProyectoDerake.Formularios
         private decimal Totalizar()
         {
             decimal R = 0;
-            try { 
-            if (DtListaProductos.Rows.Count > 0)
+            try
             {
-                //valida que existan datos en la lista
-                foreach (DataRow item in DtListaProductos.Rows)
+                if (DtListaProductos.Rows.Count > 0)
                 {
-                    R += Convert.ToDecimal(item["CantidadVendida"]) * Convert.ToDecimal(item["PrecioVenta"]);
+                    //valida que existan datos en la lista
+                    foreach (DataRow item in DtListaProductos.Rows)
+                    {
+                        R += Convert.ToDecimal(item["CantidadVendida"]) * Convert.ToDecimal(item["PrecioVenta"]);
+
+                    }
 
                 }
 
             }
-
-            return R;
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return R;
 
         }
 
         private void BtnCrearVenta_Click(object sender, EventArgs e)
         {
-            try { 
-            //Valida los datos de la venta
-            if (ValidarVenta())
+            try
             {
-                MiVenta.Fecha = DtpFecha.Value.Date;
-                MiVenta.MiCliente.IDCliente = Convert.ToInt32(CboxCliente.SelectedValue);
-                MiVenta.MiEmpleado.IDEmpleado = Convert.ToInt32(CboxEmpleado.SelectedValue);
-                MiVenta.MiUsuario.IDUsuario = Locales.ObjetosGlobales.MiUsuarioGlobal.IDUsuario;
-
-                MiVenta.NumeroFactura = Convert.ToInt32(TxtNumeroFactura.Text.Trim());
-                MiVenta.Comentario = TxtComentario.Text.Trim();
-
-                LlenarDetallesDeVenta();
-
-
-                //Agrega la venta y permite que se imprima el reporte
-                if (MiVenta.Agregar())
+                //Valida los datos de la venta
+                if (ValidarVenta())
                 {
-                    MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
+                    MiVenta.Fecha = DtpFecha.Value.Date;
+                    MiVenta.MiCliente.IDCliente = Convert.ToInt32(CboxCliente.SelectedValue);
+                    MiVenta.MiEmpleado.IDEmpleado = Convert.ToInt32(CboxEmpleado.SelectedValue);
+                    MiVenta.MiUsuario.IDUsuario = Locales.ObjetosGlobales.MiUsuarioGlobal.IDUsuario;
 
-                    ReportDocument MiReporteVenta = new ReportDocument();
+                    MiVenta.NumeroFactura = Convert.ToInt32(TxtNumeroFactura.Text.Trim());
+                    MiVenta.Comentario = TxtComentario.Text.Trim();
 
-                    MiReporteVenta = new Reportes.ReporteVenta();
+                    LlenarDetallesDeVenta();
 
-                    MiReporteVenta = MiVenta.Imprimir(MiReporteVenta);
 
-                    FrmVisualizadorReportes MiFormReport = new FrmVisualizadorReportes();
+                    //Agrega la venta y permite que se imprima el reporte
+                    if (MiVenta.Agregar())
+                    {
+                        MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
 
-                    MiFormReport.CrvVisualizador.ReportSource = MiReporteVenta;
-                    MiFormReport.Show();
+                        ReportDocument MiReporteVenta = new ReportDocument();
 
-                    //Se visualiza el reporte
-                    MiFormReport.CrvVisualizador.Zoom(1);
+                        MiReporteVenta = new Reportes.ReporteVenta();
 
-                    Limpiar();
+                        MiReporteVenta = MiVenta.Imprimir(MiReporteVenta);
+
+                        FrmVisualizadorReportes MiFormReport = new FrmVisualizadorReportes();
+
+                        MiFormReport.CrvVisualizador.ReportSource = MiReporteVenta;
+                        MiFormReport.Show();
+
+                        //Se visualiza el reporte
+                        MiFormReport.CrvVisualizador.Zoom(1);
+
+                        Limpiar();
+                    }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -126,63 +129,65 @@ namespace ProyectoDerake.Formularios
         //valida los datos, para realizar la venta
         private bool ValidarVenta()
         {
-            
+
             bool R = false;
-            try { 
-            if (DtpFecha.Value.Date <= DateTime.Now.Date && 
-                CboxCliente.SelectedIndex > -1 && 
-                CboxEmpleado.SelectedIndex > -1 &&
-                !string.IsNullOrEmpty(TxtNumeroFactura.Text.Trim()) &&
-                DtListaProductos.Rows.Count > 0)
+            try
             {
-                R = true;
-
-            }
-            else
-            { //valida que la fecha no sea mayor a la actual
-                if (DtpFecha.Value.Date > DateTime.Now.Date)
+                if (DtpFecha.Value.Date <= DateTime.Now.Date &&
+                    CboxCliente.SelectedIndex > -1 &&
+                    CboxEmpleado.SelectedIndex > -1 &&
+                    !string.IsNullOrEmpty(TxtNumeroFactura.Text.Trim()) &&
+                    DtListaProductos.Rows.Count > 0)
                 {
-                    MessageBox.Show(@"La fecha de la factura no puede ser superior a la fecha actual", "Error de validacion", MessageBoxButtons.OK);
+                    R = true;
 
-                    return false;
                 }
-
-
-                //Hace demas validaciones
-                if (ValidarVenta())
-                {
-
-                    MiVenta.Fecha = DtpFecha.Value.Date;
-                    MiVenta.MiCliente.IDCliente = Convert.ToInt32(CboxCliente.SelectedIndex);
-                    MiVenta.MiEmpleado.IDEmpleado = Convert.ToInt32(CboxEmpleado.SelectedIndex);
-
-                    MiVenta.MiUsuario.IDUsuario = Locales.ObjetosGlobales.MiUsuarioGlobal.IDUsuario;
-
-                    MiVenta.NumeroFactura = Convert.ToInt32(TxtNumeroFactura.Text.Trim()); ;
-                    MiVenta.Comentario = TxtComentario.Text.Trim();
-
-                    LlenarDetallesDeVenta();
-
-                    //Se agrega la venta y se realiza el reporte
-                    if (MiVenta.Agregar())
+                else
+                { //valida que la fecha no sea mayor a la actual
+                    if (DtpFecha.Value.Date > DateTime.Now.Date)
                     {
-                        MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
+                        MessageBox.Show(@"La fecha de la factura no puede ser superior a la fecha actual", "Error de validacion", MessageBoxButtons.OK);
 
-                        ReportDocument MiReporteVenta = new ReportDocument();
+                        return false;
+                    }
 
-                        Limpiar();
+
+                    //Hace demas validaciones
+                    if (ValidarVenta())
+                    {
+
+                        MiVenta.Fecha = DtpFecha.Value.Date;
+                        MiVenta.MiCliente.IDCliente = Convert.ToInt32(CboxCliente.SelectedIndex);
+                        MiVenta.MiEmpleado.IDEmpleado = Convert.ToInt32(CboxEmpleado.SelectedIndex);
+
+                        MiVenta.MiUsuario.IDUsuario = Locales.ObjetosGlobales.MiUsuarioGlobal.IDUsuario;
+
+                        MiVenta.NumeroFactura = Convert.ToInt32(TxtNumeroFactura.Text.Trim()); ;
+                        MiVenta.Comentario = TxtComentario.Text.Trim();
+
+                        LlenarDetallesDeVenta();
+
+                        //Se agrega la venta y se realiza el reporte
+                        if (MiVenta.Agregar())
+                        {
+                            MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
+
+                            ReportDocument MiReporteVenta = new ReportDocument();
+
+                            Limpiar();
+
+                        }
 
                     }
 
                 }
-
             }
-                return R;
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return R;
 
         }
 
@@ -190,50 +195,31 @@ namespace ProyectoDerake.Formularios
         //Llena los datos de lista de detalles de la venta
         private void LlenarDetallesDeVenta()
         {
-            try { 
-            //Valida las filas de la lista
-            foreach (DataRow fila in DtListaProductos.Rows)
+            try
             {
-                VentaDetalle detalle = new VentaDetalle();
+                //Valida las filas de la lista
+                foreach (DataRow fila in DtListaProductos.Rows)
+                {
+                    VentaDetalle detalle = new VentaDetalle();
 
-                detalle.MiProducto.IDProducto = Convert.ToInt32(fila["IDProducto"]);
-                detalle.CantidadVendida = Convert.ToInt32(fila["CantidadVendida"]);
-                detalle.PrecioVenta = Convert.ToInt32(fila["PrecioVenta"]);
+                    detalle.MiProducto.IDProducto = Convert.ToInt32(fila["IDProducto"]);
+                    detalle.CantidadVendida = Convert.ToInt32(fila["CantidadVendida"]);
+                    detalle.PrecioVenta = Convert.ToInt32(fila["PrecioVenta"]);
 
-                detalle.MiProducto.Nombre = fila["Nombre"].ToString();
+                    detalle.MiProducto.Nombre = fila["Nombre"].ToString();
 
-                MiVenta.ListaDetalle.Add(detalle);
+                    MiVenta.ListaDetalle.Add(detalle);
 
+                }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
 
-        private void BtnModificarItem_Click(object sender, EventArgs e)
-        {
-            
-            Form FormCambio = new FrmCambioCantidad();
-
-            DialogResult Resp = FormCambio.ShowDialog();
-            try { 
-            if (Resp == DialogResult.OK)
-            {
-                DgvListaVentas.DataSource = DtListaProductos;
-
-                TxtTotal.Text = string.Format("{0:C2}", Totalizar());
-            }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-
-        }
 
         private void FrmVentasGestion_Load(object sender, EventArgs e)
         {
@@ -251,7 +237,7 @@ namespace ProyectoDerake.Formularios
 
         private void Limpiar()
         {
-             
+
             DtpFecha.Value = DateTime.Now.Date;
 
             TxtNumeroFactura.Clear();
@@ -267,7 +253,7 @@ namespace ProyectoDerake.Formularios
             DtListaProductos = MiVenta.AsignarEsquemaDetalle();
 
             DgvListaVentas.DataSource = DtListaProductos;
-           
+
         }
 
         private void CargarDatosCliente()
@@ -284,7 +270,7 @@ namespace ProyectoDerake.Formularios
             CboxCliente.DataSource = Datos;
 
             CboxCliente.SelectedIndex = -1;
-            
+
         }
 
         private void CargarDatosEmpleado()
@@ -301,32 +287,39 @@ namespace ProyectoDerake.Formularios
             CboxEmpleado.DataSource = Datos;
 
             CboxEmpleado.SelectedIndex = -1;
-           
+
         }
 
         private void BtnEliminarItem_Click(object sender, EventArgs e)
         {
-            try { 
-            for (int i = 0; i < DtListaProductos.Rows.Count; i++)
+            try
             {
-                DataRow row = DtListaProductos.Rows[i];
-
-                if (Convert.ToInt32(DgvListaVentas.SelectedRows[0].Cells["CIDProducto"].Value) ==
-                    Convert.ToInt32(row["IDProducto"].ToString()))
+                for (int i = 0; i < DtListaProductos.Rows.Count; i++)
                 {
-                    row.Delete();
+                    DataRow row = DtListaProductos.Rows[i];
+
+                    if (Convert.ToInt32(DgvListaVentas.SelectedRows[0].Cells["CIDProducto"].Value) ==
+                        Convert.ToInt32(row["IDProducto"].ToString()))
+                    {
+                        row.Delete();
+                    }
+
                 }
+                DtListaProductos.AcceptChanges();
+                DgvListaVentas.DataSource = DtListaProductos;
+                TxtTotal.Clear();
 
+                TxtTotal.Text = string.Format("{0:C2}", Totalizar());
             }
-            DtListaProductos.AcceptChanges();
-            DgvListaVentas.DataSource = DtListaProductos;
-
-            TxtTotal.Text = string.Format("{0:C2}", Totalizar());
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void TxtNumeroFactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresNumeros(e);
         }
     }
 }

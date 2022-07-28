@@ -36,7 +36,10 @@ namespace ProyectoDerake.Formularios
             this.CCantidadVendida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnCrearVenta = new System.Windows.Forms.Button();
+            this.TxtTotal = new System.Windows.Forms.TextBox();
             this.CboxEmpleado = new System.Windows.Forms.ComboBox();
+            this.LblTotal = new System.Windows.Forms.Label();
             this.CboxCliente = new System.Windows.Forms.ComboBox();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.TxtComentario = new System.Windows.Forms.TextBox();
@@ -50,11 +53,8 @@ namespace ProyectoDerake.Formularios
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TstpVentas = new System.Windows.Forms.ToolStrip();
             this.BtnAgregarItem = new System.Windows.Forms.ToolStripLabel();
-            this.BtnModificarItem = new System.Windows.Forms.ToolStripLabel();
             this.BtnEliminarItem = new System.Windows.Forms.ToolStripLabel();
-            this.LblTotal = new System.Windows.Forms.Label();
-            this.TxtTotal = new System.Windows.Forms.TextBox();
-            this.BtnCrearVenta = new System.Windows.Forms.Button();
+            this.LBL2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -112,7 +112,10 @@ namespace ProyectoDerake.Formularios
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtnCrearVenta);
+            this.groupBox1.Controls.Add(this.TxtTotal);
             this.groupBox1.Controls.Add(this.CboxEmpleado);
+            this.groupBox1.Controls.Add(this.LblTotal);
             this.groupBox1.Controls.Add(this.CboxCliente);
             this.groupBox1.Controls.Add(this.DtpFecha);
             this.groupBox1.Controls.Add(this.TxtComentario);
@@ -123,11 +126,31 @@ namespace ProyectoDerake.Formularios
             this.groupBox1.Controls.Add(this.LblFactura);
             this.groupBox1.Controls.Add(this.LblFecha);
             this.groupBox1.Controls.Add(this.LblMiUsuario);
-            this.groupBox1.Location = new System.Drawing.Point(35, 12);
+            this.groupBox1.Location = new System.Drawing.Point(35, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(711, 205);
+            this.groupBox1.Size = new System.Drawing.Size(711, 266);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // BtnCrearVenta
+            // 
+            this.BtnCrearVenta.BackColor = System.Drawing.Color.SeaGreen;
+            this.BtnCrearVenta.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCrearVenta.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnCrearVenta.Location = new System.Drawing.Point(566, 225);
+            this.BtnCrearVenta.Name = "BtnCrearVenta";
+            this.BtnCrearVenta.Size = new System.Drawing.Size(139, 35);
+            this.BtnCrearVenta.TabIndex = 5;
+            this.BtnCrearVenta.Text = "Crear Venta";
+            this.BtnCrearVenta.UseVisualStyleBackColor = false;
+            this.BtnCrearVenta.Click += new System.EventHandler(this.BtnCrearVenta_Click);
+            // 
+            // TxtTotal
+            // 
+            this.TxtTotal.Location = new System.Drawing.Point(174, 231);
+            this.TxtTotal.Name = "TxtTotal";
+            this.TxtTotal.Size = new System.Drawing.Size(315, 23);
+            this.TxtTotal.TabIndex = 4;
             // 
             // CboxEmpleado
             // 
@@ -136,6 +159,16 @@ namespace ProyectoDerake.Formularios
             this.CboxEmpleado.Name = "CboxEmpleado";
             this.CboxEmpleado.Size = new System.Drawing.Size(175, 24);
             this.CboxEmpleado.TabIndex = 13;
+            // 
+            // LblTotal
+            // 
+            this.LblTotal.AutoSize = true;
+            this.LblTotal.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTotal.Location = new System.Drawing.Point(20, 231);
+            this.LblTotal.Name = "LblTotal";
+            this.LblTotal.Size = new System.Drawing.Size(137, 19);
+            this.LblTotal.TabIndex = 3;
+            this.LblTotal.Text = "Total de la venta: ";
             // 
             // CboxCliente
             // 
@@ -167,6 +200,7 @@ namespace ProyectoDerake.Formularios
             this.TxtNumeroFactura.Name = "TxtNumeroFactura";
             this.TxtNumeroFactura.Size = new System.Drawing.Size(175, 23);
             this.TxtNumeroFactura.TabIndex = 7;
+            this.TxtNumeroFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumeroFactura_KeyPress);
             // 
             // LblEmpleado
             // 
@@ -222,7 +256,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblMiUsuario.AutoSize = true;
             this.LblMiUsuario.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblMiUsuario.Location = new System.Drawing.Point(15, 176);
+            this.LblMiUsuario.Location = new System.Drawing.Point(21, 180);
             this.LblMiUsuario.Name = "LblMiUsuario";
             this.LblMiUsuario.Size = new System.Drawing.Size(46, 17);
             this.LblMiUsuario.TabIndex = 0;
@@ -232,7 +266,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.groupBox2.Controls.Add(this.TstpVentas);
             this.groupBox2.Controls.Add(this.DgvListaVentas);
-            this.groupBox2.Location = new System.Drawing.Point(35, 223);
+            this.groupBox2.Location = new System.Drawing.Point(35, 359);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(711, 357);
             this.groupBox2.TabIndex = 2;
@@ -240,10 +274,9 @@ namespace ProyectoDerake.Formularios
             // 
             // TstpVentas
             // 
-            this.TstpVentas.BackColor = System.Drawing.Color.SlateGray;
+            this.TstpVentas.BackColor = System.Drawing.Color.SteelBlue;
             this.TstpVentas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BtnAgregarItem,
-            this.BtnModificarItem,
             this.BtnEliminarItem});
             this.TstpVentas.Location = new System.Drawing.Point(3, 19);
             this.TstpVentas.Name = "TstpVentas";
@@ -265,18 +298,6 @@ namespace ProyectoDerake.Formularios
             this.BtnAgregarItem.ToolTipText = "Agregar Producto";
             this.BtnAgregarItem.Click += new System.EventHandler(this.BtnAgregarItem_Click);
             // 
-            // BtnModificarItem
-            // 
-            this.BtnModificarItem.BackColor = System.Drawing.Color.Orange;
-            this.BtnModificarItem.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificarItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnModificarItem.Image = ((System.Drawing.Image)(resources.GetObject("BtnModificarItem.Image")));
-            this.BtnModificarItem.Name = "BtnModificarItem";
-            this.BtnModificarItem.Size = new System.Drawing.Size(139, 22);
-            this.BtnModificarItem.Text = "Modificar Producto";
-            this.BtnModificarItem.ToolTipText = "Modificar Producto";
-            this.BtnModificarItem.Click += new System.EventHandler(this.BtnModificarItem_Click);
-            // 
             // BtnEliminarItem
             // 
             this.BtnEliminarItem.BackColor = System.Drawing.Color.Brown;
@@ -289,50 +310,30 @@ namespace ProyectoDerake.Formularios
             this.BtnEliminarItem.ToolTipText = "Eliminar Producto";
             this.BtnEliminarItem.Click += new System.EventHandler(this.BtnEliminarItem_Click);
             // 
-            // LblTotal
+            // LBL2
             // 
-            this.LblTotal.AutoSize = true;
-            this.LblTotal.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotal.Location = new System.Drawing.Point(49, 620);
-            this.LblTotal.Name = "LblTotal";
-            this.LblTotal.Size = new System.Drawing.Size(137, 19);
-            this.LblTotal.TabIndex = 3;
-            this.LblTotal.Text = "Total de la venta: ";
-            // 
-            // TxtTotal
-            // 
-            this.TxtTotal.Location = new System.Drawing.Point(203, 620);
-            this.TxtTotal.Name = "TxtTotal";
-            this.TxtTotal.Size = new System.Drawing.Size(315, 23);
-            this.TxtTotal.TabIndex = 4;
-            // 
-            // BtnCrearVenta
-            // 
-            this.BtnCrearVenta.BackColor = System.Drawing.Color.SeaGreen;
-            this.BtnCrearVenta.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCrearVenta.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnCrearVenta.Location = new System.Drawing.Point(595, 614);
-            this.BtnCrearVenta.Name = "BtnCrearVenta";
-            this.BtnCrearVenta.Size = new System.Drawing.Size(139, 35);
-            this.BtnCrearVenta.TabIndex = 5;
-            this.BtnCrearVenta.Text = "Crear Venta";
-            this.BtnCrearVenta.UseVisualStyleBackColor = false;
-            this.BtnCrearVenta.Click += new System.EventHandler(this.BtnCrearVenta_Click);
+            this.LBL2.AutoSize = true;
+            this.LBL2.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL2.Location = new System.Drawing.Point(224, 37);
+            this.LBL2.Name = "LBL2";
+            this.LBL2.Size = new System.Drawing.Size(348, 24);
+            this.LBL2.TabIndex = 3;
+            this.LBL2.Text = "CONTROL DE REGISTRO DE VENTAS";
             // 
             // FrmVentasGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(788, 664);
-            this.Controls.Add(this.BtnCrearVenta);
-            this.Controls.Add(this.TxtTotal);
-            this.Controls.Add(this.LblTotal);
+            this.ClientSize = new System.Drawing.Size(788, 728);
+            this.Controls.Add(this.LBL2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmVentasGestion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Ventas";
             this.Load += new System.EventHandler(this.FrmVentasGestion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaVentas)).EndInit();
@@ -365,7 +366,6 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Label LblFactura;
         private System.Windows.Forms.Label LblFecha;
         private System.Windows.Forms.ToolStripLabel BtnAgregarItem;
-        private System.Windows.Forms.ToolStripLabel BtnModificarItem;
         private System.Windows.Forms.ToolStripLabel BtnEliminarItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn CIDProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
@@ -374,5 +374,6 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.ComboBox CboxEmpleado;
         private System.Windows.Forms.ComboBox CboxCliente;
+        private System.Windows.Forms.Label LBL2;
     }
 }

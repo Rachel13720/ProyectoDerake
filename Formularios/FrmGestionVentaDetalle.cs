@@ -20,6 +20,8 @@ namespace ProyectoDerake.Formularios
 
         public Producto MiProducto { get; set; }
 
+        public Decimal ValorCan { get; set; }
+
 
         public FrmGestionVentaDetalle()
         {
@@ -31,58 +33,54 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-            try { 
-            //Se evalua que haya una fila seleccionada en la lista y la cantidad sea mayor a cero
-            if (DgvListaItems.SelectedRows.Count == 1 && NudCantidad.Value > 0)
+            try
             {
-                //se valida que exista el producto y el que el checbox este seleccionado
-
-                if (ValidarExistenciaProducto() && CboxSuma.Checked)
+                //Se evalua que haya una fila seleccionada en la lista y la cantidad sea mayor a cero
+                if (DgvListaItems.SelectedRows.Count == 1 && NudCantidad.Value > 0) //&& NudCantidad < Convert.ToDecimal(CCantidad)
                 {
-
-                    DataRow MiFila = Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.NewRow();
-
-                    foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
+                    //se valida que exista el producto
+                    if (ValidarExistenciaProducto())
                     {
-                        if (Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value) ==
-                            Convert.ToInt32(row["IDProducto"].ToString()))
+
+                        DataRow MiFila = Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.NewRow();
+
+                        foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
                         {
-                            MiFila["CantidadVendida"] = Convert.ToDecimal(row["CantidadVendida"]) + NudCantidad.Value;
+                            if (Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value) ==
+                                Convert.ToInt32(row["IDProducto"].ToString()))
+                            {
+                                MiFila["CantidadVendida"] = Convert.ToDecimal(row["CantidadVendida"]) + NudCantidad.Value;
 
-                            this.DialogResult = DialogResult.OK;
+                                this.DialogResult = DialogResult.OK;
+                            }
+
                         }
+                    } //se valida que no exista el producto
+                    else if (!ValidarExistenciaProducto())
+                    {
+                        DataRow NuevaFila = Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.NewRow();
 
+                        NuevaFila["IDProducto"] = Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value);
+
+                        NuevaFila["Nombre"] = DgvListaItems.SelectedRows[0].Cells["CNombre"].Value.ToString();
+
+                        NuevaFila["PrecioVenta"] = DgvListaItems.SelectedRows[0].Cells["CPrecio"].Value.ToString();
+
+                        NuevaFila["CantidadVendida"] = NudCantidad.Value;
+
+                        Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows.Add(NuevaFila);
+
+                        this.DialogResult = DialogResult.OK;
                     }
-                } //se valida que no exista el producto y el checbox no este seleccionado, o que no exista el producto y el checkbox este seleccionado
-                else if (!ValidarExistenciaProducto() && !CboxSuma.Checked || !ValidarExistenciaProducto() && CboxSuma.Checked)
+                }
+                else
                 {
-                    DataRow NuevaFila = Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.NewRow();
-
-                    NuevaFila["IDProducto"] = Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value);
-
-                    NuevaFila["Nombre"] = DgvListaItems.SelectedRows[0].Cells["CNombre"].Value.ToString();
-
-                    NuevaFila["PrecioVenta"] = DgvListaItems.SelectedRows[0].Cells["CPrecio"].Value.ToString();
-
-                    NuevaFila["CantidadVendida"] = NudCantidad.Value;
-
-                    Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows.Add(NuevaFila);
-
-                    this.DialogResult = DialogResult.OK;
-                }//se valida que existe el producto y el checkbox no este seleccionado
-                else if (ValidarExistenciaProducto() && !CboxSuma.Checked)
-                {
-                    MessageBox.Show("Ya existe, marcar el checkbox", ":)", MessageBoxButtons.OK);
+                    MessageBox.Show("Seleccione un producto", ":)", MessageBoxButtons.OK);
                 }
             }
-            else
+            catch (Exception error)
             {
-                MessageBox.Show("Seleccione un producto", ":)", MessageBoxButtons.OK);
-            }
-            }
-            catch (Exception ex)
-            {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -90,25 +88,27 @@ namespace ProyectoDerake.Formularios
         //se valida la existencia del producto con su Id
         private bool ValidarExistenciaProducto()
         {
-            
+
             bool R = false;
-            try { 
-            foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
+            try
             {
-                if (Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value) ==
-                    Convert.ToInt32(row["IDProducto"].ToString()))
+                foreach (DataRow row in Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.Rows)
                 {
-                    R = true;
+                    if (Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CIDProducto"].Value) ==
+                        Convert.ToInt32(row["IDProducto"].ToString()))
+                    {
+                        R = true;
+                    }
+
                 }
 
             }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return R;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
 
         }
 
@@ -132,5 +132,14 @@ namespace ProyectoDerake.Formularios
             this.Close();
         }
 
+        private void DgvListaItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            ValorCan = Convert.ToDecimal(DgvListaItems.SelectedRows[0].Cells["CCantidad"].Value);
+
+            NudCantidad.Maximum = ValorCan;
+        }
     }
 }

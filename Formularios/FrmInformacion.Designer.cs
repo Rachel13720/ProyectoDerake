@@ -42,7 +42,7 @@ namespace ProyectoDerake.Formularios
             this.TxtInfo.Multiline = true;
             this.TxtInfo.Name = "TxtInfo";
             this.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TxtInfo.Size = new System.Drawing.Size(617, 560);
+            this.TxtInfo.Size = new System.Drawing.Size(873, 560);
             this.TxtInfo.TabIndex = 0;
             this.TxtInfo.Text = resources.GetString("TxtInfo.Text");
             // 
@@ -51,7 +51,7 @@ namespace ProyectoDerake.Formularios
             this.BtnRegresar.BackColor = System.Drawing.Color.SteelBlue;
             this.BtnRegresar.Font = new System.Drawing.Font("Microsoft JhengHei", 11.25F, System.Drawing.FontStyle.Bold);
             this.BtnRegresar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnRegresar.Location = new System.Drawing.Point(506, 578);
+            this.BtnRegresar.Location = new System.Drawing.Point(762, 578);
             this.BtnRegresar.Name = "BtnRegresar";
             this.BtnRegresar.Size = new System.Drawing.Size(123, 33);
             this.BtnRegresar.TabIndex = 1;
@@ -65,10 +65,12 @@ namespace ProyectoDerake.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(636, 618);
+            this.ClientSize = new System.Drawing.Size(897, 618);
             this.Controls.Add(this.BtnRegresar);
             this.Controls.Add(this.TxtInfo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmInformacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Informacion de la empresa";
             this.Load += new System.EventHandler(this.FrmInformacion_Load);
             this.ResumeLayout(false);

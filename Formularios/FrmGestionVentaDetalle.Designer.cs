@@ -30,17 +30,16 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             this.DgvListaItems = new System.Windows.Forms.DataGridView();
-            this.PnlDatos = new System.Windows.Forms.Panel();
-            this.CboxSuma = new System.Windows.Forms.CheckBox();
-            this.LblCant = new System.Windows.Forms.Label();
-            this.NudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.BtnAceptar = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.CIDProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PnlDatos = new System.Windows.Forms.Panel();
+            this.LblCant = new System.Windows.Forms.Label();
+            this.NudCantidad = new System.Windows.Forms.NumericUpDown();
+            this.BtnAceptar = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaItems)).BeginInit();
             this.PnlDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).BeginInit();
@@ -61,72 +60,7 @@ namespace ProyectoDerake.Formularios
             this.DgvListaItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaItems.Size = new System.Drawing.Size(743, 322);
             this.DgvListaItems.TabIndex = 0;
-            // 
-            // PnlDatos
-            // 
-            this.PnlDatos.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.PnlDatos.Controls.Add(this.CboxSuma);
-            this.PnlDatos.Controls.Add(this.LblCant);
-            this.PnlDatos.Controls.Add(this.NudCantidad);
-            this.PnlDatos.Location = new System.Drawing.Point(31, 393);
-            this.PnlDatos.Name = "PnlDatos";
-            this.PnlDatos.Size = new System.Drawing.Size(600, 155);
-            this.PnlDatos.TabIndex = 1;
-            // 
-            // CboxSuma
-            // 
-            this.CboxSuma.AutoSize = true;
-            this.CboxSuma.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.CboxSuma.Location = new System.Drawing.Point(184, 119);
-            this.CboxSuma.Name = "CboxSuma";
-            this.CboxSuma.Size = new System.Drawing.Size(267, 21);
-            this.CboxSuma.TabIndex = 5;
-            this.CboxSuma.Text = "Sumar cantidad del producto en la lista";
-            this.CboxSuma.UseVisualStyleBackColor = true;
-            // 
-            // LblCant
-            // 
-            this.LblCant.AutoSize = true;
-            this.LblCant.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.LblCant.Location = new System.Drawing.Point(230, 44);
-            this.LblCant.Name = "LblCant";
-            this.LblCant.Size = new System.Drawing.Size(119, 17);
-            this.LblCant.TabIndex = 4;
-            this.LblCant.Text = "Cantidad a vender";
-            // 
-            // NudCantidad
-            // 
-            this.NudCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.NudCantidad.Location = new System.Drawing.Point(211, 73);
-            this.NudCantidad.Name = "NudCantidad";
-            this.NudCantidad.Size = new System.Drawing.Size(168, 25);
-            this.NudCantidad.TabIndex = 3;
-            // 
-            // BtnAceptar
-            // 
-            this.BtnAceptar.BackColor = System.Drawing.Color.Green;
-            this.BtnAceptar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.BtnAceptar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnAceptar.Location = new System.Drawing.Point(672, 412);
-            this.BtnAceptar.Name = "BtnAceptar";
-            this.BtnAceptar.Size = new System.Drawing.Size(102, 33);
-            this.BtnAceptar.TabIndex = 0;
-            this.BtnAceptar.Text = "Aceptar";
-            this.BtnAceptar.UseVisualStyleBackColor = false;
-            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.BackColor = System.Drawing.Color.Brown;
-            this.BtnCancelar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
-            this.BtnCancelar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnCancelar.Location = new System.Drawing.Point(672, 490);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(102, 33);
-            this.BtnCancelar.TabIndex = 2;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = false;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            this.DgvListaItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaItems_CellClick);
             // 
             // CIDProducto
             // 
@@ -165,6 +99,70 @@ namespace ProyectoDerake.Formularios
             this.CComentario.HeaderText = "Comentario";
             this.CComentario.Name = "CComentario";
             // 
+            // PnlDatos
+            // 
+            this.PnlDatos.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.PnlDatos.Controls.Add(this.LblCant);
+            this.PnlDatos.Controls.Add(this.NudCantidad);
+            this.PnlDatos.Location = new System.Drawing.Point(31, 393);
+            this.PnlDatos.Name = "PnlDatos";
+            this.PnlDatos.Size = new System.Drawing.Size(600, 155);
+            this.PnlDatos.TabIndex = 1;
+            // 
+            // LblCant
+            // 
+            this.LblCant.AutoSize = true;
+            this.LblCant.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.LblCant.Location = new System.Drawing.Point(230, 44);
+            this.LblCant.Name = "LblCant";
+            this.LblCant.Size = new System.Drawing.Size(119, 17);
+            this.LblCant.TabIndex = 4;
+            this.LblCant.Text = "Cantidad a vender";
+            // 
+            // NudCantidad
+            // 
+            this.NudCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.NudCantidad.Location = new System.Drawing.Point(211, 73);
+            this.NudCantidad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NudCantidad.Name = "NudCantidad";
+            this.NudCantidad.Size = new System.Drawing.Size(168, 25);
+            this.NudCantidad.TabIndex = 3;
+            this.NudCantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // BtnAceptar
+            // 
+            this.BtnAceptar.BackColor = System.Drawing.Color.Green;
+            this.BtnAceptar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BtnAceptar.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnAceptar.Location = new System.Drawing.Point(672, 412);
+            this.BtnAceptar.Name = "BtnAceptar";
+            this.BtnAceptar.Size = new System.Drawing.Size(102, 33);
+            this.BtnAceptar.TabIndex = 0;
+            this.BtnAceptar.Text = "Aceptar";
+            this.BtnAceptar.UseVisualStyleBackColor = false;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Brown;
+            this.BtnCancelar.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BtnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnCancelar.Location = new System.Drawing.Point(672, 490);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(102, 33);
+            this.BtnCancelar.TabIndex = 2;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmGestionVentaDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,7 +173,9 @@ namespace ProyectoDerake.Formularios
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.PnlDatos);
             this.Controls.Add(this.DgvListaItems);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmGestionVentaDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Detalles de Venta";
             this.Load += new System.EventHandler(this.FrmGestionVentaDetalle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaItems)).EndInit();
@@ -192,7 +192,6 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.Panel PnlDatos;
         private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.CheckBox CboxSuma;
         private System.Windows.Forms.Label LblCant;
         private System.Windows.Forms.NumericUpDown NudCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn CIDProducto;

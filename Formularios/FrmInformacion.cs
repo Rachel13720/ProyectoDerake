@@ -25,7 +25,7 @@ namespace ProyectoDerake.Formularios
 
         private void FrmInformacion_Load(object sender, EventArgs e)
         {
-            TxtInfo.DeselectAll();
+            TxtInfo.Enabled = false;
         }
     }
 }

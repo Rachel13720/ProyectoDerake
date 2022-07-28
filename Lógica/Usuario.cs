@@ -13,7 +13,7 @@ namespace ProyectoDerake.Lógica
 
         //Atributos
         public int IDUsuario { get; set; }
-        
+
         public string Nombre { get; set; }
 
         public string Contrasennia { get; set; }

@@ -50,6 +50,7 @@ namespace ProyectoDerake.Formularios
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CrvVisualizador);
             this.Name = "FrmVisualizadorReportes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizador de Reportes";
             this.ResumeLayout(false);
 

@@ -34,27 +34,27 @@ namespace ProyectoDerake.Formularios
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.LblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.FLPMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.BtnUsuarios = new System.Windows.Forms.Button();
-            this.BtnProductos = new System.Windows.Forms.Button();
-            this.BtnClientes = new System.Windows.Forms.Button();
-            this.BtnEmpleados = new System.Windows.Forms.Button();
-            this.BtnVentas = new System.Windows.Forms.Button();
-            this.BtnAcercaDe = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BtnSalir = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnUsuarios = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.BtnProductos = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.BtnClientes = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.BtnEmpleados = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.BtnVentas = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.BtnAcercaDe = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.BtnSalir = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LblTitulo.SuspendLayout();
@@ -111,12 +111,29 @@ namespace ProyectoDerake.Formularios
             this.FLPMenu.Size = new System.Drawing.Size(231, 492);
             this.FLPMenu.TabIndex = 2;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.BtnUsuarios);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(228, 48);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Location = new System.Drawing.Point(218, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 42);
+            this.panel1.TabIndex = 9;
+            // 
             // BtnUsuarios
             // 
             this.BtnUsuarios.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnUsuarios.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
             this.BtnUsuarios.FlatAppearance.BorderSize = 0;
-            this.BtnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
+            this.BtnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.BtnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnUsuarios.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnUsuarios.ForeColor = System.Drawing.SystemColors.Control;
@@ -129,119 +146,6 @@ namespace ProyectoDerake.Formularios
             this.BtnUsuarios.UseVisualStyleBackColor = false;
             this.BtnUsuarios.Click += new System.EventHandler(this.BtnUsuarios_Click);
             // 
-            // BtnProductos
-            // 
-            this.BtnProductos.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.BtnProductos.FlatAppearance.BorderSize = 0;
-            this.BtnProductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.BtnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnProductos.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnProductos.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnProductos.Location = new System.Drawing.Point(-3, 0);
-            this.BtnProductos.Name = "BtnProductos";
-            this.BtnProductos.Size = new System.Drawing.Size(222, 42);
-            this.BtnProductos.TabIndex = 4;
-            this.BtnProductos.Text = "Productos";
-            this.BtnProductos.UseVisualStyleBackColor = true;
-            this.BtnProductos.Click += new System.EventHandler(this.BtnProductos_Click);
-            // 
-            // BtnClientes
-            // 
-            this.BtnClientes.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.BtnClientes.FlatAppearance.BorderSize = 0;
-            this.BtnClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.BtnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnClientes.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnClientes.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnClientes.Location = new System.Drawing.Point(-3, 3);
-            this.BtnClientes.Name = "BtnClientes";
-            this.BtnClientes.Size = new System.Drawing.Size(222, 42);
-            this.BtnClientes.TabIndex = 5;
-            this.BtnClientes.Text = "Clientes";
-            this.BtnClientes.UseVisualStyleBackColor = true;
-            this.BtnClientes.Click += new System.EventHandler(this.BtnClientes_Click);
-            // 
-            // BtnEmpleados
-            // 
-            this.BtnEmpleados.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.BtnEmpleados.FlatAppearance.BorderSize = 0;
-            this.BtnEmpleados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.BtnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEmpleados.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnEmpleados.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnEmpleados.Location = new System.Drawing.Point(-3, 4);
-            this.BtnEmpleados.Name = "BtnEmpleados";
-            this.BtnEmpleados.Size = new System.Drawing.Size(222, 42);
-            this.BtnEmpleados.TabIndex = 6;
-            this.BtnEmpleados.Text = "Empleados";
-            this.BtnEmpleados.UseVisualStyleBackColor = true;
-            this.BtnEmpleados.Click += new System.EventHandler(this.BtnEmpleados_Click);
-            // 
-            // BtnVentas
-            // 
-            this.BtnVentas.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.BtnVentas.FlatAppearance.BorderSize = 0;
-            this.BtnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.BtnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVentas.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnVentas.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnVentas.Location = new System.Drawing.Point(-3, 4);
-            this.BtnVentas.Name = "BtnVentas";
-            this.BtnVentas.Size = new System.Drawing.Size(222, 42);
-            this.BtnVentas.TabIndex = 7;
-            this.BtnVentas.Text = "Ventas";
-            this.BtnVentas.UseVisualStyleBackColor = true;
-            this.BtnVentas.Click += new System.EventHandler(this.BtnVentas_Click);
-            // 
-            // BtnAcercaDe
-            // 
-            this.BtnAcercaDe.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.BtnAcercaDe.FlatAppearance.BorderSize = 0;
-            this.BtnAcercaDe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.BtnAcercaDe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAcercaDe.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnAcercaDe.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnAcercaDe.Location = new System.Drawing.Point(-3, 4);
-            this.BtnAcercaDe.Name = "BtnAcercaDe";
-            this.BtnAcercaDe.Size = new System.Drawing.Size(222, 42);
-            this.BtnAcercaDe.TabIndex = 8;
-            this.BtnAcercaDe.Text = "Acerca de";
-            this.BtnAcercaDe.UseVisualStyleBackColor = true;
-            this.BtnAcercaDe.Click += new System.EventHandler(this.BtnAcercaDe_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel1.Location = new System.Drawing.Point(218, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 42);
-            this.panel1.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.BtnUsuarios);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(228, 48);
-            this.panel2.TabIndex = 0;
-            // 
-            // BtnSalir
-            // 
-            this.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.BtnSalir.FlatAppearance.BorderSize = 0;
-            this.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MidnightBlue;
-            this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSalir.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnSalir.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnSalir.Location = new System.Drawing.Point(-3, 7);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(222, 42);
-            this.BtnSalir.TabIndex = 9;
-            this.BtnSalir.Text = "Salir";
-            this.BtnSalir.UseVisualStyleBackColor = true;
-            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel4);
@@ -253,11 +157,27 @@ namespace ProyectoDerake.Formularios
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel4.BackColor = System.Drawing.Color.SteelBlue;
             this.panel4.Location = new System.Drawing.Point(218, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(10, 42);
             this.panel4.TabIndex = 10;
+            // 
+            // BtnProductos
+            // 
+            this.BtnProductos.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnProductos.FlatAppearance.BorderSize = 0;
+            this.BtnProductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.BtnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnProductos.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnProductos.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnProductos.Location = new System.Drawing.Point(-3, 0);
+            this.BtnProductos.Name = "BtnProductos";
+            this.BtnProductos.Size = new System.Drawing.Size(222, 42);
+            this.BtnProductos.TabIndex = 4;
+            this.BtnProductos.Text = "Productos";
+            this.BtnProductos.UseVisualStyleBackColor = true;
+            this.BtnProductos.Click += new System.EventHandler(this.BtnProductos_Click);
             // 
             // panel5
             // 
@@ -270,11 +190,27 @@ namespace ProyectoDerake.Formularios
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel6.BackColor = System.Drawing.Color.SteelBlue;
             this.panel6.Location = new System.Drawing.Point(218, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(10, 42);
             this.panel6.TabIndex = 11;
+            // 
+            // BtnClientes
+            // 
+            this.BtnClientes.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnClientes.FlatAppearance.BorderSize = 0;
+            this.BtnClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.BtnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnClientes.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnClientes.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnClientes.Location = new System.Drawing.Point(-3, 3);
+            this.BtnClientes.Name = "BtnClientes";
+            this.BtnClientes.Size = new System.Drawing.Size(222, 42);
+            this.BtnClientes.TabIndex = 5;
+            this.BtnClientes.Text = "Clientes";
+            this.BtnClientes.UseVisualStyleBackColor = true;
+            this.BtnClientes.Click += new System.EventHandler(this.BtnClientes_Click);
             // 
             // panel7
             // 
@@ -285,6 +221,30 @@ namespace ProyectoDerake.Formularios
             this.panel7.Size = new System.Drawing.Size(228, 55);
             this.panel7.TabIndex = 3;
             // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel9.Location = new System.Drawing.Point(218, 4);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(10, 42);
+            this.panel9.TabIndex = 12;
+            // 
+            // BtnEmpleados
+            // 
+            this.BtnEmpleados.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnEmpleados.FlatAppearance.BorderSize = 0;
+            this.BtnEmpleados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.BtnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEmpleados.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnEmpleados.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnEmpleados.Location = new System.Drawing.Point(-3, 4);
+            this.BtnEmpleados.Name = "BtnEmpleados";
+            this.BtnEmpleados.Size = new System.Drawing.Size(222, 42);
+            this.BtnEmpleados.TabIndex = 6;
+            this.BtnEmpleados.Text = "Empleados";
+            this.BtnEmpleados.UseVisualStyleBackColor = true;
+            this.BtnEmpleados.Click += new System.EventHandler(this.BtnEmpleados_Click);
+            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.panel10);
@@ -294,21 +254,29 @@ namespace ProyectoDerake.Formularios
             this.panel8.Size = new System.Drawing.Size(228, 55);
             this.panel8.TabIndex = 4;
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel9.Location = new System.Drawing.Point(218, 4);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(10, 42);
-            this.panel9.TabIndex = 12;
-            // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel10.BackColor = System.Drawing.Color.SteelBlue;
             this.panel10.Location = new System.Drawing.Point(218, 4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(10, 42);
             this.panel10.TabIndex = 12;
+            // 
+            // BtnVentas
+            // 
+            this.BtnVentas.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnVentas.FlatAppearance.BorderSize = 0;
+            this.BtnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.BtnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVentas.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnVentas.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnVentas.Location = new System.Drawing.Point(-3, 4);
+            this.BtnVentas.Name = "BtnVentas";
+            this.BtnVentas.Size = new System.Drawing.Size(222, 42);
+            this.BtnVentas.TabIndex = 7;
+            this.BtnVentas.Text = "Ventas";
+            this.BtnVentas.UseVisualStyleBackColor = true;
+            this.BtnVentas.Click += new System.EventHandler(this.BtnVentas_Click);
             // 
             // panel11
             // 
@@ -319,6 +287,30 @@ namespace ProyectoDerake.Formularios
             this.panel11.Size = new System.Drawing.Size(228, 55);
             this.panel11.TabIndex = 5;
             // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel13.Location = new System.Drawing.Point(218, 4);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(10, 42);
+            this.panel13.TabIndex = 13;
+            // 
+            // BtnAcercaDe
+            // 
+            this.BtnAcercaDe.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnAcercaDe.FlatAppearance.BorderSize = 0;
+            this.BtnAcercaDe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.BtnAcercaDe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAcercaDe.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnAcercaDe.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnAcercaDe.Location = new System.Drawing.Point(-3, 4);
+            this.BtnAcercaDe.Name = "BtnAcercaDe";
+            this.BtnAcercaDe.Size = new System.Drawing.Size(222, 42);
+            this.BtnAcercaDe.TabIndex = 8;
+            this.BtnAcercaDe.Text = "Acerca de";
+            this.BtnAcercaDe.UseVisualStyleBackColor = true;
+            this.BtnAcercaDe.Click += new System.EventHandler(this.BtnAcercaDe_Click);
+            // 
             // panel12
             // 
             this.panel12.Controls.Add(this.panel14);
@@ -328,21 +320,30 @@ namespace ProyectoDerake.Formularios
             this.panel12.Size = new System.Drawing.Size(228, 55);
             this.panel12.TabIndex = 6;
             // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panel13.Location = new System.Drawing.Point(218, 4);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(10, 42);
-            this.panel13.TabIndex = 13;
-            // 
             // panel14
             // 
-            this.panel14.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel14.BackColor = System.Drawing.Color.SteelBlue;
             this.panel14.Location = new System.Drawing.Point(218, 7);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(10, 42);
             this.panel14.TabIndex = 13;
+            // 
+            // BtnSalir
+            // 
+            this.BtnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnSalir.FlatAppearance.BorderSize = 0;
+            this.BtnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnSalir.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnSalir.Location = new System.Drawing.Point(-3, 7);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(222, 42);
+            this.BtnSalir.TabIndex = 9;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // panel15
             // 
@@ -375,6 +376,7 @@ namespace ProyectoDerake.Formularios
             this.Controls.Add(this.FLPMenu);
             this.Controls.Add(this.LblTitulo);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Control DERAKE 2018 S.A";

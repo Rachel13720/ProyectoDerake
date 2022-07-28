@@ -52,7 +52,11 @@ namespace ProyectoDerake.Formularios
             this.TxtCedula = new System.Windows.Forms.TextBox();
             this.LblEmail = new System.Windows.Forms.Label();
             this.LblCedula = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Grb5 = new System.Windows.Forms.GroupBox();
+            this.lbl5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
+            this.Grb5.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvListaUsuarios
@@ -67,12 +71,12 @@ namespace ProyectoDerake.Formularios
             this.Cedula,
             this.Email,
             this.Rol});
-            this.DgvListaUsuarios.Location = new System.Drawing.Point(12, 13);
+            this.DgvListaUsuarios.Location = new System.Drawing.Point(22, 419);
             this.DgvListaUsuarios.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DgvListaUsuarios.Name = "DgvListaUsuarios";
             this.DgvListaUsuarios.ReadOnly = true;
             this.DgvListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaUsuarios.Size = new System.Drawing.Size(672, 453);
+            this.DgvListaUsuarios.Size = new System.Drawing.Size(731, 403);
             this.DgvListaUsuarios.TabIndex = 0;
             this.DgvListaUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellClick);
             // 
@@ -119,7 +123,7 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(34, 514);
+            this.TxtNombre.Location = new System.Drawing.Point(15, 109);
             this.TxtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(215, 23);
@@ -129,7 +133,7 @@ namespace ProyectoDerake.Formularios
             // CbTipoRol
             // 
             this.CbTipoRol.FormattingEnabled = true;
-            this.CbTipoRol.Location = new System.Drawing.Point(298, 514);
+            this.CbTipoRol.Location = new System.Drawing.Point(15, 217);
             this.CbTipoRol.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbTipoRol.Name = "CbTipoRol";
             this.CbTipoRol.Size = new System.Drawing.Size(215, 24);
@@ -139,7 +143,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblNombre.AutoSize = true;
             this.LblNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblNombre.Location = new System.Drawing.Point(31, 494);
+            this.LblNombre.Location = new System.Drawing.Point(12, 89);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(57, 16);
             this.LblNombre.TabIndex = 3;
@@ -149,7 +153,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblRolUsuario.AutoSize = true;
             this.LblRolUsuario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblRolUsuario.Location = new System.Drawing.Point(302, 494);
+            this.LblRolUsuario.Location = new System.Drawing.Point(19, 197);
             this.LblRolUsuario.Name = "LblRolUsuario";
             this.LblRolUsuario.Size = new System.Drawing.Size(100, 16);
             this.LblRolUsuario.TabIndex = 4;
@@ -160,7 +164,7 @@ namespace ProyectoDerake.Formularios
             this.BtnAgregar.BackColor = System.Drawing.Color.SeaGreen;
             this.BtnAgregar.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnAgregar.Location = new System.Drawing.Point(729, 79);
+            this.BtnAgregar.Location = new System.Drawing.Point(22, 377);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(139, 35);
             this.BtnAgregar.TabIndex = 5;
@@ -172,7 +176,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblContrasennia.AutoSize = true;
             this.LblContrasennia.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblContrasennia.Location = new System.Drawing.Point(31, 557);
+            this.LblContrasennia.Location = new System.Drawing.Point(12, 148);
             this.LblContrasennia.Name = "LblContrasennia";
             this.LblContrasennia.Size = new System.Drawing.Size(77, 16);
             this.LblContrasennia.TabIndex = 6;
@@ -180,7 +184,7 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtPassword1
             // 
-            this.TxtPassword1.Location = new System.Drawing.Point(34, 576);
+            this.TxtPassword1.Location = new System.Drawing.Point(15, 167);
             this.TxtPassword1.Name = "TxtPassword1";
             this.TxtPassword1.Size = new System.Drawing.Size(215, 23);
             this.TxtPassword1.TabIndex = 7;
@@ -190,7 +194,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEditar.BackColor = System.Drawing.Color.Orange;
             this.BtnEditar.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnEditar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnEditar.Location = new System.Drawing.Point(729, 136);
+            this.BtnEditar.Location = new System.Drawing.Point(167, 377);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(139, 35);
             this.BtnEditar.TabIndex = 8;
@@ -203,7 +207,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEliminar.BackColor = System.Drawing.Color.Brown;
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnEliminar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnEliminar.Location = new System.Drawing.Point(729, 198);
+            this.BtnEliminar.Location = new System.Drawing.Point(324, 379);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(139, 35);
             this.BtnEliminar.TabIndex = 9;
@@ -216,7 +220,7 @@ namespace ProyectoDerake.Formularios
             this.BtnSalir.BackColor = System.Drawing.Color.DodgerBlue;
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnSalir.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnSalir.Location = new System.Drawing.Point(729, 315);
+            this.BtnSalir.Location = new System.Drawing.Point(614, 379);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(139, 35);
             this.BtnSalir.TabIndex = 11;
@@ -228,7 +232,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblID.AutoSize = true;
             this.LblID.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblID.Location = new System.Drawing.Point(302, 557);
+            this.LblID.Location = new System.Drawing.Point(19, 27);
             this.LblID.Name = "LblID";
             this.LblID.Size = new System.Drawing.Size(21, 16);
             this.LblID.TabIndex = 12;
@@ -236,7 +240,7 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtID
             // 
-            this.TxtID.Location = new System.Drawing.Point(298, 576);
+            this.TxtID.Location = new System.Drawing.Point(15, 46);
             this.TxtID.Name = "TxtID";
             this.TxtID.Size = new System.Drawing.Size(100, 23);
             this.TxtID.TabIndex = 13;
@@ -246,7 +250,7 @@ namespace ProyectoDerake.Formularios
             this.BtnLimpiar.BackColor = System.Drawing.Color.SaddleBrown;
             this.BtnLimpiar.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.BtnLimpiar.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnLimpiar.Location = new System.Drawing.Point(729, 257);
+            this.BtnLimpiar.Location = new System.Drawing.Point(469, 379);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(139, 35);
             this.BtnLimpiar.TabIndex = 14;
@@ -256,7 +260,7 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Location = new System.Drawing.Point(482, 576);
+            this.TxtEmail.Location = new System.Drawing.Point(342, 135);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(202, 23);
             this.TxtEmail.TabIndex = 15;
@@ -264,9 +268,9 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtCedula
             // 
-            this.TxtCedula.Location = new System.Drawing.Point(567, 514);
+            this.TxtCedula.Location = new System.Drawing.Point(342, 68);
             this.TxtCedula.Name = "TxtCedula";
-            this.TxtCedula.Size = new System.Drawing.Size(191, 23);
+            this.TxtCedula.Size = new System.Drawing.Size(202, 23);
             this.TxtCedula.TabIndex = 16;
             this.TxtCedula.Enter += new System.EventHandler(this.TxtCedula_Enter);
             this.TxtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCedula_KeyPress);
@@ -275,7 +279,7 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblEmail.AutoSize = true;
             this.LblEmail.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblEmail.Location = new System.Drawing.Point(479, 557);
+            this.LblEmail.Location = new System.Drawing.Point(339, 116);
             this.LblEmail.Name = "LblEmail";
             this.LblEmail.Size = new System.Drawing.Size(118, 16);
             this.LblEmail.TabIndex = 17;
@@ -285,43 +289,78 @@ namespace ProyectoDerake.Formularios
             // 
             this.LblCedula.AutoSize = true;
             this.LblCedula.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.LblCedula.Location = new System.Drawing.Point(564, 495);
+            this.LblCedula.Location = new System.Drawing.Point(339, 49);
             this.LblCedula.Name = "LblCedula";
             this.LblCedula.Size = new System.Drawing.Size(49, 16);
             this.LblCedula.TabIndex = 18;
             this.LblCedula.Text = "Cédula";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(558, 179);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 80);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "¡Aviso!\r\nEl formato de contraseña:\r\n2 letras y 2 numeros, \r\nlongitud mayor a 4 \r\n" +
+    "caracteres y menor que 10.\r\n";
+            // 
+            // Grb5
+            // 
+            this.Grb5.Controls.Add(this.CbTipoRol);
+            this.Grb5.Controls.Add(this.label1);
+            this.Grb5.Controls.Add(this.TxtNombre);
+            this.Grb5.Controls.Add(this.LblCedula);
+            this.Grb5.Controls.Add(this.LblNombre);
+            this.Grb5.Controls.Add(this.LblEmail);
+            this.Grb5.Controls.Add(this.LblRolUsuario);
+            this.Grb5.Controls.Add(this.TxtCedula);
+            this.Grb5.Controls.Add(this.LblContrasennia);
+            this.Grb5.Controls.Add(this.TxtEmail);
+            this.Grb5.Controls.Add(this.TxtPassword1);
+            this.Grb5.Controls.Add(this.LblID);
+            this.Grb5.Controls.Add(this.TxtID);
+            this.Grb5.Location = new System.Drawing.Point(22, 77);
+            this.Grb5.Name = "Grb5";
+            this.Grb5.Size = new System.Drawing.Size(731, 271);
+            this.Grb5.TabIndex = 20;
+            this.Grb5.TabStop = false;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl5.Location = new System.Drawing.Point(212, 33);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(371, 24);
+            this.lbl5.TabIndex = 21;
+            this.lbl5.Text = "CONTROL DE REGISTRO DE USUARIOS";
             // 
             // FrmUsuariosGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(907, 617);
-            this.Controls.Add(this.LblCedula);
-            this.Controls.Add(this.LblEmail);
-            this.Controls.Add(this.TxtCedula);
-            this.Controls.Add(this.TxtEmail);
+            this.ClientSize = new System.Drawing.Size(783, 840);
+            this.Controls.Add(this.lbl5);
+            this.Controls.Add(this.Grb5);
             this.Controls.Add(this.BtnLimpiar);
-            this.Controls.Add(this.TxtID);
-            this.Controls.Add(this.LblID);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnEditar);
-            this.Controls.Add(this.TxtPassword1);
-            this.Controls.Add(this.LblContrasennia);
             this.Controls.Add(this.BtnAgregar);
-            this.Controls.Add(this.LblRolUsuario);
-            this.Controls.Add(this.LblNombre);
-            this.Controls.Add(this.CbTipoRol);
-            this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.DgvListaUsuarios);
             this.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmUsuariosGestion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Usuarios";
             this.Load += new System.EventHandler(this.FrmUsuariosGestion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).EndInit();
+            this.Grb5.ResumeLayout(false);
+            this.Grb5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,5 +391,8 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox Grb5;
+        private System.Windows.Forms.Label lbl5;
     }
 }

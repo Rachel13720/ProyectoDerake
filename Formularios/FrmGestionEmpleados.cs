@@ -27,111 +27,116 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos del cliente
-            if (ValidarDatosRequeridos())
+            try
             {
-
-                DialogResult Respuesta = MessageBox.Show("¿Esta seguro de agregar el nuevo empleado?", "Confirmacion requerida", MessageBoxButtons.YesNo);
-
-                if (Respuesta == DialogResult.Yes)
+                //valida los datos del cliente
+                if (ValidarDatosRequeridos())
                 {
 
-                    Empleado MiEmpleado = new Empleado();
+                    DialogResult Respuesta = MessageBox.Show("¿Esta seguro de agregar el nuevo empleado?", "Confirmacion requerida", MessageBoxButtons.YesNo);
 
-                    MiEmpleado.Nombre = TxtNombre.Text.Trim();
-                    MiEmpleado.Apellido = TxtApellido.Text.Trim();
-                    MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
-                    MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
-
-                    bool NombreExiste = MiEmpleado.ConsultarPorNombre();
-
-
-                    if (!NombreExiste)
+                    if (Respuesta == DialogResult.Yes)
                     {
-                        //agrega el cliente
-                        if (MiEmpleado.Agregar())
-                        {
-                            MessageBox.Show("Empleado agregado correctamente", ":)", MessageBoxButtons.OK);
 
-                            LimpiarFormulario();
-                            LlenarListaEmpleados();
-                            ActivarBtnAgregar();
+                        Empleado MiEmpleado = new Empleado();
+
+                        MiEmpleado.Nombre = TxtNombre.Text.Trim();
+                        MiEmpleado.Apellido = TxtApellido.Text.Trim();
+                        MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
+                        MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
+
+                        bool NombreExiste = MiEmpleado.ConsultarPorNombre();
+
+
+                        if (!NombreExiste)
+                        {
+                            //agrega el cliente
+                            if (MiEmpleado.Agregar())
+                            {
+                                MessageBox.Show("Empleado agregado correctamente", ":)", MessageBoxButtons.OK);
+
+                                LimpiarFormulario();
+                                LlenarListaEmpleados();
+                                ActivarBtnAgregar();
+
+                            }
+
+
+                        }
+                        else
+                        {
+                            //valida que los datos ya existen
+                            if (NombreExiste)
+                            {
+                                MessageBox.Show("El Nombre ya esta en uso", ":(", MessageBoxButtons.OK);
+                                TxtNombre.Focus();
+                                TxtNombre.SelectAll();
+
+                            }
 
                         }
 
-
                     }
-                    else
-                    {
-                        //valida que los datos ya existen
-                        if (NombreExiste)
-                        {
-                            MessageBox.Show("El Nombre ya esta en uso", ":(", MessageBoxButtons.OK);
-                            TxtNombre.Focus();
-                            TxtNombre.SelectAll();
-
-                        }
-
-                    }
-
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         //valida los datos del empleado
         private bool ValidarDatosRequeridos()
         {
-            
+
             bool R = false;
-            try { 
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
+            try
             {
-                R = true;
+                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
+                {
+                    R = true;
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+
             }
 
-                return R;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return R;
         }
 
         //llena la lista con los datos del empleado
         private void LlenarListaEmpleados()
         {
-             
+
             Empleado MiEmpleado = new Empleado();
-            try { 
-            //valida los datos de la busqueda
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
+            try
             {
-                //Si hay datos de busqueda
-                DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
+                //valida los datos de la busqueda
+                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+                     !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
+                {
+                    //Si hay datos de busqueda
+                    DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
 
+                }
+                else
+                {
+                    //listado normal
+                    ListaEmpleadosNormal = MiEmpleado.ListarTodos();
+                    DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
+
+                }
+
+                //X
+                DgvListaEmpleados.ClearSelection();
             }
-            else
+            catch (Exception error)
             {
-                //listado normal
-                ListaEmpleadosNormal = MiEmpleado.ListarTodos();
-                DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
-
-            }
-
-            //X
-            DgvListaEmpleados.ClearSelection();
-            }
-            catch (Exception ex)
-            {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //limpia los datos del empleado en el formulario
@@ -168,77 +173,79 @@ namespace ProyectoDerake.Formularios
 
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
 
         private void TxtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos del cliente
-            if (ValidarDatosRequeridos())
+            try
             {
-                Empleado MiEmpleado = new Empleado();
-
-                DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
-
-                MiEmpleado.IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
-
-                MiEmpleado.Nombre = TxtNombre.Text.Trim();
-                MiEmpleado.Apellido = TxtApellido.Text.Trim();
-                MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
-                MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
-
-
-                //consulta al cliente por su ID
-                if (MiEmpleado.ConsultarPorID())
+                //valida los datos del cliente
+                if (ValidarDatosRequeridos())
                 {
-                    //Edita al cliente
-                    if (MiEmpleado.Editar())
+                    Empleado MiEmpleado = new Empleado();
+
+                    DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
+
+                    MiEmpleado.IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
+
+                    MiEmpleado.Nombre = TxtNombre.Text.Trim();
+                    MiEmpleado.Apellido = TxtApellido.Text.Trim();
+                    MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
+                    MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
+
+
+                    //consulta al cliente por su ID
+                    if (MiEmpleado.ConsultarPorID())
                     {
-                        MessageBox.Show("Empleado modificado correctamente", ":)", MessageBoxButtons.OK);
-                        LimpiarFormulario();
-                        LlenarListaEmpleados();
-                        ActivarBtnAgregar();
+                        //Edita al cliente
+                        if (MiEmpleado.Editar())
+                        {
+                            MessageBox.Show("Empleado modificado correctamente", ":)", MessageBoxButtons.OK);
+                            LimpiarFormulario();
+                            LlenarListaEmpleados();
+                            ActivarBtnAgregar();
+                        }
                     }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            
+
             Empleado MiEmpleado = new Empleado();
 
             DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
 
             MiEmpleado.IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
-            try { 
-            if (MiEmpleado.ConsultarPorID())
+            try
             {
-                //desactiva los datos
-                if (MiEmpleado.Desactivar())
+                if (MiEmpleado.ConsultarPorID())
                 {
-                    MessageBox.Show("Empleado eliminado correctamente", ":)", MessageBoxButtons.OK);
-                    LimpiarFormulario();
-                    ActivarBtnAgregar();
-                    LlenarListaEmpleados();
+                    //desactiva los datos
+                    if (MiEmpleado.Desactivar())
+                    {
+                        MessageBox.Show("Empleado eliminado correctamente", ":)", MessageBoxButtons.OK);
+                        LimpiarFormulario();
+                        ActivarBtnAgregar();
+                        LlenarListaEmpleados();
+                    }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -265,37 +272,39 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try { 
-            //valida si se ha seleccionado una fila en el datagridview
-            if (DgvListaEmpleados.SelectedRows.Count == 1)
+            try
             {
-                LimpiarFormulario();
+                //valida si se ha seleccionado una fila en el datagridview
+                if (DgvListaEmpleados.SelectedRows.Count == 1)
+                {
+                    LimpiarFormulario();
 
-                DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
+                    DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
 
-                int IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
+                    int IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
 
-                MiEmpleadoLocal = new Empleado();
+                    MiEmpleadoLocal = new Empleado();
 
-                MiEmpleadoLocal = MiEmpleadoLocal.Consultar(IDEmpleado);
+                    MiEmpleadoLocal = MiEmpleadoLocal.Consultar(IDEmpleado);
 
-                TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
-                TxtApellido.Text = Convert.ToString(MiFila.Cells["Apellido"].Value);
-                TxtHoras.Text = Convert.ToString(MiFila.Cells["HorasTrabajadas"].Value);
-                TxtSalario.Text = Convert.ToString(MiFila.Cells["Salario"].Value);
+                    TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
+                    TxtApellido.Text = Convert.ToString(MiFila.Cells["Apellido"].Value);
+                    TxtHoras.Text = Convert.ToString(MiFila.Cells["HorasTrabajadas"].Value);
+                    TxtSalario.Text = Convert.ToString(MiFila.Cells["Salario"].Value);
 
-                ActivarBtnModificarYEliminar();
+                    ActivarBtnModificarYEliminar();
+                }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
-        private void Calcular() {
-            
+        private void Calcular()
+        {
+
             double ht, ph, sal;
 
             try
@@ -312,7 +321,7 @@ namespace ProyectoDerake.Formularios
                 MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            
+
         }
 
 
@@ -323,11 +332,11 @@ namespace ProyectoDerake.Formularios
 
         }
 
-         private void TxtPago_KeyPress(object sender, KeyPressEventArgs e)
-         {
+        private void TxtPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
             e.Handled = Herramientas.CaracteresNumeros(e);
 
-         }
+        }
 
         private void TxtPago_TextChanged(object sender, EventArgs e)
         {

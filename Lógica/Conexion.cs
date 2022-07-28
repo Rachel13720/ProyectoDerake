@@ -18,7 +18,7 @@ namespace ProyectoDerake.Lógica
         //que se pasarán al procedimiento almacenado.
 
         public List<SqlParameter> ListadoDeParametros = new List<SqlParameter>();
-        
+
         /*
          Esta función ejecuta un procedimiento almacenado. 
          Recibe por parámetro el nombre del SP y además 

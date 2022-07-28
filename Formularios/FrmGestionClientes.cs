@@ -29,60 +29,61 @@ namespace ProyectoDerake.Formularios
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos del cliente
-            if (ValidarDatosRequeridos())
+            try
             {
-
-                DialogResult Respuesta = MessageBox.Show("¿Esta seguro de agregar el nuevo cliente?", "Confirmacion requerida", MessageBoxButtons.YesNo);
-
-                if (Respuesta == DialogResult.Yes)
+                //valida los datos del cliente
+                if (ValidarDatosRequeridos())
                 {
 
-                    Cliente MiCliente = new Cliente();
+                    DialogResult Respuesta = MessageBox.Show("¿Esta seguro de agregar el nuevo cliente?", "Confirmacion requerida", MessageBoxButtons.YesNo);
 
-                    MiCliente.Nombre = TxtNombre.Text.Trim();
-                    MiCliente.Apellido = TxtApellido.Text.Trim();
-                    MiCliente.Telefono = TxtTelefono.Text.Trim();
-                    MiCliente.Direccion = TxtDireccion.Text.Trim();
-
-                    bool NombreExiste = MiCliente.ConsultarPorNombre();
-
-
-                    if (!NombreExiste)
+                    if (Respuesta == DialogResult.Yes)
                     {
-                        //agrega el cliente
-                        if (MiCliente.Agregar())
-                        {
-                            MessageBox.Show("Cliente agregado correctamente", ":)", MessageBoxButtons.OK);
 
-                            LimpiarFormulario();
-                            LlenarListaClientes();
-                            ActivarBtnAgregar();
+                        Cliente MiCliente = new Cliente();
+
+                        MiCliente.Nombre = TxtNombre.Text.Trim();
+                        MiCliente.Apellido = TxtApellido.Text.Trim();
+                        MiCliente.Telefono = TxtTelefono.Text.Trim();
+                        MiCliente.Direccion = TxtDireccion.Text.Trim();
+
+                        bool NombreExiste = MiCliente.ConsultarPorNombre();
+
+
+                        if (!NombreExiste)
+                        {
+                            //agrega el cliente
+                            if (MiCliente.Agregar())
+                            {
+                                MessageBox.Show("Cliente agregado correctamente", ":)", MessageBoxButtons.OK);
+
+                                LimpiarFormulario();
+                                LlenarListaClientes();
+                                ActivarBtnAgregar();
+
+                            }
+
+
+                        }
+                        else
+                        {
+                            //valida que los datos ya existen
+                            if (NombreExiste)
+                            {
+                                MessageBox.Show("El Nombre ya esta en uso", ":(", MessageBoxButtons.OK);
+                                TxtNombre.Focus();
+                                TxtNombre.SelectAll();
+
+                            }
 
                         }
 
-
                     }
-                    else
-                    {
-                        //valida que los datos ya existen
-                        if (NombreExiste)
-                        {
-                            MessageBox.Show("El Nombre ya esta en uso", ":(", MessageBoxButtons.OK);
-                            TxtNombre.Focus();
-                            TxtNombre.SelectAll();
-
-                        }
-
-                    }
-
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -91,19 +92,21 @@ namespace ProyectoDerake.Formularios
         private bool ValidarDatosRequeridos()
         {
             bool R = false;
-            try { 
+            try
+            {
                 if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
                 {
-                R = true;
+                    R = true;
                 }
 
-                    return R;
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return R;
         }
 
         private void FrmGestionClientes_Load(object sender, EventArgs e)
@@ -119,31 +122,32 @@ namespace ProyectoDerake.Formularios
         //llena la lista con los datos del cliente
         private void LlenarListaClientes()
         {
-            
+
             Cliente MiCliente = new Cliente();
-            try { 
-            //valida los datos de la busqueda
-            if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
+            try
             {
-                //Si hay datos de busqueda
-                DgvListaClientes.DataSource = ListaClientesNormal;
+                //valida los datos de la busqueda
+                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
+                     !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
+                {
+                    //Si hay datos de busqueda
+                    DgvListaClientes.DataSource = ListaClientesNormal;
 
+                }
+                else
+                {
+                    //listado normal
+                    ListaClientesNormal = MiCliente.ListarTodos();
+                    DgvListaClientes.DataSource = ListaClientesNormal;
+
+                }
+
+                //X
+                DgvListaClientes.ClearSelection();
             }
-            else
+            catch (Exception error)
             {
-                //listado normal
-                ListaClientesNormal = MiCliente.ListarTodos();
-                DgvListaClientes.DataSource = ListaClientesNormal;
-
-            }
-
-            //X
-            DgvListaClientes.ClearSelection();
-            }
-            catch (Exception ex)
-            {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -177,67 +181,69 @@ namespace ProyectoDerake.Formularios
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            try { 
-            //valida los datos del cliente
-            if (ValidarDatosRequeridos())
+            try
             {
-                Cliente MiCliente = new Cliente();
-
-                DataGridViewRow MiFila = DgvListaClientes.SelectedRows[0];
-
-                MiCliente.IDCliente = Convert.ToInt32(MiFila.Cells["IDCliente"].Value);
-
-                MiCliente.Nombre = TxtNombre.Text.Trim();
-                MiCliente.Apellido = TxtApellido.Text.Trim();
-                MiCliente.Telefono = TxtTelefono.Text.Trim();
-                MiCliente.Direccion = TxtDireccion.Text.Trim();
-
-                //consulta al cliente por su ID
-                if (MiCliente.ConsultarPorID())
+                //valida los datos del cliente
+                if (ValidarDatosRequeridos())
                 {
-                    //Edita al cliente
-                    if (MiCliente.Editar())
+                    Cliente MiCliente = new Cliente();
+
+                    DataGridViewRow MiFila = DgvListaClientes.SelectedRows[0];
+
+                    MiCliente.IDCliente = Convert.ToInt32(MiFila.Cells["IDCliente"].Value);
+
+                    MiCliente.Nombre = TxtNombre.Text.Trim();
+                    MiCliente.Apellido = TxtApellido.Text.Trim();
+                    MiCliente.Telefono = TxtTelefono.Text.Trim();
+                    MiCliente.Direccion = TxtDireccion.Text.Trim();
+
+                    //consulta al cliente por su ID
+                    if (MiCliente.ConsultarPorID())
                     {
-                        MessageBox.Show("Cliente modificado correctamente", ":)", MessageBoxButtons.OK);
-                        LimpiarFormulario();
-                        LlenarListaClientes();
-                        ActivarBtnAgregar();
+                        //Edita al cliente
+                        if (MiCliente.Editar())
+                        {
+                            MessageBox.Show("Cliente modificado correctamente", ":)", MessageBoxButtons.OK);
+                            LimpiarFormulario();
+                            LlenarListaClientes();
+                            ActivarBtnAgregar();
+                        }
                     }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-             
+
             Cliente MiCliente = new Cliente();
 
             DataGridViewRow MiFila = DgvListaClientes.SelectedRows[0];
 
             MiCliente.IDCliente = Convert.ToInt32(MiFila.Cells["IDCliente"].Value);
 
-            try { 
-            if (MiCliente.ConsultarPorID())
+            try
             {
-                //desactiva los datos
-                if (MiCliente.Desactivar())
+                if (MiCliente.ConsultarPorID())
                 {
-                    MessageBox.Show("Cliente eliminado correctamente", ":)", MessageBoxButtons.OK);
-                    LimpiarFormulario();
-                    ActivarBtnAgregar();
-                    LlenarListaClientes();
+                    //desactiva los datos
+                    if (MiCliente.Desactivar())
+                    {
+                        MessageBox.Show("Cliente eliminado correctamente", ":)", MessageBoxButtons.OK);
+                        LimpiarFormulario();
+                        ActivarBtnAgregar();
+                        LlenarListaClientes();
+                    }
                 }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -255,42 +261,43 @@ namespace ProyectoDerake.Formularios
 
         private void DgvListaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try { 
-            //valida si se ha seleccionado una fila en el datagridview
-            if (DgvListaClientes.SelectedRows.Count == 1)
+            try
             {
-                LimpiarFormulario();
+                //valida si se ha seleccionado una fila en el datagridview
+                if (DgvListaClientes.SelectedRows.Count == 1)
+                {
+                    LimpiarFormulario();
 
-                DataGridViewRow MiFila = DgvListaClientes.SelectedRows[0];
+                    DataGridViewRow MiFila = DgvListaClientes.SelectedRows[0];
 
-                int IDCliente = Convert.ToInt32(MiFila.Cells["IDCliente"].Value);
+                    int IDCliente = Convert.ToInt32(MiFila.Cells["IDCliente"].Value);
 
-                MiClienteLocal = new Cliente();
+                    MiClienteLocal = new Cliente();
 
-                MiClienteLocal = MiClienteLocal.Consultar(IDCliente);
+                    MiClienteLocal = MiClienteLocal.Consultar(IDCliente);
 
-                TxtNombre.Text = MiClienteLocal.Nombre;
-                TxtApellido.Text = MiClienteLocal.Apellido;
-                TxtTelefono.Text = MiClienteLocal.Telefono;
-                TxtDireccion.Text = MiClienteLocal.Direccion;
+                    TxtNombre.Text = MiClienteLocal.Nombre;
+                    TxtApellido.Text = MiClienteLocal.Apellido;
+                    TxtTelefono.Text = MiClienteLocal.Telefono;
+                    TxtDireccion.Text = MiClienteLocal.Direccion;
 
-                ActivarBtnModificarYEliminar();
+                    ActivarBtnModificarYEliminar();
+                }
             }
-            }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
 
         private void TxtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = Herramientas.CaracteresTexto(e, true);
+            e.Handled = Herramientas.CaracteresTexto(e);
         }
 
         private void TxtDireccion_KeyPress(object sender, KeyPressEventArgs e)

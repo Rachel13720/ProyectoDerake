@@ -15,7 +15,7 @@ namespace ProyectoDerake.Lógica
         public Producto MiProducto { get; set; }
 
         //Constructor
-        
+
         public VentaDetalle()
         {
             MiProducto = new Producto();
