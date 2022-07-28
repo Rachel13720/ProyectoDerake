@@ -12,12 +12,7 @@ namespace ProyectoDerake
     {
         //Regex que permite que el correo cumpla como válido
         const string EmailRegex =
-        @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
-        + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
-		[0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
-        + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
-		[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-        + @"([a-zA-Z0-9]+[\w-]+\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,23})$";
+         "@[a-z0-9._%+-]+@[a-z0-9-]+.+.[a-z]{2,4}@";
 
         //Regex que permite ciertos datos
         const string PassRegex = "^(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{4,10}$";
@@ -33,7 +28,9 @@ namespace ProyectoDerake
                 return Regex.IsMatch(email, EmailRegex);
             }
             else
-            { return false; }
+            { 
+                return false; 
+            }
 
         }
 
@@ -47,7 +44,9 @@ namespace ProyectoDerake
                 return Regex.IsMatch(factura, FacturaRegex);
             }
             else
-            { return false; }
+            { 
+                return false; 
+            }
 
         }
 

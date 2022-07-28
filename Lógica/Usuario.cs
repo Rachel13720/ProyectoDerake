@@ -80,6 +80,7 @@ namespace ProyectoDerake.Lógica
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Id", this.IDUsuario));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Nombre", this.Nombre));
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Email", this.Email));
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@Cedula", this.Cedula));
 
                 Crypto MiEncriptador = new Crypto();
                 string PasswordEncriptado = "";

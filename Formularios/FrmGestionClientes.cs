@@ -98,7 +98,11 @@ namespace ProyectoDerake.Formularios
                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
                 {
                     R = true;
+                }else
+                {
+                    MessageBox.Show("Hay campos vacíos", ":(", MessageBoxButtons.OK);
                 }
+
 
             }
             catch (Exception error)
@@ -126,23 +130,10 @@ namespace ProyectoDerake.Formularios
             Cliente MiCliente = new Cliente();
             try
             {
-                //valida los datos de la busqueda
-                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                     !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
-                {
-                    //Si hay datos de busqueda
-                    DgvListaClientes.DataSource = ListaClientesNormal;
+                ListaClientesNormal = MiCliente.ListarTodos();
 
-                }
-                else
-                {
-                    //listado normal
-                    ListaClientesNormal = MiCliente.ListarTodos();
-                    DgvListaClientes.DataSource = ListaClientesNormal;
+                DgvListaClientes.DataSource = ListaClientesNormal;
 
-                }
-
-                //X
                 DgvListaClientes.ClearSelection();
             }
             catch (Exception error)

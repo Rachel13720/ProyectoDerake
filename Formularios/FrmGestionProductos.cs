@@ -69,9 +69,6 @@ namespace ProyectoDerake.Formularios
 
                     if (Respuesta == DialogResult.Yes)
                     {
-
-                        Producto MiProducto = new Producto();
-
                         MiProducto.Nombre = TxtNombre.Text.Trim();
                         MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim());
                         MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
@@ -85,7 +82,7 @@ namespace ProyectoDerake.Formularios
                             //se agrega el producto 
                             if (MiProducto.Agregar())
                             {
-                                MessageBox.Show("Producto agregado correctamente", ":)", MessageBoxButtons.OK);
+                                MessageBox.Show("Producto agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                                 LimpiarFormulario();
                                 LlenarListaProductos();
@@ -99,13 +96,14 @@ namespace ProyectoDerake.Formularios
                             //valida que los datos ya existen
                             if (NombreExiste)
                             {
-                                MessageBox.Show("El nombre ya esta en uso", ":(", MessageBoxButtons.OK);
+                                MessageBox.Show("El nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 TxtNombre.Focus();
                                 TxtNombre.SelectAll();
 
                             }
 
                         }
+                        LlenarListaProductos();
 
                     }
                 }
@@ -128,11 +126,16 @@ namespace ProyectoDerake.Formularios
                     !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtComentario.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtPrecio.Text.Trim()) &&
-                     CboxTipoCategoria.SelectedIndex > -1)
+                    DgvListaProductos.Rows.Count < 1 &&
+                    CboxTipoCategoria.SelectedIndex > -1)
                 {
 
                     R = true;
 
+                }
+                else
+                {
+                    MessageBox.Show("Hay campos vacíos", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception error)
@@ -211,7 +214,7 @@ namespace ProyectoDerake.Formularios
                         //se editan los datos
                         if (MiProducto.Editar())
                         {
-                            MessageBox.Show("Producto modificado correctamente", ":)", MessageBoxButtons.OK);
+                            MessageBox.Show("Producto modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             LimpiarFormulario();
                             ActivarBotonAgregar();
                             LlenarListaProductos();
@@ -241,7 +244,7 @@ namespace ProyectoDerake.Formularios
                     //desactiva los datos 
                     if (MiProducto.Desactivar())
                     {
-                        MessageBox.Show("Producto eliminado correctamente", ":)", MessageBoxButtons.OK);
+                        MessageBox.Show("Producto eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         LimpiarFormulario();
                         ActivarBotonAgregar();
                         LlenarListaProductos();

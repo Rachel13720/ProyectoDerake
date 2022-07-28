@@ -312,9 +312,9 @@ namespace ProyectoDerake.Formularios
             this.LblComentario.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
             this.LblComentario.Location = new System.Drawing.Point(432, 19);
             this.LblComentario.Name = "LblComentario";
-            this.LblComentario.Size = new System.Drawing.Size(78, 16);
+            this.LblComentario.Size = new System.Drawing.Size(155, 16);
             this.LblComentario.TabIndex = 16;
-            this.LblComentario.Text = "Comentario";
+            this.LblComentario.Text = "Comentario (obligatorio)";
             // 
             // BtnLimpiar
             // 

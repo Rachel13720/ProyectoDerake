@@ -98,6 +98,10 @@ namespace ProyectoDerake.Formularios
                 {
                     R = true;
                 }
+                else
+                {
+                    MessageBox.Show("Hay campos vacíos", ":(", MessageBoxButtons.OK);
+                }
             }
             catch (Exception error)
             {

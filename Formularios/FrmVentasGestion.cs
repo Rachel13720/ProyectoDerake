@@ -143,14 +143,16 @@ namespace ProyectoDerake.Formularios
 
                 }
                 else
-                { //valida que la fecha no sea mayor a la actual
+                {
+                    MessageBox.Show("Existen espacios sin texto, ingrese los datos restantes", ":(", MessageBoxButtons.OK);
+                    return false; 
+                    //valida que la fecha no sea mayor a la actual
                     if (DtpFecha.Value.Date > DateTime.Now.Date)
                     {
                         MessageBox.Show(@"La fecha de la factura no puede ser superior a la fecha actual", "Error de validacion", MessageBoxButtons.OK);
 
                         return false;
                     }
-
 
                     //Hace demas validaciones
                     if (ValidarVenta())
@@ -181,6 +183,7 @@ namespace ProyectoDerake.Formularios
                     }
 
                 }
+
             }
             catch (Exception error)
             {

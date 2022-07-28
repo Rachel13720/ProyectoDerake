@@ -13,12 +13,14 @@ namespace ProyectoDerake.Lógica
         public int CantidadVendida { get; set; }
         public int PrecioVenta { get; set; }
         public Producto MiProducto { get; set; }
+        public Venta MiVenta { get; set; }
 
         //Constructor
 
         public VentaDetalle()
         {
             MiProducto = new Producto();
+            MiVenta = new Venta();
         }
     }
 }
