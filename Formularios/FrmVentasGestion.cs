@@ -321,5 +321,10 @@ namespace ProyectoDerake.Formularios
         {
             e.Handled = Herramientas.CaracteresNumeros(e);
         }
+
+        private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresTexto(e);
+        }
     }
 }

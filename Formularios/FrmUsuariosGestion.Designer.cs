@@ -123,8 +123,10 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtNombre
             // 
+            this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNombre.Location = new System.Drawing.Point(15, 109);
             this.TxtNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtNombre.MaxLength = 25;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(215, 23);
             this.TxtNombre.TabIndex = 1;
@@ -132,6 +134,7 @@ namespace ProyectoDerake.Formularios
             // 
             // CbTipoRol
             // 
+            this.CbTipoRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbTipoRol.FormattingEnabled = true;
             this.CbTipoRol.Location = new System.Drawing.Point(15, 217);
             this.CbTipoRol.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -184,7 +187,9 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtPassword1
             // 
+            this.TxtPassword1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.TxtPassword1.Location = new System.Drawing.Point(15, 167);
+            this.TxtPassword1.MaxLength = 10;
             this.TxtPassword1.Name = "TxtPassword1";
             this.TxtPassword1.Size = new System.Drawing.Size(215, 23);
             this.TxtPassword1.TabIndex = 7;
@@ -260,7 +265,9 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtEmail
             // 
+            this.TxtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.TxtEmail.Location = new System.Drawing.Point(342, 135);
+            this.TxtEmail.MaxLength = 50;
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(202, 23);
             this.TxtEmail.TabIndex = 15;
@@ -269,6 +276,7 @@ namespace ProyectoDerake.Formularios
             // TxtCedula
             // 
             this.TxtCedula.Location = new System.Drawing.Point(342, 68);
+            this.TxtCedula.MaxLength = 15;
             this.TxtCedula.Name = "TxtCedula";
             this.TxtCedula.Size = new System.Drawing.Size(202, 23);
             this.TxtCedula.TabIndex = 16;
@@ -299,12 +307,12 @@ namespace ProyectoDerake.Formularios
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(558, 179);
+            this.label1.Location = new System.Drawing.Point(558, 188);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 80);
             this.label1.TabIndex = 19;
-            this.label1.Text = "¡Aviso!\r\nEl formato de contraseña:\r\n2 letras y 2 numeros, \r\nlongitud mayor a 4 \r\n" +
-    "caracteres y menor que 10.\r\n";
+            this.label1.Text = "¡Aviso!\r\nEl formato de contraseña:\r\n2 letras  y 2 numeros, \r\nlongitud mayor a 4 \r" +
+    "\ncaracteres y menor que 10.\r\n";
             // 
             // Grb5
             // 

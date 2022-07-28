@@ -76,11 +76,6 @@ namespace ProyectoDerake.Formularios
             e.Handled = Herramientas.CaracteresTexto(e, true);
         }
 
-        private void TxtContrasennia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            TxtContrasennia.UseSystemPasswordChar = true;
-        }
-
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();

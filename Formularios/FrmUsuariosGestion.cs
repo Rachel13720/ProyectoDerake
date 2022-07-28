@@ -20,7 +20,7 @@ namespace ProyectoDerake.Formularios
 
         public DataTable ListaUsuariosNormal { get; set; }
 
-        public bool FlagCambiarContrasennia { get; set; }
+        public int AdminU { get; set; }
 
         public FrmUsuariosGestion()
         {
@@ -32,7 +32,6 @@ namespace ProyectoDerake.Formularios
         //Cargar los datos
         private void FrmUsuariosGestion_Load(object sender, EventArgs e)
         {
-
             LlenarListaUsuarios();
 
             CargaDatosComboTipoRol();
@@ -40,6 +39,7 @@ namespace ProyectoDerake.Formularios
             LimpiarFormulario();
 
             ActivarBotonAgregar();
+
 
         }
 
@@ -72,9 +72,9 @@ namespace ProyectoDerake.Formularios
                 //X
                 DgvListaUsuarios.ClearSelection();
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -113,7 +113,6 @@ namespace ProyectoDerake.Formularios
             TxtEmail.Clear();
             TxtPassword1.Clear();
 
-            FlagCambiarContrasennia = false;
         }
 
         //valida los datos
@@ -126,6 +125,7 @@ namespace ProyectoDerake.Formularios
                 if (!string.IsNullOrEmpty(TxtCedula.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtEmail.Text.Trim()) &&
+                    !string.IsNullOrEmpty(TxtPassword1.Text.Trim()) &&
                      CbTipoRol.SelectedIndex > -1)
                 {
                     if (BtnEditar.Enabled)
@@ -134,10 +134,7 @@ namespace ProyectoDerake.Formularios
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(TxtPassword1.Text.Trim()))
-                        {
-                            R = true;
-                        }
+                        MessageBox.Show("Faltó un campo", "Aviso del Sistema", MessageBoxButtons.OK);
                     }
 
                     //Se utiliza la herramienta para validar el email
@@ -161,12 +158,13 @@ namespace ProyectoDerake.Formularios
                     return R;
                 }
 
-                return R;
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return R;
         }
 
         //boton que agrega
@@ -234,9 +232,9 @@ namespace ProyectoDerake.Formularios
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -265,10 +263,21 @@ namespace ProyectoDerake.Formularios
             CbTipoRol.Enabled = false;
         }
 
-
-        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void DesactivarBotones()
         {
-            e.Handled = Herramientas.CaracteresTexto(e);
+            BtnAgregar.Enabled = false;
+            BtnEditar.Enabled = false;
+            BtnEliminar.Enabled = false;
+            TxtID.Enabled = false;
+            TxtCedula.Enabled = false;
+            TxtPassword1.Enabled = false;
+            CbTipoRol.Enabled = false;
+        }
+
+
+        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs pE)
+        {
+            Herramientas.CaracteresTextoM(pE);
         }
 
         private void DgvListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -295,11 +304,19 @@ namespace ProyectoDerake.Formularios
                     }
 
                     ActivarEditarYEliminar();
+
+
+                    AdminU = Convert.ToInt32(DgvListaUsuarios.SelectedRows[0].Cells["ColIDUsuario"].Value);
+
+                    if (AdminU == 1)
+                    {
+                        DesactivarBotones();
+                    }
                 }
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                throw;
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -319,14 +336,7 @@ namespace ProyectoDerake.Formularios
                     Miusuario.Cedula = TxtCedula.Text.Trim();
                     Miusuario.Nombre = TxtNombre.Text.Trim();
                     Miusuario.Email = TxtEmail.Text.Trim();
-
                     Miusuario.Contrasennia = "";
-
-                    //valida el cambio de la contraseña 
-                    if (FlagCambiarContrasennia)
-                    {
-                        Miusuario.Contrasennia = TxtPassword1.Text.Trim();
-                    }
 
                     Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
 
@@ -358,7 +368,9 @@ namespace ProyectoDerake.Formularios
 
                 Usuario Miusuario = new Usuario();
 
-                Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
+                DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
+
+                MiUsuario.IDUsuario = Convert.ToInt32(MiFila.Cells["IDUsuario"].Value);
 
                 if (Miusuario.ConsultarPorID())
                 {

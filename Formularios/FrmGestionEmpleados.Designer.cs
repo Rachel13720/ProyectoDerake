@@ -190,8 +190,10 @@ namespace ProyectoDerake.Formularios
             // TxtNombre
             // 
             this.TxtNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtNombre.Location = new System.Drawing.Point(7, 71);
+            this.TxtNombre.MaxLength = 25;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(203, 25);
             this.TxtNombre.TabIndex = 6;
@@ -200,8 +202,10 @@ namespace ProyectoDerake.Formularios
             // TxtApellido
             // 
             this.TxtApellido.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtApellido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtApellido.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtApellido.Location = new System.Drawing.Point(7, 134);
+            this.TxtApellido.MaxLength = 30;
             this.TxtApellido.Name = "TxtApellido";
             this.TxtApellido.Size = new System.Drawing.Size(203, 25);
             this.TxtApellido.TabIndex = 7;
@@ -212,6 +216,7 @@ namespace ProyectoDerake.Formularios
             this.TxtHoras.BackColor = System.Drawing.SystemColors.Control;
             this.TxtHoras.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtHoras.Location = new System.Drawing.Point(266, 71);
+            this.TxtHoras.MaxLength = 10;
             this.TxtHoras.Name = "TxtHoras";
             this.TxtHoras.Size = new System.Drawing.Size(203, 25);
             this.TxtHoras.TabIndex = 13;
@@ -253,6 +258,7 @@ namespace ProyectoDerake.Formularios
             this.TxtPago.BackColor = System.Drawing.SystemColors.Control;
             this.TxtPago.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtPago.Location = new System.Drawing.Point(266, 137);
+            this.TxtPago.MaxLength = 10;
             this.TxtPago.Name = "TxtPago";
             this.TxtPago.Size = new System.Drawing.Size(203, 25);
             this.TxtPago.TabIndex = 16;

@@ -290,14 +290,14 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs pE)
         {
-            e.Handled = Herramientas.CaracteresTexto(e);
+            Herramientas.CaracteresTextoM(pE);
         }
 
-        private void TxtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtApellido_KeyPress(object sender, KeyPressEventArgs pE)
         {
-            e.Handled = Herramientas.CaracteresTexto(e);
+            Herramientas.CaracteresTextoM(pE);
         }
 
         private void TxtDireccion_KeyPress(object sender, KeyPressEventArgs e)

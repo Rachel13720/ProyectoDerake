@@ -154,6 +154,7 @@ namespace ProyectoDerake.Formularios
             // 
             // CboxEmpleado
             // 
+            this.CboxEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboxEmpleado.FormattingEnabled = true;
             this.CboxEmpleado.Location = new System.Drawing.Point(217, 118);
             this.CboxEmpleado.Name = "CboxEmpleado";
@@ -172,6 +173,7 @@ namespace ProyectoDerake.Formularios
             // 
             // CboxCliente
             // 
+            this.CboxCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboxCliente.FormattingEnabled = true;
             this.CboxCliente.Location = new System.Drawing.Point(18, 118);
             this.CboxCliente.Name = "CboxCliente";
@@ -187,16 +189,21 @@ namespace ProyectoDerake.Formularios
             // 
             // TxtComentario
             // 
+            this.TxtComentario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtComentario.Location = new System.Drawing.Point(445, 54);
+            this.TxtComentario.MaxLength = 255;
             this.TxtComentario.Multiline = true;
             this.TxtComentario.Name = "TxtComentario";
             this.TxtComentario.Size = new System.Drawing.Size(232, 112);
             this.TxtComentario.TabIndex = 10;
+            this.TxtComentario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtComentario_KeyPress);
             // 
             // TxtNumeroFactura
             // 
+            this.TxtNumeroFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNumeroFactura.ForeColor = System.Drawing.SystemColors.ControlText;
             this.TxtNumeroFactura.Location = new System.Drawing.Point(217, 54);
+            this.TxtNumeroFactura.MaxLength = 10;
             this.TxtNumeroFactura.Name = "TxtNumeroFactura";
             this.TxtNumeroFactura.Size = new System.Drawing.Size(175, 23);
             this.TxtNumeroFactura.TabIndex = 7;

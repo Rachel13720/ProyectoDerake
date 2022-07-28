@@ -71,7 +71,7 @@ namespace ProyectoDerake.Formularios
             this.TxtContrasennia.Name = "TxtContrasennia";
             this.TxtContrasennia.Size = new System.Drawing.Size(346, 22);
             this.TxtContrasennia.TabIndex = 1;
-            this.TxtContrasennia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtContrasennia_KeyPress);
+            this.TxtContrasennia.UseSystemPasswordChar = true;
             // 
             // TxtUsuario
             // 

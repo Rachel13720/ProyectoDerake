@@ -203,6 +203,7 @@ namespace ProyectoDerake.Formularios
             this.TxtCantidad.BackColor = System.Drawing.SystemColors.Control;
             this.TxtCantidad.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtCantidad.Location = new System.Drawing.Point(9, 111);
+            this.TxtCantidad.MaxLength = 10;
             this.TxtCantidad.Name = "TxtCantidad";
             this.TxtCantidad.Size = new System.Drawing.Size(142, 25);
             this.TxtCantidad.TabIndex = 6;
@@ -213,6 +214,7 @@ namespace ProyectoDerake.Formularios
             this.TxtPrecio.BackColor = System.Drawing.SystemColors.Control;
             this.TxtPrecio.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtPrecio.Location = new System.Drawing.Point(9, 183);
+            this.TxtPrecio.MaxLength = 15;
             this.TxtPrecio.Name = "TxtPrecio";
             this.TxtPrecio.Size = new System.Drawing.Size(142, 25);
             this.TxtPrecio.TabIndex = 7;
@@ -221,8 +223,10 @@ namespace ProyectoDerake.Formularios
             // TxtNombre
             // 
             this.TxtNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtNombre.Location = new System.Drawing.Point(176, 38);
+            this.TxtNombre.MaxLength = 25;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(223, 25);
             this.TxtNombre.TabIndex = 8;
@@ -231,6 +235,7 @@ namespace ProyectoDerake.Formularios
             // CboxTipoCategoria
             // 
             this.CboxTipoCategoria.BackColor = System.Drawing.SystemColors.Control;
+            this.CboxTipoCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboxTipoCategoria.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.CboxTipoCategoria.FormattingEnabled = true;
             this.CboxTipoCategoria.Location = new System.Drawing.Point(176, 106);
@@ -291,8 +296,10 @@ namespace ProyectoDerake.Formularios
             // TxtComentario
             // 
             this.TxtComentario.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtComentario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtComentario.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtComentario.Location = new System.Drawing.Point(435, 37);
+            this.TxtComentario.MaxLength = 255;
             this.TxtComentario.Multiline = true;
             this.TxtComentario.Name = "TxtComentario";
             this.TxtComentario.Size = new System.Drawing.Size(278, 171);

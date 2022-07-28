@@ -186,6 +186,7 @@ namespace ProyectoDerake.Formularios
             this.TxtTelefono.BackColor = System.Drawing.SystemColors.Control;
             this.TxtTelefono.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtTelefono.Location = new System.Drawing.Point(6, 160);
+            this.TxtTelefono.MaxLength = 8;
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(203, 25);
             this.TxtTelefono.TabIndex = 6;
@@ -194,8 +195,10 @@ namespace ProyectoDerake.Formularios
             // TxtApellido
             // 
             this.TxtApellido.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtApellido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtApellido.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtApellido.Location = new System.Drawing.Point(6, 102);
+            this.TxtApellido.MaxLength = 30;
             this.TxtApellido.Name = "TxtApellido";
             this.TxtApellido.Size = new System.Drawing.Size(203, 25);
             this.TxtApellido.TabIndex = 7;
@@ -204,8 +207,10 @@ namespace ProyectoDerake.Formularios
             // TxtNombre
             // 
             this.TxtNombre.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNombre.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNombre.Location = new System.Drawing.Point(6, 37);
+            this.TxtNombre.MaxLength = 25;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(203, 25);
             this.TxtNombre.TabIndex = 8;
@@ -214,8 +219,10 @@ namespace ProyectoDerake.Formularios
             // TxtDireccion
             // 
             this.TxtDireccion.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtDireccion.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F);
             this.TxtDireccion.Location = new System.Drawing.Point(359, 38);
+            this.TxtDireccion.MaxLength = 255;
             this.TxtDireccion.Multiline = true;
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(322, 88);

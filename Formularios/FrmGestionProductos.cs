@@ -310,9 +310,9 @@ namespace ProyectoDerake.Formularios
             e.Handled = Herramientas.CaracteresNumeros(e);
         }
 
-        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs pE)
         {
-            e.Handled = Herramientas.CaracteresTexto(e);
+            Herramientas.CaracteresTextoM(pE);
         }
 
         private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)

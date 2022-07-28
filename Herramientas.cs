@@ -90,6 +90,29 @@ namespace ProyectoDerake
 
         }
 
+        public static void CaracteresTextoM(KeyPressEventArgs pE)
+        {
+
+            if (char.IsLetter(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else if (char.IsControl(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else if (char.IsSeparator(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else
+            {
+                pE.Handled = true;
+            }
+            
+
+        }
+
         //herramienta que permite numeros
         public static bool CaracteresNumeros(System.Windows.Forms.KeyPressEventArgs c, bool SoloEnteros = true)
         {
