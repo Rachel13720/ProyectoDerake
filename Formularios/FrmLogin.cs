@@ -43,7 +43,7 @@ namespace ProyectoDerake.Formularios
                     }
                     else
                     {
-                        MessageBox.Show("Usuario o contraseña son incorrectos", ":(", MessageBoxButtons.OK);
+                        MessageBox.Show("Usuario o contraseña son incorrectos", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         TxtContrasennia.Focus();
                         TxtContrasennia.SelectAll();
                     }

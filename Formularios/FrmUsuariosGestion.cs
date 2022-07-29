@@ -110,7 +110,7 @@ namespace ProyectoDerake.Formularios
                     !string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtEmail.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtPassword1.Text.Trim()) &&
-                     CbTipoRol.SelectedIndex > -1 && 
+                     CbTipoRol.SelectedIndex > -1 &&
                      Herramientas.ValidarEmail(TxtEmail.Text.Trim()) == true ||
                      Herramientas.ValidarPass(TxtPassword1.Text.Trim()) == true)
                 {
@@ -126,265 +126,265 @@ namespace ProyectoDerake.Formularios
             {
                 MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-    
+
 
             return R;
         }
 
-//boton que agrega
-private void BtnAgregar_Click(object sender, EventArgs e)
-{
-    try
-    {
-        //valida los datos y que todos los campos esten llenos
-        if (ValidarDatosRequeridos())
+        //boton que agrega
+        private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            DialogResult RespuestaUsuario = MessageBox.Show("¿Esta seguro de agregar el nuevo usuario?", "Confirmacion requerida", MessageBoxButtons.YesNo);
+            try
+            {
+                //valida los datos y que todos los campos esten llenos
+                if (ValidarDatosRequeridos())
+                {
+                    DialogResult RespuestaUsuario = MessageBox.Show("¿Esta seguro de agregar el nuevo usuario?", "Confirmacion requerida", MessageBoxButtons.YesNo);
 
-            if (RespuestaUsuario == DialogResult.Yes)
+                    if (RespuestaUsuario == DialogResult.Yes)
+                    {
+
+                        Usuario Miusuario = new Usuario();
+
+                        Miusuario.Cedula = TxtCedula.Text.Trim();
+                        Miusuario.Nombre = TxtNombre.Text.Trim();
+
+                        Miusuario.Email = TxtEmail.Text.Trim();
+
+                        Miusuario.Contrasennia = TxtPassword1.Text.Trim();
+                        Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
+
+                        bool CedulaExiste = Miusuario.ConsultarPorCedula();
+
+                        bool EmailExiste = Miusuario.ConsultarPorEmail();
+
+                        if (!CedulaExiste && !EmailExiste)
+                        {
+                            //se agrega el usuario
+                            if (Miusuario.Agregar())
+                            {
+                                MessageBox.Show("Usuario agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                                LimpiarFormulario();
+                                LlenarListaUsuarios();
+                                ActivarBotonAgregar();
+
+                            }
+
+
+                        }
+                        else //valida que los datos ya existen
+                        {
+                            if (CedulaExiste)
+                            {
+                                MessageBox.Show("La Cedula ya esta siendo usada", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                TxtCedula.Focus();
+                                TxtCedula.SelectAll();
+
+                            }
+                            else if (EmailExiste)
+                            {
+                                MessageBox.Show("El Email ya esta siendo usada", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                TxtEmail.Focus();
+                                TxtEmail.SelectAll();
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        //Activa el boton agregar
+        private void ActivarBotonAgregar()
+        {
+            BtnAgregar.Enabled = true;
+            BtnEditar.Enabled = false;
+            BtnEliminar.Enabled = false;
+            TxtID.Enabled = false;
+            TxtCedula.Enabled = true;
+            TxtPassword1.Enabled = true;
+            CbTipoRol.Enabled = true;
+        }
+
+        //Activa solo los botones editar y eliminar
+        private void ActivarEditarYEliminar()
+        {
+            BtnAgregar.Enabled = false;
+            BtnEditar.Enabled = true;
+            BtnEliminar.Enabled = true;
+            TxtID.Enabled = false;
+            TxtCedula.Enabled = false;
+            TxtPassword1.Enabled = false;
+            CbTipoRol.Enabled = false;
+        }
+
+        private void DesactivarBotones()
+        {
+            BtnAgregar.Enabled = false;
+            BtnEditar.Enabled = false;
+            BtnEliminar.Enabled = false;
+            TxtID.Enabled = false;
+            TxtCedula.Enabled = false;
+            TxtPassword1.Enabled = false;
+            CbTipoRol.Enabled = false;
+        }
+
+
+        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresTexto(e);
+        }
+
+        private void DgvListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //valida que la fila esta seleccionada
+                if (DgvListaUsuarios.SelectedRows.Count == 1)
+                {
+
+                    DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
+
+                    TxtID.Text = Convert.ToString(MiFila.Cells["ColIDUsuario"].Value);
+                    TxtNombre.Text = Convert.ToString(MiFila.Cells["ColNombre"].Value);
+                    TxtCedula.Text = Convert.ToString(MiFila.Cells["Cedula"].Value);
+                    TxtEmail.Text = Convert.ToString(MiFila.Cells["Email"].Value);
+
+                    foreach (DataRowView data in CbTipoRol.Items)
+                    {
+                        if (data.Row[1].ToString().Equals(MiFila.Cells["Rol"].Value))
+                        {
+                            CbTipoRol.SelectedValue = data.Row[0];
+                        }
+                    }
+
+                    ActivarEditarYEliminar();
+
+
+                    AdminU = Convert.ToInt32(DgvListaUsuarios.SelectedRows[0].Cells["ColIDUsuario"].Value);
+
+                    if (AdminU == 1)
+                    {
+                        DesactivarBotones();
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        //boton que edita los datos
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //valida los datos
+                if (ValidarDatosRequeridos())
+                {
+                    Usuario Miusuario = new Usuario();
+
+                    Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
+
+                    Miusuario.Cedula = TxtCedula.Text.Trim();
+                    Miusuario.Nombre = TxtNombre.Text.Trim();
+                    Miusuario.Email = TxtEmail.Text.Trim();
+                    Miusuario.Contrasennia = "";
+
+                    Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
+
+                    if (Miusuario.ConsultarPorID())
+                    {
+                        //Edita los datos
+                        if (Miusuario.Editar())
+                        {
+                            MessageBox.Show("Usuario modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            LimpiarFormulario();
+                            LlenarListaUsuarios();
+                            ActivarBotonAgregar();
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //boton que elimina los datos
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+
+            try
             {
 
                 Usuario Miusuario = new Usuario();
 
-                Miusuario.Cedula = TxtCedula.Text.Trim();
-                Miusuario.Nombre = TxtNombre.Text.Trim();
+                DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
 
-                Miusuario.Email = TxtEmail.Text.Trim();
+                MiUsuario.IDUsuario = Convert.ToInt32(MiFila.Cells["IDUsuario"].Value);
 
-                Miusuario.Contrasennia = TxtPassword1.Text.Trim();
-                Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
-
-                bool CedulaExiste = Miusuario.ConsultarPorCedula();
-
-                bool EmailExiste = Miusuario.ConsultarPorEmail();
-
-                if (!CedulaExiste && !EmailExiste)
+                if (Miusuario.ConsultarPorID())
                 {
-                    //se agrega el usuario
-                    if (Miusuario.Agregar())
+                    //desactiva los datos
+                    if (Miusuario.Desactivar())
                     {
-                        MessageBox.Show("Usuario agregado correctamente", ":)", MessageBoxButtons.OK);
-
+                        MessageBox.Show("Usuario eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         LimpiarFormulario();
                         LlenarListaUsuarios();
                         ActivarBotonAgregar();
-
                     }
-
-
                 }
-                else //valida que los datos ya existen
-                {
-                    if (CedulaExiste)
-                    {
-                        MessageBox.Show("La Cedula ya esta siendo usada", ":(", MessageBoxButtons.OK);
-                        TxtCedula.Focus();
-                        TxtCedula.SelectAll();
-
-                    }
-                    else if (EmailExiste)
-                    {
-                        MessageBox.Show("El Email ya esta siendo usada", ":(", MessageBoxButtons.OK);
-                        TxtEmail.Focus();
-                        TxtEmail.SelectAll();
-
-                    }
-
-                }
-
             }
-
+            catch (Exception error)
+            {
+                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    }
-    catch (Exception error)
-    {
-        MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
 
-
-//Activa el boton agregar
-private void ActivarBotonAgregar()
-{
-    BtnAgregar.Enabled = true;
-    BtnEditar.Enabled = false;
-    BtnEliminar.Enabled = false;
-    TxtID.Enabled = false;
-    TxtCedula.Enabled = true;
-    TxtPassword1.Enabled = true;
-    CbTipoRol.Enabled = true;
-}
-
-//Activa solo los botones editar y eliminar
-private void ActivarEditarYEliminar()
-{
-    BtnAgregar.Enabled = false;
-    BtnEditar.Enabled = true;
-    BtnEliminar.Enabled = true;
-    TxtID.Enabled = false;
-    TxtCedula.Enabled = false;
-    TxtPassword1.Enabled = false;
-    CbTipoRol.Enabled = false;
-}
-
-private void DesactivarBotones()
-{
-    BtnAgregar.Enabled = false;
-    BtnEditar.Enabled = false;
-    BtnEliminar.Enabled = false;
-    TxtID.Enabled = false;
-    TxtCedula.Enabled = false;
-    TxtPassword1.Enabled = false;
-    CbTipoRol.Enabled = false;
-}
-
-
-private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
-{
-    e.Handled = Herramientas.CaracteresTexto(e);
-}
-
-private void DgvListaUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
-{
-    try
-    {
-        //valida que la fila esta seleccionada
-        if (DgvListaUsuarios.SelectedRows.Count == 1)
+        //boton para limpiar los datos del formulario
+        private void BtnLimpiar_Click(object sender, EventArgs e)
         {
-
-            DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
-
-            TxtID.Text = Convert.ToString(MiFila.Cells["ColIDUsuario"].Value);
-            TxtNombre.Text = Convert.ToString(MiFila.Cells["ColNombre"].Value);
-            TxtCedula.Text = Convert.ToString(MiFila.Cells["Cedula"].Value);
-            TxtEmail.Text = Convert.ToString(MiFila.Cells["Email"].Value);
-
-            foreach (DataRowView data in CbTipoRol.Items)
-            {
-                if (data.Row[1].ToString().Equals(MiFila.Cells["Rol"].Value))
-                {
-                    CbTipoRol.SelectedValue = data.Row[0];
-                }
-            }
-
-            ActivarEditarYEliminar();
-
-
-            AdminU = Convert.ToInt32(DgvListaUsuarios.SelectedRows[0].Cells["ColIDUsuario"].Value);
-
-            if (AdminU == 1)
-            {
-                DesactivarBotones();
-            }
+            LimpiarFormulario();
+            ActivarBotonAgregar();
+            DgvListaUsuarios.ClearSelection();
         }
-    }
-    catch (Exception error)
-    {
-        MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
 
-}
-
-//boton que edita los datos
-private void BtnEditar_Click(object sender, EventArgs e)
-{
-    try
-    {
-        //valida los datos
-        if (ValidarDatosRequeridos())
+        private void BtnSalir_Click(object sender, EventArgs e)
         {
-            Usuario Miusuario = new Usuario();
-
-            Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
-
-            Miusuario.Cedula = TxtCedula.Text.Trim();
-            Miusuario.Nombre = TxtNombre.Text.Trim();
-            Miusuario.Email = TxtEmail.Text.Trim();
-            Miusuario.Contrasennia = "";
-
-            Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
-
-            if (Miusuario.ConsultarPorID())
-            {
-                //Edita los datos
-                if (Miusuario.Editar())
-                {
-                    MessageBox.Show("Usuario modificado correctamente", ":)", MessageBoxButtons.OK);
-                    LimpiarFormulario();
-                    LlenarListaUsuarios();
-                    ActivarBotonAgregar();
-                }
-            }
+            this.Close();
         }
-    }
-    catch (Exception error)
-    {
-        MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
 
-//boton que elimina los datos
-private void BtnEliminar_Click(object sender, EventArgs e)
-{
-
-    try
-    {
-
-        Usuario Miusuario = new Usuario();
-
-        DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
-
-        MiUsuario.IDUsuario = Convert.ToInt32(MiFila.Cells["IDUsuario"].Value);
-
-        if (Miusuario.ConsultarPorID())
+        private void TxtCedula_Enter(object sender, EventArgs e)
         {
-            //desactiva los datos
-            if (Miusuario.Desactivar())
+            //valida que la cedula exista, ya que es un dato requerido
+            if (TxtCedula.Text == null)
             {
-                MessageBox.Show("Usuario eliminado correctamente", ":)", MessageBoxButtons.OK);
-                LimpiarFormulario();
-                LlenarListaUsuarios();
-                ActivarBotonAgregar();
+                TxtCedula.Clear();
             }
         }
-    }
-    catch (Exception error)
-    {
-        MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
 
-//boton para limpiar los datos del formulario
-private void BtnLimpiar_Click(object sender, EventArgs e)
-{
-    LimpiarFormulario();
-    ActivarBotonAgregar();
-    DgvListaUsuarios.ClearSelection();
-}
+        private void TxtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresNumeros(e);
+        }
 
-private void BtnSalir_Click(object sender, EventArgs e)
-{
-    this.Close();
-}
-
-private void TxtCedula_Enter(object sender, EventArgs e)
-{
-    //valida que la cedula exista, ya que es un dato requerido
-    if (TxtCedula.Text == null)
-    {
-        TxtCedula.Clear();
-    }
-}
-
-private void TxtCedula_KeyPress(object sender, KeyPressEventArgs e)
-{
-    e.Handled = Herramientas.CaracteresNumeros(e);
-}
-
-private void TxtEmail_KeyPress(object sender, KeyPressEventArgs e)
-{
-    e.Handled = Herramientas.CaracteresTexto(e, false, true);
-}
+        private void TxtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresTexto(e, false, true);
+        }
 
     }
 }

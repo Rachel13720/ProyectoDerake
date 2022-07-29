@@ -36,7 +36,7 @@ namespace ProyectoDerake.Formularios
             try
             {
                 //Se evalua que haya una fila seleccionada en la lista y la cantidad sea mayor a cero
-                if (DgvListaItems.SelectedRows.Count == 1 && NudCantidad.Value > 0) //&& NudCantidad < Convert.ToDecimal(CCantidad)
+                if (DgvListaItems.SelectedRows.Count == 1 && NudCantidad.Value > 0) 
                 {
                     //se valida que exista el producto
                     if (ValidarExistenciaProducto())
@@ -75,7 +75,7 @@ namespace ProyectoDerake.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione un producto", ":)", MessageBoxButtons.OK);
+                    MessageBox.Show("Seleccione un producto", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception error)

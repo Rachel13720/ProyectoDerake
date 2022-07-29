@@ -55,7 +55,7 @@ namespace ProyectoDerake.Formularios
                             //agrega el cliente
                             if (MiCliente.Agregar())
                             {
-                                MessageBox.Show("Cliente agregado correctamente", ":)", MessageBoxButtons.OK);
+                                MessageBox.Show("Cliente agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                                 LimpiarFormulario();
                                 LlenarListaClientes();
@@ -70,7 +70,7 @@ namespace ProyectoDerake.Formularios
                             //valida que los datos ya existen
                             if (NombreExiste)
                             {
-                                MessageBox.Show("El Nombre ya esta en uso", ":(", MessageBoxButtons.OK);
+                                MessageBox.Show("El Nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 TxtNombre.Focus();
                                 TxtNombre.SelectAll();
 
@@ -98,9 +98,10 @@ namespace ProyectoDerake.Formularios
                 !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
                 {
                     R = true;
-                }else
+                }
+                else
                 {
-                    MessageBox.Show("Hay campos vacíos", ":(", MessageBoxButtons.OK);
+                    MessageBox.Show("Hay campos vacíos", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
 
@@ -194,7 +195,7 @@ namespace ProyectoDerake.Formularios
                         //Edita al cliente
                         if (MiCliente.Editar())
                         {
-                            MessageBox.Show("Cliente modificado correctamente", ":)", MessageBoxButtons.OK);
+                            MessageBox.Show("Cliente modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             LimpiarFormulario();
                             LlenarListaClientes();
                             ActivarBtnAgregar();
@@ -225,7 +226,7 @@ namespace ProyectoDerake.Formularios
                     //desactiva los datos
                     if (MiCliente.Desactivar())
                     {
-                        MessageBox.Show("Cliente eliminado correctamente", ":)", MessageBoxButtons.OK);
+                        MessageBox.Show("Cliente eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         LimpiarFormulario();
                         ActivarBtnAgregar();
                         LlenarListaClientes();

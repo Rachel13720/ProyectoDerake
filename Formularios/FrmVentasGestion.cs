@@ -99,7 +99,7 @@ namespace ProyectoDerake.Formularios
                     //Agrega la venta y permite que se imprima el reporte
                     if (MiVenta.Agregar())
                     {
-                        MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
+                        MessageBox.Show("La venta se registro correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                         ReportDocument MiReporteVenta = new ReportDocument();
 
@@ -144,8 +144,8 @@ namespace ProyectoDerake.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Existen espacios sin texto, ingrese los datos restantes", ":(", MessageBoxButtons.OK);
-                    return false; 
+                    MessageBox.Show("Existen espacios sin texto, ingrese los datos restantes", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
                     //valida que la fecha no sea mayor a la actual
                     if (DtpFecha.Value.Date > DateTime.Now.Date)
                     {
@@ -172,7 +172,7 @@ namespace ProyectoDerake.Formularios
                         //Se agrega la venta y se realiza el reporte
                         if (MiVenta.Agregar())
                         {
-                            MessageBox.Show("La venta se registro correctamente", ":)", MessageBoxButtons.OK);
+                            MessageBox.Show("La venta se registro correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                             ReportDocument MiReporteVenta = new ReportDocument();
 

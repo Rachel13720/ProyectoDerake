@@ -53,7 +53,7 @@ namespace ProyectoDerake.Formularios
                             //agrega el cliente
                             if (MiEmpleado.Agregar())
                             {
-                                MessageBox.Show("Empleado agregado correctamente", ":)", MessageBoxButtons.OK);
+                                MessageBox.Show("Empleado agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                                 LimpiarFormulario();
                                 LlenarListaEmpleados();
@@ -68,7 +68,7 @@ namespace ProyectoDerake.Formularios
                             //valida que los datos ya existen
                             if (NombreExiste)
                             {
-                                MessageBox.Show("El Nombre ya esta en uso", ":(", MessageBoxButtons.OK);
+                                MessageBox.Show("El Nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 TxtNombre.Focus();
                                 TxtNombre.SelectAll();
 
@@ -100,7 +100,7 @@ namespace ProyectoDerake.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Hay campos vacíos", ":(", MessageBoxButtons.OK);
+                    MessageBox.Show("Hay campos vacíos", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception error)
@@ -210,7 +210,7 @@ namespace ProyectoDerake.Formularios
                         //Edita al cliente
                         if (MiEmpleado.Editar())
                         {
-                            MessageBox.Show("Empleado modificado correctamente", ":)", MessageBoxButtons.OK);
+                            MessageBox.Show("Empleado modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             LimpiarFormulario();
                             LlenarListaEmpleados();
                             ActivarBtnAgregar();
@@ -240,7 +240,7 @@ namespace ProyectoDerake.Formularios
                     //desactiva los datos
                     if (MiEmpleado.Desactivar())
                     {
-                        MessageBox.Show("Empleado eliminado correctamente", ":)", MessageBoxButtons.OK);
+                        MessageBox.Show("Empleado eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         LimpiarFormulario();
                         ActivarBtnAgregar();
                         LlenarListaEmpleados();

@@ -82,7 +82,7 @@ namespace ProyectoDerake.Formularios
                             //se agrega el producto 
                             if (MiProducto.Agregar())
                             {
-                                MessageBox.Show("Producto agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("Producto agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                                 LimpiarFormulario();
                                 LlenarListaProductos();
@@ -96,7 +96,7 @@ namespace ProyectoDerake.Formularios
                             //valida que los datos ya existen
                             if (NombreExiste)
                             {
-                                MessageBox.Show("El nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MessageBox.Show("El nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 TxtNombre.Focus();
                                 TxtNombre.SelectAll();
 
@@ -214,7 +214,7 @@ namespace ProyectoDerake.Formularios
                         //se editan los datos
                         if (MiProducto.Editar())
                         {
-                            MessageBox.Show("Producto modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Producto modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             LimpiarFormulario();
                             ActivarBotonAgregar();
                             LlenarListaProductos();
@@ -244,7 +244,7 @@ namespace ProyectoDerake.Formularios
                     //desactiva los datos 
                     if (MiProducto.Desactivar())
                     {
-                        MessageBox.Show("Producto eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Producto eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         LimpiarFormulario();
                         ActivarBotonAgregar();
                         LlenarListaProductos();
