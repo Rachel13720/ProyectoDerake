@@ -13,23 +13,33 @@ namespace ProyectoDerake.Formularios
 {
     public partial class FrmGestionEmpleados : Form
     {
-
+        //Variables locales.
         private Empleado MiEmpleadoLocal { get; set; }
 
         public DataTable ListaEmpleadosNormal { get; set; }
 
+        //Método que carga las variables locales en el constructor.
         public FrmGestionEmpleados()
         {
             InitializeComponent();
-
+            ListaEmpleadosNormal = new DataTable();
             MiEmpleadoLocal = new Empleado();
         }
 
+        //Método que agrega el empleado al datagridview
+        //Valida los campos de texto
+        //Se emplea el método de agregar de la clase Empleado
+        //Al agregar el empleado, se limpia el formulario,
+        //se activan el botón agregar y
+        //se llena el datagrid con los datos del empleado.
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                //valida los datos del cliente
+                //Se emplea este método para validar los campos
+                //Se emplea un método para validar existencias
+                //y así no existan datos repetidos
+                //con los datos ingresados.
                 if (ValidarDatosRequeridos())
                 {
 
@@ -50,7 +60,10 @@ namespace ProyectoDerake.Formularios
 
                         if (!NombreExiste)
                         {
-                            //agrega el cliente
+                            //Se emplea el método agregar de la clase
+                            //Se emplea el método de limpiar el formulario
+                            //Se emplea el método para llenar la lista con los empleados
+                            //Se emplea el método para activar el botón de agregar.
                             if (MiEmpleado.Agregar())
                             {
                                 MessageBox.Show("Empleado agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -65,7 +78,8 @@ namespace ProyectoDerake.Formularios
                         }
                         else
                         {
-                            //valida que los datos ya existen
+                            //Se validan los textbox de nombre en caso
+                            //de que ya existan estos datos registrados.
                             if (NombreExiste)
                             {
                                 MessageBox.Show("El Nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -86,13 +100,14 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-        //valida los datos del empleado
+        //Método que valida los campos del formulario.
         private bool ValidarDatosRequeridos()
         {
-
             bool R = false;
             try
             {
+                //Valida  los campos no estén vacíos o
+                //que no contengan un dato menor al ingresado.
                 if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
                 {
@@ -112,30 +127,17 @@ namespace ProyectoDerake.Formularios
             return R;
         }
 
-        //llena la lista con los datos del empleado
+        //Llena la lista con los datos del usuario.
         private void LlenarListaEmpleados()
         {
-
+            //se llama la clase empleado para manipular los datos.
             Empleado MiEmpleado = new Empleado();
             try
             {
-                //valida los datos de la busqueda
-                if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
-                     !string.IsNullOrEmpty(TxtApellido.Text.Trim()))
-                {
-                    //Si hay datos de busqueda
-                    DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
+                ListaEmpleadosNormal = MiEmpleado.ListarTodos();
 
-                }
-                else
-                {
-                    //listado normal
-                    ListaEmpleadosNormal = MiEmpleado.ListarTodos();
-                    DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
+                DgvListaEmpleados.DataSource = ListaEmpleadosNormal;
 
-                }
-
-                //X
                 DgvListaEmpleados.ClearSelection();
             }
             catch (Exception error)
@@ -143,7 +145,8 @@ namespace ProyectoDerake.Formularios
                 MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //limpia los datos del empleado en el formulario
+
+        //Método que permite limpiar los campos del formulario.
         private void LimpiarFormulario()
         {
             TxtNombre.Clear();
@@ -154,7 +157,10 @@ namespace ProyectoDerake.Formularios
 
         }
 
-        //Activa solo el boton agregar
+        //Activa el botón de agregar
+        //Desactiva los botones de eliminar
+        //y editar
+        //Inhabilita el textbox del salario.
         private void ActivarBtnAgregar()
         {
             BtnAgregar.Enabled = true;
@@ -164,7 +170,9 @@ namespace ProyectoDerake.Formularios
 
         }
 
-        //Activa solo el boton modificar y eliminar
+        //Activa solo los botones de editar y eliminar
+        //Desactiva el botón de agregar
+        //Inhabilita el textbox del salario.
         private void ActivarBtnModificarYEliminar()
         {
             BtnAgregar.Enabled = false;
@@ -174,22 +182,31 @@ namespace ProyectoDerake.Formularios
 
         }
 
-
+        //Método que permite solo letras
+        //en el textbox de nombre.
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs pE)
         {
             Herramientas.CaracteresTextoM(pE);
         }
 
+        //Método que permite solo letras
+        //en el textbox de apellido.
         private void TxtApellido_KeyPress(object sender, KeyPressEventArgs pE)
         {
             Herramientas.CaracteresTextoM(pE);
         }
 
+        //Método que permite editar los datos del empleado
+        //Se emplea el método de consulta por Id de la clase
+        //de empleado para poder editar sus datos
+        //Se emplea el método para limpiar el formulario
+        //Se emplea el método para llenar la lista con los datos del empleado
+        //Se emplea el método para activar el botón de agregar.
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             try
             {
-                //valida los datos del cliente
+                //valida los datos existentes y los modifica.
                 if (ValidarDatosRequeridos())
                 {
                     Empleado MiEmpleado = new Empleado();
@@ -203,11 +220,10 @@ namespace ProyectoDerake.Formularios
                     MiEmpleado.HorasTrabajadas = Convert.ToInt32(TxtHoras.Text.Trim());
                     MiEmpleado.Salario = Convert.ToInt32(TxtSalario.Text.Trim());
 
-
-                    //consulta al cliente por su ID
                     if (MiEmpleado.ConsultarPorID())
                     {
-                        //Edita al cliente
+
+                        //Se emplea el método editar de la clase.
                         if (MiEmpleado.Editar())
                         {
                             MessageBox.Show("Empleado modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -225,6 +241,12 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que permite eliminar los datos del empleado
+        //Se emplea el método de consulta por Id de la clase
+        //de empleado para poder eliminar sus datos.
+        //Se emplea el método para limpiar el formulario
+        //Se emplea el método para llenar la lista con los datos del empleado
+        //Se emplea el método para activar el botón de agregar.
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
 
@@ -237,7 +259,7 @@ namespace ProyectoDerake.Formularios
             {
                 if (MiEmpleado.ConsultarPorID())
                 {
-                    //desactiva los datos
+                    //Se emplea el método de eliminar de la clase.
                     if (MiEmpleado.Desactivar())
                     {
                         MessageBox.Show("Empleado eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -253,6 +275,9 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que permite limpiar el formulario
+        //Se emplea el método para activar el botón de agregar
+        //Se limpia la fila seleccionada.
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
@@ -260,11 +285,16 @@ namespace ProyectoDerake.Formularios
             DgvListaEmpleados.ClearSelection();
         }
 
+        //Método que permite salir del formulario.
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Método que carga los métodos del formulario
+        //Evento que llena la lista de empleados
+        //Activa el botón de agregar 
+        //Limpia el formulario.
         private void FrmGestionEmpleados_Load(object sender, EventArgs e)
         {
             LlenarListaEmpleados();
@@ -274,15 +304,15 @@ namespace ProyectoDerake.Formularios
             ActivarBtnAgregar();
         }
 
+        //Método que permite seleccionar una fila del datagridview
+        //Se emplea el método de activar el botón editar y eliminar.
         private void DgvListaEmpleados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                //valida si se ha seleccionado una fila en el datagridview
+                //Valida que la fila este seleccionada.
                 if (DgvListaEmpleados.SelectedRows.Count == 1)
                 {
-                    LimpiarFormulario();
-
                     DataGridViewRow MiFila = DgvListaEmpleados.SelectedRows[0];
 
                     int IDEmpleado = Convert.ToInt32(MiFila.Cells["IDEmpleado"].Value);
@@ -305,7 +335,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
-
+        //Método que permite calcular el salario de los empleados
+        //multiplica las horas por el pago. 
         private void Calcular()
         {
 
@@ -328,20 +359,24 @@ namespace ProyectoDerake.Formularios
 
         }
 
-
-
+        //Método que permite solo números 
+        //en el textbox de horas.
         private void TxtHoras_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresNumeros(e);
 
         }
 
+        //Método que permite solo números 
+        //en el textbox de pago.
         private void TxtPago_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresNumeros(e);
 
         }
 
+        //Método que permite llamar el método de calcular y
+        //realizar el calculo al escribir en el campo de texto.
         private void TxtPago_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TxtHoras.Text) && !string.IsNullOrWhiteSpace(TxtPago.Text))
@@ -350,6 +385,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que permite llamar el método de calcular y
+        //realizar el calculo al escribir en el campo de texto.
         private void TxtHoras_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TxtHoras.Text) && !string.IsNullOrWhiteSpace(TxtPago.Text))

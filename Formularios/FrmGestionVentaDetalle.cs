@@ -13,7 +13,7 @@ namespace ProyectoDerake.Formularios
 {
     public partial class FrmGestionVentaDetalle : Form
     {
-        //Variables gloables
+        //Variables locales
         public DataTable ListaProductos { get; set; }
 
         public DataTable ListaProductosConFiltro { get; set; }
@@ -23,6 +23,7 @@ namespace ProyectoDerake.Formularios
         public Decimal ValorCan { get; set; }
 
 
+        //Método que carga las variables locales en el constructor
         public FrmGestionVentaDetalle()
         {
             InitializeComponent();
@@ -31,14 +32,17 @@ namespace ProyectoDerake.Formularios
             MiProducto = new Producto();
         }
 
+        //Método que agrega el detalle de venta al datagridview de venta
+        //Valida los campos de texto
+        //Al agregar el detalle de venta, se devuelve al formulario de ventas.
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                //Se evalua que haya una fila seleccionada en la lista y la cantidad sea mayor a cero
+                //Se evalua que haya una fila seleccionada en la lista y la cantidad sea mayor a cero.
                 if (DgvListaItems.SelectedRows.Count == 1 && NudCantidad.Value > 0) 
                 {
-                    //se valida que exista el producto
+                    //se valida que exista el producto.
                     if (ValidarExistenciaProducto())
                     {
 
@@ -55,7 +59,7 @@ namespace ProyectoDerake.Formularios
                             }
 
                         }
-                    } //se valida que no exista el producto
+                    } //se valida que no exista el producto.
                     else if (!ValidarExistenciaProducto())
                     {
                         DataRow NuevaFila = Locales.ObjetosGlobales.MiFormGestionVentas.DtListaProductos.NewRow();
@@ -85,7 +89,7 @@ namespace ProyectoDerake.Formularios
 
         }
 
-        //se valida la existencia del producto con su Id
+        //Método que valida los campos del formulario.
         private bool ValidarExistenciaProducto()
         {
 
@@ -112,12 +116,13 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que carga los métodos del formulario.
         private void FrmGestionVentaDetalle_Load(object sender, EventArgs e)
         {
             LlenarLista();
         }
 
-        //llena los datos de la lista
+        //Llena la lista con los datos de la lista de productos.
         private void LlenarLista()
         {
             ListaProductos = MiProducto.ListarEnDetalle();
@@ -127,15 +132,18 @@ namespace ProyectoDerake.Formularios
             DgvListaItems.ClearSelection();
         }
 
+        //Método que permite salir del formulario.
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Método que permite seleccionar una fila del datagridview
+        //no permite que el numeric exceda la cantidad determinada
         private void DgvListaItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
-                return;
+            return;
 
             ValorCan = Convert.ToDecimal(DgvListaItems.SelectedRows[0].Cells["CCantidad"].Value);
 

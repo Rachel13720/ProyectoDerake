@@ -17,6 +17,7 @@ namespace ProyectoDerake.Formularios
             InitializeComponent();
         }
 
+        //Carga las opciones del menú según los permisos del usuario
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             LblUsuario.Text = Locales.ObjetosGlobales.MiUsuarioGlobal.Nombre;
@@ -27,23 +28,35 @@ namespace ProyectoDerake.Formularios
 
             switch (Locales.ObjetosGlobales.MiUsuarioGlobal.Rol.IDUsuarioRol)
             {
+                
                 //admin
                 case 1:
-                    //por el momento no haremos nada ya que el admin tiene acceso 
-                    //a todo
+                    //el administrador tiene acceso a todo
                     break;
-                case int n when (n>2):
+
+                case 2:
                     //ocultamos las opciones de menu que no le corresponden al usuario 
                     //normal
+                    //no muestra el botón de usuarios ni de ventas
                     BtnAcercaDe.Visible = true;
-                    BtnUsuarios.Visible = false;
-                    BtnVentas.Visible = false;
+                    BtnUsuarios.Enabled = false;
+                    BtnVentas.Enabled = false;
+
+                    break;
+                case 3:
+                    //ocultamos las opciones de menu que no le corresponden al usuario 
+                    //normal, por ser inactivo
+                    //no muestra el botón de usuarios ni de ventas
+                    BtnAcercaDe.Visible = true;
+                    BtnUsuarios.Enabled = false;
+                    BtnVentas.Enabled = false;
 
                     break;
             }
         }
 
-
+        //Método que muestra el formulario de usuarios al presionar
+        //el botón de usuarios
         private void BtnUsuarios_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionUsuarios.Visible)
@@ -53,6 +66,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que muestra el formulario de productos al presionar
+        //el botón de productos
         private void BtnProductos_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionProductos.Visible)
@@ -62,6 +77,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que muestra el formulario de clientes al presionar
+        //el botón de clientes
         private void BtnClientes_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionClientes.Visible)
@@ -71,6 +88,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que muestra el formulario de clientes al presionar
+        //el botón de clientes
         private void BtnEmpleados_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionEmpleados.Visible)
@@ -80,6 +99,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que muestra el formulario de ventas al presionar
+        //el botón de ventas
         private void BtnVentas_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormGestionVentas.Visible)
@@ -89,6 +110,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que muestra el formulario de información al presionar
+        //el botón de información
         private void BtnAcercaDe_Click(object sender, EventArgs e)
         {
             if (!Locales.ObjetosGlobales.MiFormInfo.Visible)
@@ -98,6 +121,8 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que cierra la aplicación al presionar
+        //el botón de salir
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();

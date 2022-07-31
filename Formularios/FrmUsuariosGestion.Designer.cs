@@ -280,7 +280,6 @@ namespace ProyectoDerake.Formularios
             this.TxtCedula.Name = "TxtCedula";
             this.TxtCedula.Size = new System.Drawing.Size(202, 23);
             this.TxtCedula.TabIndex = 16;
-            this.TxtCedula.Enter += new System.EventHandler(this.TxtCedula_Enter);
             this.TxtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCedula_KeyPress);
             // 
             // LblEmail

@@ -17,11 +17,16 @@ namespace ProyectoDerake.Formularios
             InitializeComponent();
         }
 
+
+        //Método que permite ingresar al sistema
+        //valida los campos de texto según los datos 
+        //que se encuentra en la base de datos
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             try
             {
-                //valida el usuario y su contraseña
+                //valida el usuario y su contraseña,
+                //que no esten vacíos los campos
                 if (!string.IsNullOrEmpty(TxtUsuario.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
                 {
@@ -40,7 +45,7 @@ namespace ProyectoDerake.Formularios
                         Locales.ObjetosGlobales.MiFormPrincipal.Show();
                         this.Hide();
 
-                    }
+                    }//En caso contrario muestra un mensaje
                     else
                     {
                         MessageBox.Show("Usuario o contraseña son incorrectos", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,26 +61,26 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que permite ver la contraseña al presionar el botón
         private void BtnVer_MouseUp(object sender, MouseEventArgs e)
         {
             TxtContrasennia.UseSystemPasswordChar = true;
         }
 
+        //Método que no permite ver la contraseña al soltar el botón
         private void BtnVer_MouseDown(object sender, MouseEventArgs e)
         {
             TxtContrasennia.UseSystemPasswordChar = false;
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        //Método que permite letras y números en campo de texto de usuario
         private void TxtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresTexto(e, true);
         }
 
+        //Método que permite salir del sistema al presionar el
+        //botón con ícono de apagado
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();

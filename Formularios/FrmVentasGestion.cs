@@ -15,10 +15,12 @@ namespace ProyectoDerake.Formularios
 {
     public partial class FrmVentasGestion : Form
     {
+        //Variables locales
         public Venta MiVenta { get; set; }
 
         public DataTable DtListaProductos { get; set; }
 
+        //Método que carga las variables locales en el constructor
         public FrmVentasGestion()
         {
             InitializeComponent();
@@ -29,6 +31,9 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que muestra la lista de productos para agregarlos
+        //al datagridview de la venta
+        //agrega el total de la venta con la fórmula respectiva.
         private void BtnAgregarItem_Click(object sender, EventArgs e)
         {
 
@@ -52,7 +57,8 @@ namespace ProyectoDerake.Formularios
 
         }
 
-        //metodo que totaliza la cantidad 
+        //Método que permite calcular el total de la venta
+        //multiplica la cantidad por el precio.
         private decimal Totalizar()
         {
             decimal R = 0;
@@ -60,7 +66,7 @@ namespace ProyectoDerake.Formularios
             {
                 if (DtListaProductos.Rows.Count > 0)
                 {
-                    //valida que existan datos en la lista
+                    //Valida que existan datos en la lista.
                     foreach (DataRow item in DtListaProductos.Rows)
                     {
                         R += Convert.ToDecimal(item["CantidadVendida"]) * Convert.ToDecimal(item["PrecioVenta"]);
@@ -78,11 +84,18 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que crea la venta y genera el reporte
+        //Valida los campos de texto
+        //Se emplea el método de agregar la venta
+        //Al agregar la vent, se imprime el reporte
+        //y se limpia el formulario.
         private void BtnCrearVenta_Click(object sender, EventArgs e)
         {
             try
             {
-                //Valida los datos de la venta
+                //Se emplea este método para validar los campos
+                //Se emplea un método para llenar el datagridview
+                //con los datos ingresados.
                 if (ValidarVenta())
                 {
                     MiVenta.Fecha = DtpFecha.Value.Date;
@@ -96,7 +109,8 @@ namespace ProyectoDerake.Formularios
                     LlenarDetallesDeVenta();
 
 
-                    //Agrega la venta y permite que se imprima el reporte
+                    //Se emplea el método agregar de la clase
+                    //Llama el método imprimir, para generar el reporte.
                     if (MiVenta.Agregar())
                     {
                         MessageBox.Show("La venta se registro correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -112,7 +126,7 @@ namespace ProyectoDerake.Formularios
                         MiFormReport.CrvVisualizador.ReportSource = MiReporteVenta;
                         MiFormReport.Show();
 
-                        //Se visualiza el reporte
+                        //Se muestra el reporte.
                         MiFormReport.CrvVisualizador.Zoom(1);
 
                         Limpiar();
@@ -126,13 +140,15 @@ namespace ProyectoDerake.Formularios
 
         }
 
-        //valida los datos, para realizar la venta
+        //Método que valida los campos para realizar la venta. 
         private bool ValidarVenta()
         {
 
             bool R = false;
             try
             {
+                //Valida  los campos no estén vacíos o
+                //que no contengan un dato menor al ingresado.
                 if (DtpFecha.Value.Date <= DateTime.Now.Date &&
                     CboxCliente.SelectedIndex > -1 &&
                     CboxEmpleado.SelectedIndex > -1 &&
@@ -145,41 +161,13 @@ namespace ProyectoDerake.Formularios
                 else
                 {
                     MessageBox.Show("Existen espacios sin texto, ingrese los datos restantes", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                    //valida que la fecha no sea mayor a la actual
+                    
+                    //Se valida que la fecha no sea mayor a la actual.
                     if (DtpFecha.Value.Date > DateTime.Now.Date)
                     {
                         MessageBox.Show(@"La fecha de la factura no puede ser superior a la fecha actual", "Error de validacion", MessageBoxButtons.OK);
 
                         return false;
-                    }
-
-                    //Hace demas validaciones
-                    if (ValidarVenta())
-                    {
-
-                        MiVenta.Fecha = DtpFecha.Value.Date;
-                        MiVenta.MiCliente.IDCliente = Convert.ToInt32(CboxCliente.SelectedIndex);
-                        MiVenta.MiEmpleado.IDEmpleado = Convert.ToInt32(CboxEmpleado.SelectedIndex);
-
-                        MiVenta.MiUsuario.IDUsuario = Locales.ObjetosGlobales.MiUsuarioGlobal.IDUsuario;
-
-                        MiVenta.NumeroFactura = Convert.ToInt32(TxtNumeroFactura.Text.Trim()); ;
-                        MiVenta.Comentario = TxtComentario.Text.Trim();
-
-                        LlenarDetallesDeVenta();
-
-                        //Se agrega la venta y se realiza el reporte
-                        if (MiVenta.Agregar())
-                        {
-                            MessageBox.Show("La venta se registro correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                            ReportDocument MiReporteVenta = new ReportDocument();
-
-                            Limpiar();
-
-                        }
-
                     }
 
                 }
@@ -195,14 +183,15 @@ namespace ProyectoDerake.Formularios
         }
 
 
-        //Llena los datos de lista de detalles de la venta
+        //Llena la lista con los detalles de la venta.
         private void LlenarDetallesDeVenta()
         {
             try
             {
-                //Valida las filas de la lista
+                //Valida las filas de la lista y agrega línea de detalle.
                 foreach (DataRow fila in DtListaProductos.Rows)
                 {
+                    //se llama la clase venta detalle para manipular los datos.
                     VentaDetalle detalle = new VentaDetalle();
 
                     detalle.MiProducto.IDProducto = Convert.ToInt32(fila["IDProducto"]);
@@ -222,8 +211,11 @@ namespace ProyectoDerake.Formularios
 
         }
 
-
-
+        //Método que carga los métodos del formulario
+        //Evento que carga el usuario a cargo del sistema
+        //Carga los datos del combo de empleado y de cliente
+        //Inhabilita el campo del total
+        //Limpia el formulario.
         private void FrmVentasGestion_Load(object sender, EventArgs e)
         {
             LblMiUsuario.Text = "Venta registrada por " + Locales.ObjetosGlobales.MiUsuarioGlobal.Nombre;
@@ -238,6 +230,7 @@ namespace ProyectoDerake.Formularios
         }
 
 
+        //Método que permite limpiar los campos del formulario.
         private void Limpiar()
         {
 
@@ -249,9 +242,10 @@ namespace ProyectoDerake.Formularios
             TxtComentario.Clear();
             TxtTotal.Clear();
 
-            //cargar el esquema que debe tener el datatable
-            //este esquema no tiene datos, solamente asigna la estructua adecuada al datatable
-            //segun el SP proporcionado
+            //cargar el esquema del datatable
+            //este esquema no contiene datos, solo asigna la estructura
+            //necesaria para el datatable
+            //según el procedimiento almacenado proporcionado.
 
             DtListaProductos = MiVenta.AsignarEsquemaDetalle();
 
@@ -259,6 +253,8 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que carga los datos del cliente
+        //en el combo
         private void CargarDatosCliente()
         {
             Cliente ObjCliente = new Cliente();
@@ -276,6 +272,8 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que carga los datos del empleado 
+        //en el combo
         private void CargarDatosEmpleado()
         {
             Empleado ObjEmpleado = new Empleado();
@@ -293,6 +291,9 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que permite eliminar la fila del datagridview
+        //toma el identificador para poder eliminarlo
+        //realiza los cambios en el datatable.
         private void BtnEliminarItem_Click(object sender, EventArgs e)
         {
             try
@@ -308,6 +309,7 @@ namespace ProyectoDerake.Formularios
                     }
 
                 }
+
                 DtListaProductos.AcceptChanges();
                 DgvListaVentas.DataSource = DtListaProductos;
                 TxtTotal.Clear();
@@ -320,11 +322,15 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que permite solo números
+        //en el textbox de Numero de factura.
         private void TxtNumeroFactura_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresNumeros(e);
         }
 
+        //Método que permite solo letras y números 
+        //en el textbox de comentario.
         private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresTexto(e);

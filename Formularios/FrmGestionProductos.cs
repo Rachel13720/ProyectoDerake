@@ -13,21 +13,23 @@ namespace ProyectoDerake.Formularios
 {
     public partial class FrmGestionProductos : Form
     {
-        //variables globales
+        //variables locales
         public DataTable ListaProductos { get; set; }
 
         private Producto MiProducto { get; set; }
 
+        //Método que carga las variables locales en el constructor
         public FrmGestionProductos()
         {
             InitializeComponent();
-
             MiProducto = new Producto();
+            ListaProductos = new DataTable();
         }
 
 
 
-        //Carga los datos del Combobox
+        //Método que carga los datos de la categoria
+        //en el combo.
         private void CargaDatosComboTipoCategoria()
         {
             ProductoCategoria MiCategoria = new ProductoCategoria();
@@ -46,6 +48,11 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que carga los métodos del formulario
+        //Evento que llena la lista de productos
+        //Carga los datos del combo de categoria
+        //Activa el botón de agregar 
+        //Limpia el formulario.
         private void FrmGestionProductos_Load(object sender, EventArgs e)
         {
             CargaDatosComboTipoCategoria();
@@ -57,11 +64,20 @@ namespace ProyectoDerake.Formularios
             ActivarBotonAgregar();
         }
 
+        //Método que agrega el producto al datagridview
+        //Valida los campos de texto
+        //Se emplea el método de agregar de la clase Producto
+        //Al agregar el producto, se limpia el formulario,
+        //se activan el botón agregar y
+        //se llena el datagrid con los datos del producto.
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                //valida los datos del producto
+                //Se emplea este método para validar los campos
+                //Se emplea un método para validar existencias
+                //y así no existan datos repetidos
+                //con los datos ingresados.
                 if (ValidarDatosRequeridos())
                 {
 
@@ -79,7 +95,10 @@ namespace ProyectoDerake.Formularios
 
                         if (!NombreExiste)
                         {
-                            //se agrega el producto 
+                            //Se emplea el método agregar de la clase
+                            //Se emplea el método de limpiar el formulario
+                            //Se emplea el método para llenar la lista con los productos
+                            //Se emplea el método para activar el botón de agregar. 
                             if (MiProducto.Agregar())
                             {
                                 MessageBox.Show("Producto agregado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -93,7 +112,8 @@ namespace ProyectoDerake.Formularios
                         }
                         else
                         {
-                            //valida que los datos ya existen
+                            //Se validan el nombre del producto en caso
+                            //de que ya existan estos datos registrados.
                             if (NombreExiste)
                             {
                                 MessageBox.Show("El nombre ya esta en uso", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -103,8 +123,6 @@ namespace ProyectoDerake.Formularios
                             }
 
                         }
-                        LlenarListaProductos();
-
                     }
                 }
             }
@@ -115,13 +133,15 @@ namespace ProyectoDerake.Formularios
         }
 
 
-        //valida los datos
+        //Método que valida los campos del formulario.
         private bool ValidarDatosRequeridos()
         {
 
             bool R = false;
             try
             {
+                //Valida  los campos no estén vacíos o
+                //que no contengan un dato menor al ingresado.
                 if (!string.IsNullOrEmpty(TxtNombre.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtComentario.Text.Trim()) &&
@@ -147,7 +167,7 @@ namespace ProyectoDerake.Formularios
         }
 
 
-        //limpia el formulario
+        //Método que permite limpiar los campos del formulario.
         private void LimpiarFormulario()
         {
             TxtCodigo.Clear();
@@ -159,7 +179,9 @@ namespace ProyectoDerake.Formularios
 
         }
 
-        //activa solo los botones de modificar y eliminar
+        //Activa solo los botones de editar y eliminar
+        //Desactiva el botón de agregar
+        //Inhabilita el textbox del identificador.
         private void ActivarModificarYEliminar()
         {
             BtnAgregar.Enabled = false;
@@ -168,7 +190,10 @@ namespace ProyectoDerake.Formularios
             TxtCodigo.Enabled = false;
         }
 
-        //activa solo el boton agregar
+        //Activa el botón de agregar
+        //Desactiva los botones de eliminar
+        //y editar
+        //Inhabilita el textbox del identificador.
         private void ActivarBotonAgregar()
         {
             BtnAgregar.Enabled = true;
@@ -178,7 +203,7 @@ namespace ProyectoDerake.Formularios
         }
 
 
-        //Llena los datos de la lista
+        //Llena la lista con los datos del producto.
         private void LlenarListaProductos()
         {
             ListaProductos = MiProducto.ListarEnDetalle();
@@ -189,11 +214,17 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que permite editar los datos del producto
+        //Se emplea el método de consulta por Id de la clase
+        //de producto para poder editar sus datos
+        //Se emplea el método para limpiar el formulario
+        //Se emplea el método para llenar la lista con los datos del producto
+        //Se emplea el método para activar el botón de agregar.
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             try
             {
-                //valida los datos existentes y los modifica
+                //valida los datos existentes y los modifica.
                 if (ValidarDatosRequeridos())
                 {
                     Producto MiProducto = new Producto();
@@ -211,7 +242,7 @@ namespace ProyectoDerake.Formularios
 
                     if (MiProducto.ConsultarPorID())
                     {
-                        //se editan los datos
+                        //Se emplea el método editar de la clase.
                         if (MiProducto.Editar())
                         {
                             MessageBox.Show("Producto modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -228,6 +259,12 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que permite eliminar los datos del producto
+        //Se emplea el método de consulta por Id de la clase
+        //de producto para poder eliminar sus datos.
+        //Se emplea el método para limpiar el formulario
+        //Se emplea el método para llenar la lista con los datos del producto
+        //Se emplea el método para activar el botón de agregar.
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
 
@@ -241,7 +278,7 @@ namespace ProyectoDerake.Formularios
             {
                 if (MiProducto.ConsultarPorID())
                 {
-                    //desactiva los datos 
+                    //Se emplea el método de eliminar de la clase.
                     if (MiProducto.Desactivar())
                     {
                         MessageBox.Show("Producto eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -257,6 +294,9 @@ namespace ProyectoDerake.Formularios
             }
         }
 
+        //Método que permite limpiar el formulario
+        //Se emplea el método para activar el botón de agregar
+        //Se limpia la fila seleccionada.
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
@@ -264,15 +304,19 @@ namespace ProyectoDerake.Formularios
             DgvListaProductos.ClearSelection();
         }
 
+        //Método que permite salir del formulario.
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Método que permite seleccionar una fila del datagridview
+        //Se emplea el método de activar el botón editar y eliminar.
         private void DgvListaProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                //Valida que la fila este seleccionada.
                 if (DgvListaProductos.SelectedRows.Count == 1)
                 {
 
@@ -303,21 +347,29 @@ namespace ProyectoDerake.Formularios
 
         }
 
+        //Método que permite solo números 
+        //en el textbox de cantidad.
         private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresNumeros(e);
         }
 
+        //Método que permite solo números 
+        //en el textbox de precio.
         private void TxtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresNumeros(e);
         }
 
+        //Método que permite solo letras
+        //en el textbox de nombre.
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs pE)
         {
             Herramientas.CaracteresTextoM(pE);
         }
 
+        //Método que permite letras y números 
+        //en el textbox de comentario.
         private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = Herramientas.CaracteresTexto(e);
