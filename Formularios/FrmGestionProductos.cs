@@ -368,11 +368,11 @@ namespace ProyectoDerake.Formularios
             Herramientas.CaracteresTextoM(pE);
         }
 
-        //Método que permite letras y números 
+        //Método que permite solo letras 
         //en el textbox de comentario.
-        private void TxtComentario_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtComentario_KeyPress(object sender, KeyPressEventArgs pE)
         {
-            e.Handled = Herramientas.CaracteresTexto(e);
+            Herramientas.CaracteresTextoM(pE);
         }
 
     }

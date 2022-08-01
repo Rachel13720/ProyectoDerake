@@ -216,7 +216,7 @@ namespace ProyectoDerake.Formularios
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(139, 35);
             this.BtnEliminar.TabIndex = 9;
-            this.BtnEliminar.Text = "Desactivar";
+            this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = false;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
