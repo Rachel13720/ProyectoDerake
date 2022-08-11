@@ -38,6 +38,7 @@ namespace ProyectoDerake.Formularios
             this.CrvVisualizador.ActiveViewIndex = -1;
             this.CrvVisualizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CrvVisualizador.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CrvVisualizador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CrvVisualizador.Location = new System.Drawing.Point(0, 0);
             this.CrvVisualizador.Name = "CrvVisualizador";
             this.CrvVisualizador.Size = new System.Drawing.Size(800, 450);

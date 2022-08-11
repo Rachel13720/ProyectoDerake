@@ -85,5 +85,10 @@ namespace ProyectoDerake.Formularios
         {
             Application.Exit();
         }
+
+        private void TxtContrasennia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Herramientas.CaracteresTexto(e);
+        }
     }
 }
