@@ -251,8 +251,8 @@ namespace ProyectoDerake.Formularios
             BtnEliminar.Enabled = true;
             TxtID.Enabled = false;
             TxtCedula.Enabled = false;
-            TxtPassword1.Enabled = false;
-            CbTipoRol.Enabled = false;
+            TxtPassword1.Enabled = true;
+            CbTipoRol.Enabled = true;
         }
 
         //Desactiva los botones de agregar, editar y eliminar
@@ -267,6 +267,7 @@ namespace ProyectoDerake.Formularios
             TxtCedula.Enabled = false;
             TxtPassword1.Enabled = false;
             CbTipoRol.Enabled = false;
+            TxtEmail.Enabled = false;
         }
 
         //Método que permite letras y números 
@@ -291,8 +292,8 @@ namespace ProyectoDerake.Formularios
 
                     DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
 
-                    TxtID.Text = Convert.ToString(MiFila.Cells["ColIDUsuario"].Value);
-                    TxtNombre.Text = Convert.ToString(MiFila.Cells["ColNombre"].Value);
+                    TxtID.Text = Convert.ToString(MiFila.Cells["IDUsuario"].Value);
+                    TxtNombre.Text = Convert.ToString(MiFila.Cells["Nombre"].Value);
                     TxtCedula.Text = Convert.ToString(MiFila.Cells["Cedula"].Value);
                     TxtEmail.Text = Convert.ToString(MiFila.Cells["Email"].Value);
 
@@ -307,11 +308,15 @@ namespace ProyectoDerake.Formularios
                     ActivarEditarYEliminar();
 
 
-                    AdminU = Convert.ToInt32(DgvListaUsuarios.SelectedRows[0].Cells["ColIDUsuario"].Value);
+                    AdminU = Convert.ToInt32(DgvListaUsuarios.SelectedRows[0].Cells["IDUsuario"].Value.Equals(1));
 
                     if (AdminU == 1)
                     {
                         DesactivarBotones();
+                    }
+                    else
+                    {
+                        ActivarEditarYEliminar();
                     }
                 }
             }
@@ -330,39 +335,33 @@ namespace ProyectoDerake.Formularios
         //Se emplea el método para activar el botón de agregar.
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            try
+            //valida los datos existentes y los modifica.
+            if (ValidarDatosRequeridos())
             {
-                //valida los datos existentes y los modifica.
-                if (ValidarDatosRequeridos())
+                Usuario Miusuario = new Usuario();
+
+                Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
+
+                Miusuario.Cedula = TxtCedula.Text.Trim();
+                Miusuario.Nombre = TxtNombre.Text.Trim();
+                Miusuario.Email = TxtEmail.Text.Trim();
+                Miusuario.Contrasennia = "";
+
+                Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
+
+                if (Miusuario.ConsultarPorID())
                 {
-                    Usuario Miusuario = new Usuario();
-
-                    Miusuario.IDUsuario = Convert.ToInt32(TxtID.Text.Trim());
-
-                    Miusuario.Cedula = TxtCedula.Text.Trim();
-                    Miusuario.Nombre = TxtNombre.Text.Trim();
-                    Miusuario.Email = TxtEmail.Text.Trim();
-                    Miusuario.Contrasennia = "";
-
-                    Miusuario.Rol.IDUsuarioRol = Convert.ToInt32(CbTipoRol.SelectedValue);
-
-                    if (Miusuario.ConsultarPorID())
+                    //Se emplea el método editar de la clase.
+                    if (Miusuario.Editar())
                     {
-                        //Se emplea el método editar de la clase.
-                        if (Miusuario.Editar())
-                        {
-                            MessageBox.Show("Usuario modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            LimpiarFormulario();
-                            LlenarListaUsuarios();
-                            ActivarBotonAgregar();
-                        }
+                        MessageBox.Show("Usuario modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        LimpiarFormulario();
+                        LlenarListaUsuarios();
+                        ActivarBotonAgregar();
                     }
                 }
             }
-            catch (Exception error)
-            {
-                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
         //Método que permite eliminar los datos del usuario
@@ -374,14 +373,14 @@ namespace ProyectoDerake.Formularios
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
 
+            Usuario Miusuario = new Usuario();
+
+            DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
+
+            Miusuario.IDUsuario = Convert.ToInt32(MiFila.Cells["IDUsuario"].Value);
+
             try
             {
-                Usuario Miusuario = new Usuario();
-
-                DataGridViewRow MiFila = DgvListaUsuarios.SelectedRows[0];
-
-                MiUsuario.IDUsuario = Convert.ToInt32(MiFila.Cells["IDUsuario"].Value);
-
                 if (Miusuario.ConsultarPorID())
                 {
                     //Se emplea el método de eliminar de la clase.
@@ -404,31 +403,31 @@ namespace ProyectoDerake.Formularios
         //Se emplea el método para activar el botón de agregar
         //Se limpia la fila seleccionada.
         private void BtnLimpiar_Click(object sender, EventArgs e)
-        {
-            LimpiarFormulario();
-            ActivarBotonAgregar();
-            DgvListaUsuarios.ClearSelection();
-        }
+            {
+                LimpiarFormulario();
+                ActivarBotonAgregar();
+                DgvListaUsuarios.ClearSelection();
+            }
 
-        //Método que permite salir del formulario.
-        private void BtnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+            //Método que permite salir del formulario.
+            private void BtnSalir_Click(object sender, EventArgs e)
+            {
+                this.Close();
+            }
 
-        //Método que permite solo números 
-        //en el textbox de cédula.
-        private void TxtCedula_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = Herramientas.CaracteresNumeros(e);
-        }
+            //Método que permite solo números 
+            //en el textbox de cédula.
+            private void TxtCedula_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = Herramientas.CaracteresNumeros(e);
+            }
 
-        //Método que permite letras minúsculas y números 
-        //en el textbox de email.
-        private void TxtEmail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = Herramientas.CaracteresTexto(e, false, true);
-        }
+            //Método que permite letras minúsculas y números 
+            //en el textbox de email.
+            private void TxtEmail_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = Herramientas.CaracteresTexto(e, false, true);
+            }
 
+        }
     }
-}

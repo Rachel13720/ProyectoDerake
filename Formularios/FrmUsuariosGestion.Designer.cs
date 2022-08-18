@@ -30,11 +30,6 @@ namespace ProyectoDerake.Formularios
         private void InitializeComponent()
         {
             this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
-            this.ColIDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.CbTipoRol = new System.Windows.Forms.ComboBox();
             this.LblNombre = new System.Windows.Forms.Label();
@@ -55,6 +50,11 @@ namespace ProyectoDerake.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.Grb5 = new System.Windows.Forms.GroupBox();
             this.lbl5 = new System.Windows.Forms.Label();
+            this.IDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.Grb5.SuspendLayout();
             this.SuspendLayout();
@@ -66,8 +66,8 @@ namespace ProyectoDerake.Formularios
             this.DgvListaUsuarios.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.DgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColIDUsuario,
-            this.ColNombre,
+            this.IDUsuario,
+            this.Nombre,
             this.Cedula,
             this.Email,
             this.Rol});
@@ -79,47 +79,6 @@ namespace ProyectoDerake.Formularios
             this.DgvListaUsuarios.Size = new System.Drawing.Size(731, 403);
             this.DgvListaUsuarios.TabIndex = 0;
             this.DgvListaUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellClick);
-            // 
-            // ColIDUsuario
-            // 
-            this.ColIDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColIDUsuario.DataPropertyName = "IDUsuario";
-            this.ColIDUsuario.HeaderText = "Código";
-            this.ColIDUsuario.Name = "ColIDUsuario";
-            this.ColIDUsuario.ReadOnly = true;
-            this.ColIDUsuario.Width = 80;
-            // 
-            // ColNombre
-            // 
-            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNombre.DataPropertyName = "Nombre";
-            this.ColNombre.HeaderText = "Nombre";
-            this.ColNombre.Name = "ColNombre";
-            this.ColNombre.ReadOnly = true;
-            // 
-            // Cedula
-            // 
-            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Cedula.DataPropertyName = "Cedula";
-            this.Cedula.HeaderText = "Cédula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            this.Cedula.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Rol
-            // 
-            this.Rol.DataPropertyName = "Rol";
-            this.Rol.HeaderText = "Rol";
-            this.Rol.Name = "Rol";
-            this.Rol.ReadOnly = true;
             // 
             // TxtNombre
             // 
@@ -344,6 +303,47 @@ namespace ProyectoDerake.Formularios
             this.lbl5.TabIndex = 21;
             this.lbl5.Text = "CONTROL DE REGISTRO DE USUARIOS";
             // 
+            // IDUsuario
+            // 
+            this.IDUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.IDUsuario.DataPropertyName = "IDUsuario";
+            this.IDUsuario.HeaderText = "Código";
+            this.IDUsuario.Name = "IDUsuario";
+            this.IDUsuario.ReadOnly = true;
+            this.IDUsuario.Width = 80;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Cedula
+            // 
+            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Cedula.DataPropertyName = "Cedula";
+            this.Cedula.HeaderText = "Cédula";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            this.Cedula.Width = 125;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Correo electrónico";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Rol
+            // 
+            this.Rol.DataPropertyName = "Rol";
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            this.Rol.ReadOnly = true;
+            // 
             // FrmUsuariosGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -393,13 +393,13 @@ namespace ProyectoDerake.Formularios
         private System.Windows.Forms.TextBox TxtCedula;
         private System.Windows.Forms.Label LblEmail;
         private System.Windows.Forms.Label LblCedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColIDUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox Grb5;
         private System.Windows.Forms.Label lbl5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
     }
 }

@@ -122,7 +122,7 @@ namespace ProyectoDerake.Lógica
                 //Lista de parametros que llegaran al SP
                 MiCnn.ListadoDeParametros.Add(new SqlParameter("@Id", this.IDUsuario));
 
-                int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioEliminar");
+                int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioDesactivar");
 
                 if (retorno > 0)
                 {

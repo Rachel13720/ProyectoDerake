@@ -146,7 +146,6 @@ namespace ProyectoDerake.Formularios
                     !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtComentario.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtPrecio.Text.Trim()) &&
-                    DgvListaProductos.Rows.Count < 1 &&
                     CboxTipoCategoria.SelectedIndex > -1)
                 {
 
@@ -222,40 +221,32 @@ namespace ProyectoDerake.Formularios
         //Se emplea el método para activar el botón de agregar.
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            try
+
+            //valida los datos existentes y los modifica.
+            if (ValidarDatosRequeridos())
             {
-                //valida los datos existentes y los modifica.
-                if (ValidarDatosRequeridos())
+                Producto MiProducto = new Producto();
+
+
+                MiProducto.IDProducto = Convert.ToInt32(TxtCodigo.Text.Trim());
+
+                MiProducto.Nombre = TxtNombre.Text.Trim();
+                MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim());
+                MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
+                MiProducto.Comentario = TxtComentario.Text.Trim();
+                MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
+
+                if (MiProducto.ConsultarPorID())
                 {
-                    Producto MiProducto = new Producto();
-
-
-                    DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
-
-                    MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
-
-                    MiProducto.Nombre = TxtNombre.Text.Trim();
-                    MiProducto.Cantidad = Convert.ToInt32(TxtCantidad.Text.Trim());
-                    MiProducto.Precio = Convert.ToInt32(TxtPrecio.Text.Trim());
-                    MiProducto.Comentario = TxtComentario.Text.Trim();
-                    MiProducto.MiCategoria.IDProductoCategoria = Convert.ToInt32(CboxTipoCategoria.SelectedValue);
-
-                    if (MiProducto.ConsultarPorID())
+                    //Se emplea el método editar de la clase.
+                    if (MiProducto.Editar())
                     {
-                        //Se emplea el método editar de la clase.
-                        if (MiProducto.Editar())
-                        {
-                            MessageBox.Show("Producto modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            LimpiarFormulario();
-                            ActivarBotonAgregar();
-                            LlenarListaProductos();
-                        }
+                        MessageBox.Show("Producto modificado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        LimpiarFormulario();
+                        ActivarBotonAgregar();
+                        LlenarListaProductos();
                     }
                 }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -267,24 +258,31 @@ namespace ProyectoDerake.Formularios
         //Se emplea el método para activar el botón de agregar.
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-
-            Producto MiProducto = new Producto();
-
-            DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
-
-            MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
-
             try
             {
-                if (MiProducto.ConsultarPorID())
+                //Producto MiProducto = new Producto();
+
+                //DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
+
+                //MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
+                if (ValidarDatosRequeridos())
                 {
-                    //Se emplea el método de eliminar de la clase.
-                    if (MiProducto.Desactivar())
+                    Producto MiProducto = new Producto();
+
+                    DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
+
+                    MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
+
+                    if (MiProducto.ConsultarPorID())
                     {
-                        MessageBox.Show("Producto eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        LimpiarFormulario();
-                        ActivarBotonAgregar();
-                        LlenarListaProductos();
+                        //Se emplea el método de eliminar de la clase.
+                        if (MiProducto.Desactivar())
+                        {
+                            MessageBox.Show("Producto eliminado correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            LimpiarFormulario();
+                            ActivarBotonAgregar();
+                            LlenarListaProductos();
+                        }
                     }
                 }
             }

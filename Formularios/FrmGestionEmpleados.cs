@@ -34,8 +34,7 @@ namespace ProyectoDerake.Formularios
         //se llena el datagrid con los datos del empleado.
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 //Se emplea este método para validar los campos
                 //Se emplea un método para validar existencias
                 //y así no existan datos repetidos
@@ -47,7 +46,8 @@ namespace ProyectoDerake.Formularios
 
                     if (Respuesta == DialogResult.Yes)
                     {
-
+                    try
+                    {
                         Empleado MiEmpleado = new Empleado();
 
                         MiEmpleado.Nombre = TxtNombre.Text.Trim();
@@ -91,12 +91,13 @@ namespace ProyectoDerake.Formularios
                         }
 
                     }
-                }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Error denotado por:\n" + error.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
             }
         }
 
