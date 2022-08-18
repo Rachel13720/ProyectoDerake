@@ -47,6 +47,8 @@ namespace ProyectoDerake.Formularios
             // 
             // DgvListaItems
             // 
+            this.DgvListaItems.AllowUserToAddRows = false;
+            this.DgvListaItems.AllowUserToDeleteRows = false;
             this.DgvListaItems.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.DgvListaItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -57,6 +59,7 @@ namespace ProyectoDerake.Formularios
             this.CComentario});
             this.DgvListaItems.Location = new System.Drawing.Point(31, 36);
             this.DgvListaItems.Name = "DgvListaItems";
+            this.DgvListaItems.ReadOnly = true;
             this.DgvListaItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaItems.Size = new System.Drawing.Size(743, 322);
             this.DgvListaItems.TabIndex = 0;
@@ -68,6 +71,7 @@ namespace ProyectoDerake.Formularios
             this.CIDProducto.DataPropertyName = "IDProducto";
             this.CIDProducto.HeaderText = "Código";
             this.CIDProducto.Name = "CIDProducto";
+            this.CIDProducto.ReadOnly = true;
             this.CIDProducto.Width = 80;
             // 
             // CNombre
@@ -76,6 +80,7 @@ namespace ProyectoDerake.Formularios
             this.CNombre.DataPropertyName = "Nombre";
             this.CNombre.HeaderText = "Descripción";
             this.CNombre.Name = "CNombre";
+            this.CNombre.ReadOnly = true;
             this.CNombre.Width = 150;
             // 
             // CCantidad
@@ -84,6 +89,7 @@ namespace ProyectoDerake.Formularios
             this.CCantidad.DataPropertyName = "Cantidad";
             this.CCantidad.HeaderText = "Cantidad";
             this.CCantidad.Name = "CCantidad";
+            this.CCantidad.ReadOnly = true;
             // 
             // CPrecio
             // 
@@ -91,6 +97,7 @@ namespace ProyectoDerake.Formularios
             this.CPrecio.DataPropertyName = "Precio";
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
+            this.CPrecio.ReadOnly = true;
             // 
             // CComentario
             // 
@@ -98,6 +105,7 @@ namespace ProyectoDerake.Formularios
             this.CComentario.DataPropertyName = "Comentario";
             this.CComentario.HeaderText = "Comentario";
             this.CComentario.Name = "CComentario";
+            this.CComentario.ReadOnly = true;
             // 
             // PnlDatos
             // 
