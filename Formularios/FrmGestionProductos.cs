@@ -260,11 +260,7 @@ namespace ProyectoDerake.Formularios
         {
             try
             {
-                //Producto MiProducto = new Producto();
-
-                //DataGridViewRow MiFila = DgvListaProductos.SelectedRows[0];
-
-                //MiProducto.IDProducto = Convert.ToInt32(MiFila.Cells["IDProducto"].Value);
+                
                 if (ValidarDatosRequeridos())
                 {
                     Producto MiProducto = new Producto();

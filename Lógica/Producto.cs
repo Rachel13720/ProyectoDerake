@@ -231,6 +231,6 @@ namespace ProyectoDerake.Lógica
 
             return R;
         }
-
+        
     }
 }
