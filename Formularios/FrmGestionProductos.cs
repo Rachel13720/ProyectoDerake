@@ -24,9 +24,7 @@ namespace ProyectoDerake.Formularios
             InitializeComponent();
             MiProducto = new Producto();
             ListaProductos = new DataTable();
-        }
-
-
+        } 
 
         //Método que carga los datos de la categoria
         //en el combo.
