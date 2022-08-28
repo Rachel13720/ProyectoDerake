@@ -24,7 +24,7 @@ namespace ProyectoDerake.Formularios
             InitializeComponent();
             MiProducto = new Producto();
             ListaProductos = new DataTable();
-        } 
+        }
 
         //Método que carga los datos de la categoria
         //en el combo.
@@ -258,7 +258,7 @@ namespace ProyectoDerake.Formularios
         {
             try
             {
-                
+
                 if (ValidarDatosRequeridos())
                 {
                     Producto MiProducto = new Producto();
@@ -330,6 +330,8 @@ namespace ProyectoDerake.Formularios
                     }
 
                     ActivarModificarYEliminar();
+
+
                 }
             }
             catch (Exception error)
